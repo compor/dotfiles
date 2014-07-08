@@ -1,0 +1,13 @@
+[user]
+	name = Chris Vassiladiotis
+	email = cvassiladiotis@gmail.com
+[core]
+	editor = vim
+[merge]
+	tool = vimdiff
+[color]
+	status = auto
+	branch = auto
+	interactive = auto
+	diff = auto
+	ui = true
