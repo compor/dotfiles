@@ -1,0 +1,10 @@
+"vimperatorrc file 
+
+set gui=
+set runtimepath=~/.vimperator
+source! ~/.vimperatorrc.local
+
+"vim: set ft=vimperator:
+
+colorscheme molokai
+
