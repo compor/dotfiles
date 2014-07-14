@@ -15,10 +15,14 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
+Plugin 'kshenoy/vim-signature'
 
 call vundle#end()
 
 filetype plugin indent on
+
+" change the mapleader from \ to ,
+let mapleader=","
 
 syntax on
 set t_Co=256
@@ -52,7 +56,7 @@ set undolevels=1000
 set title
 set wildignore=*.swp,*.bak,*.pyc,*.class
 
-set pastetoggle=<F2>
+set pastetoggle=<leader>p
 
 if has('autocmd')
     autocmd filetype python set expandtab
@@ -68,7 +72,7 @@ au BufWritePre *.c,*.cpp,*.cc,*.h,*.hh,*.hpp,*.java :%s/\s\+$//e
 cnoremap sudow w !sudo tee % >/dev/null
 
 "clear highlighted searches by pressing / again
-nmap <silent> ,/ :nohlsearch<CR>
+nmap <silent> <leader>/ :nohlsearch<CR>
 
 
 "mappings for plugins
