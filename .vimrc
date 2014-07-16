@@ -43,6 +43,12 @@ set copyindent
 set ruler
 set nowrap
 
+set nobackup
+set noswapfile
+
+set foldmethod=syntax
+set foldcolumn=4
+set foldlevel=5
 set ignorecase
 set smartcase
 set hlsearch
@@ -62,11 +68,17 @@ if has('autocmd')
     autocmd filetype python set expandtab
 endif
 
-
+" disable highlighting for coursera compilers COOL files
 au BufNewFile,BufRead *.cl set filetype=
+
+" flex file should use lex file syntax
 au BufNewFile,BufRead *.flex set filetype=lex
 
+" strip trailing whitespace for the below file suffixes
 au BufWritePre *.c,*.cpp,*.cc,*.h,*.hh,*.hpp,*.java :%s/\s\+$//e
+" auto save and load views
+au BufWinLeave *.* mkview
+au BufWinEnter *.* silent loadview
 
 "save changes to open file even if not opened as root
 cnoremap sudow w !sudo tee % >/dev/null
