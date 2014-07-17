@@ -81,6 +81,9 @@ au BufNewFile,BufRead *.flex set filetype=lex
 " markdown
 au BufNewFile,BufRead *.md set filetype=markdown
 
+" on git commit messages set column width to 72
+au FileType gitcommit set textwidth=72
+
 " strip trailing whitespace for the below file suffixes
 au BufWritePre *.c,*.cpp,*.cc,*.h,*.hh,*.hpp,*.java :%s/\s\+$//e
 
