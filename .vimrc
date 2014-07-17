@@ -32,6 +32,7 @@ set hidden
 set backspace=indent,eol,start
 set showmatch
 set number
+set numberwidth=5
 set tabstop=4
 set smarttab
 set shiftwidth=4
@@ -43,12 +44,15 @@ set copyindent
 set ruler
 set nowrap
 
+set textwidth=80
+set colorcolumn=+1
+
 set nobackup
 set noswapfile
 
 set foldmethod=syntax
-set foldcolumn=4
-set foldlevel=5
+set foldcolumn=1
+set foldlevel=4
 set ignorecase
 set smartcase
 set hlsearch
@@ -74,11 +78,15 @@ au BufNewFile,BufRead *.cl set filetype=
 " flex file should use lex file syntax
 au BufNewFile,BufRead *.flex set filetype=lex
 
+" markdown
+au BufNewFile,BufRead *.md set filetype=markdown
+
 " strip trailing whitespace for the below file suffixes
 au BufWritePre *.c,*.cpp,*.cc,*.h,*.hh,*.hpp,*.java :%s/\s\+$//e
+
 " auto save and load views
-au BufWinLeave *.* mkview
-au BufWinEnter *.* silent loadview
+"au BufWinLeave *.* mkview
+"au BufWinEnter *.* silent loadview
 
 "save changes to open file even if not opened as root
 cnoremap sudow w !sudo tee % >/dev/null
@@ -90,5 +98,10 @@ nmap <silent> <leader>/ :nohlsearch<CR>
 "mappings for plugins
 "NERDTree
 map <C-n> :NERDTreeToggle<CR>
+
+" local config
+if filereadable($HOME . "/.vimrc.local")
+  source ~/.vimrc.local
+endif
 
 
