@@ -28,6 +28,10 @@ syntax on
 set t_Co=256
 color desert
 
+" changed default terminal search highlighting
+" to something more visible
+highlight Search ctermbg='120' ctermfg='20'
+
 set hidden
 set backspace=indent,eol,start
 set showmatch
