@@ -30,7 +30,12 @@ color desert
 
 " changed default terminal search highlighting
 " to something more visible
-highlight Search ctermbg='120' ctermfg='20'
+highlight Search ctermfg=20 ctermbg=120 gui=none guifg=bg guibg=Red
+highlight IncSearch ctermfg=20 ctermbg=120 gui=none guifg=bg guibg=Red
+highlight DiffAdd cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffText cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
 
 set hidden
 set backspace=indent,eol,start
@@ -87,6 +92,11 @@ au BufNewFile,BufRead *.md set filetype=markdown
 
 " on git commit messages set column width to 72
 au FileType gitcommit set textwidth=72
+
+if &diff
+    set textwidth=0
+    set colorcolumn=0
+endif
 
 " strip trailing whitespace for the below file suffixes
 au BufWritePre *.c,*.cpp,*.cc,*.h,*.hh,*.hpp,*.java :%s/\s\+$//e
