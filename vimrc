@@ -93,6 +93,8 @@ au BufNewFile,BufRead *.md set filetype=markdown
 " on git commit messages set column width to 72
 au FileType gitcommit set textwidth=72
 
+au FileType markdown set textwidth=120
+
 if &diff
     set textwidth=0
     set colorcolumn=0
