@@ -91,7 +91,7 @@ au BufNewFile,BufRead *.flex set filetype=lex
 au BufNewFile,BufRead *.md set filetype=markdown
 
 " on git commit messages set column width to 72
-au FileType gitcommit set textwidth=72
+au FileType gitcommit setlocal spell textwidth=72
 
 au FileType markdown set textwidth=120
 
