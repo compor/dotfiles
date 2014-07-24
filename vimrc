@@ -80,6 +80,8 @@ set pastetoggle=<leader>p
 " highlight trailing spaces
 set list
 set listchars=trail:·
+set listchars+=tab:˫\ 
+
 " set status line options
 
 set laststatus=2
