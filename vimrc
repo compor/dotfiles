@@ -77,6 +77,9 @@ set wildignore=*.swp,*.bak,*.pyc,*.class
 
 set pastetoggle=<leader>p
 
+" highlight trailing spaces
+set list
+set listchars=trail:·
 if has('autocmd')
     autocmd filetype python set expandtab
 endif
