@@ -62,6 +62,7 @@ set noswapfile
 set foldmethod=syntax
 set foldcolumn=1
 set foldlevel=4
+
 set ignorecase
 set smartcase
 set hlsearch
@@ -86,17 +87,19 @@ set listchars+=tab:˫\
 
 set laststatus=2
 
-set statusline=%t       "tail of the filename
+set statusline=             "clear status line
 set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
-set statusline+=%{&ff}] "file format
-set statusline+=%h      "help file flag
-set statusline+=%m      "modified flag
-set statusline+=%r      "read only flag
-set statusline+=%y      "filetype
-set statusline+=%=      "left/right separator
-set statusline+=%c,     "cursor column
-set statusline+=%l/%L   "cursor line/total lines
-set statusline+=\ %P    "percent through file
+set statusline+=%{&ff}]     "file format
+set statusline+=%h          "help file flag
+set statusline+=%m          "modified flag
+set statusline+=%r          "read only flag
+set statusline+=%y          "filetype
+set statusline+=[%<%F%*]    "full path
+set statusline+=%=          "left/right separator
+set statusline+=%c,         "cursor column
+set statusline+=%l/%L       "cursor line/total lines
+set statusline+=\ [0x%04B\] "character under cursor
+set statusline+=\ %P        "percent through file
 
 if has('autocmd')
     autocmd filetype python set expandtab
@@ -138,6 +141,8 @@ nmap <silent> <leader>/ :nohlsearch<CR>
 "mappings for plugins
 "NERDTree
 map <C-n> :NERDTreeToggle<CR>
+
+
 
 " local config
 if filereadable($HOME . "/.vimrc.local")
