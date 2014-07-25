@@ -111,6 +111,9 @@ au BufNewFile,BufRead *.cl set filetype=
 " flex file should use lex file syntax
 au BufNewFile,BufRead *.flex set filetype=lex
 
+" qml
+au BufNewFile,BufRead *.qml set filetype=javascript
+
 " markdown
 au BufNewFile,BufRead *.md set filetype=markdown
 
