@@ -16,6 +16,7 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 Plugin 'kshenoy/vim-signature'
+Plugin 'majutsushi/tagbar'
 
 call vundle#end()
 
@@ -84,7 +85,6 @@ set listchars=trail:·
 set listchars+=tab:˫\ 
 
 " set status line options
-
 set laststatus=2
 
 set statusline=             "clear status line
@@ -141,10 +141,12 @@ cnoremap sudow w !sudo tee % >/dev/null
 nmap <silent> <leader>/ :nohlsearch<CR>
 
 
-"mappings for plugins
-"NERDTree
+" mappings for plugins
+" NERDTree
 map <C-n> :NERDTreeToggle<CR>
 
+" tagbar
+nnoremap <silent> <Leader>b :TagbarToggle<CR>
 
 
 " local config
