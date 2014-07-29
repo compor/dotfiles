@@ -101,8 +101,12 @@ set statusline+=%l/%L       "cursor line/total lines
 set statusline+=\ [0x%04B\] "character under cursor
 set statusline+=\ %P        "percent through file
 
+" reset expected tags files and add some more
 set tags&
 set tags+=.tags
+
+" show 10 lines above and below cursor
+set scrolloff=10
 
 if has('autocmd')
     autocmd filetype python set expandtab
