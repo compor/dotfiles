@@ -141,7 +141,10 @@ au BufWritePre *.c,*.cpp,*.cc,*.h,*.hh,*.hpp,*.java :%s/\s\+$//e
 "au BufWinLeave *.* mkview
 "au BufWinEnter *.* silent loadview
 
-"save changes to open file even if not opened as root
+" try out ctags manually for now
+nnoremap <F6> :!ctags -R<CR>
+
+" save changes to open file even if not opened as root
 cnoremap sudow w !sudo tee % >/dev/null
 
 "clear highlighted searches by pressing / again
