@@ -64,10 +64,27 @@ set foldmethod=syntax
 set foldcolumn=1
 set foldlevel=4
 
+" ignore letter case in searches
 set ignorecase
+" ignore the above if search pattern containes uppercase
 set smartcase
+" highlight matches of the search pattern
 set hlsearch
+" highlight matches while the search pattern is typed in
 set incsearch
+" stolen from http://robots.thoughtbot.com/faster-grepping-in-vim
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " disabled because ctrlp is not used for now
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  "let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  "let g:ctrlp_use_caching = 0
+endif
 
 set visualbell
 set noerrorbells
@@ -85,6 +102,7 @@ set listchars=trail:·
 set listchars+=tab:˫\ 
 
 " set status line options
+" status line always on
 set laststatus=2
 
 set statusline=             "clear status line
@@ -107,6 +125,9 @@ set tags+=.tags
 
 " show 10 lines above and below cursor
 set scrolloff=10
+" bind \ (backward slash) to grep shortcut
+command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+nnoremap \ :Ag<SPACE>
 
 if has('autocmd')
     autocmd filetype python set expandtab
