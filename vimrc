@@ -38,20 +38,31 @@ highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Re
 highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffText cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
 
+" allows hiding buffers although they might contain unsaved modifications
 set hidden
+
+" delete over indent, end and start of line
 set backspace=indent,eol,start
+
+" jump momentarily (configurable) to the matching bracket
 set showmatch
+
+" precede each line with its line number
 set number
+
+" set width for each line number
 set numberwidth=5
+
 set tabstop=4
 set smarttab
 set shiftwidth=4
 set shiftround
 set expandtab
 set softtabstop=4
+
 set autoindent
 set copyindent
-set ruler
+
 set nowrap
 
 set textwidth=80
@@ -66,12 +77,16 @@ set foldlevel=4
 
 " ignore letter case in searches
 set ignorecase
+
 " ignore the above if search pattern containes uppercase
 set smartcase
+
 " highlight matches of the search pattern
 set hlsearch
+
 " highlight matches while the search pattern is typed in
 set incsearch
+
 " stolen from http://robots.thoughtbot.com/faster-grepping-in-vim
 " The Silver Searcher
 if executable('ag')
@@ -101,6 +116,10 @@ set list
 set listchars=trail:·
 set listchars+=tab:˫\ 
 
+" show cursor line and col number plus relative position in file
+" statusline takes precedence
+set ruler
+
 " set status line options
 " status line always on
 set laststatus=2
@@ -125,6 +144,7 @@ set tags+=.tags
 
 " show 10 lines above and below cursor
 set scrolloff=10
+
 " bind \ (backward slash) to grep shortcut
 command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 nnoremap \ :Ag<SPACE>
