@@ -53,6 +53,9 @@ set number
 " set width for each line number
 set numberwidth=5
 
+" do not redraw screen when executing macros
+set lazyredraw
+
 set tabstop=4
 set smarttab
 set shiftwidth=4
@@ -62,6 +65,9 @@ set softtabstop=4
 
 set autoindent
 set copyindent
+
+" do not wrap search scans
+set nowrapscan
 
 set nowrap
 
