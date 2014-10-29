@@ -13,9 +13,14 @@
 	ui = true
 [alias]
 	st = status
+    s = status -sb
 	co = checkout
 	ci = commit
 	br = branch
+    ls = ls-files
+    add = add -v
+    rev = merge --no-ff --no-commit
+    mrequest = push -u origin HEAD
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 	type = cat-file -t
 	dump = cat-file -p
