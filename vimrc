@@ -17,6 +17,9 @@ Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 Plugin 'kshenoy/vim-signature'
 Plugin 'majutsushi/tagbar'
+Plugin 'nelstrom/vim-markdown-folding'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
 call vundle#end()
 
@@ -24,6 +27,9 @@ filetype plugin indent on
 
 " change the mapleader from \ to ,
 let mapleader=","
+
+" vim/markdown plugin options
+let g:vim_markdown_initial_foldlevel=1
 
 syntax on
 set t_Co=256
@@ -205,6 +211,9 @@ map <C-n> :NERDTreeToggle<CR>
 " tagbar
 nnoremap <silent> <Leader>b :TagbarToggle<CR>
 
+" space for fold toggling
+nnoremap <Space> za
+vnoremap <Space> za
 
 " local config
 if filereadable($HOME . "/.vimrc.local")
