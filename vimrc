@@ -6,6 +6,9 @@ set runtimepath=~/.vim
 set runtimepath+=/usr/share/vim/vim74
 set runtimepath+=~/.vim/bundle/Vundle.vim
 
+scriptencoding utf-8
+set encoding=utf-8
+
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
@@ -177,10 +180,14 @@ au BufNewFile,BufRead *.qml set filetype=javascript
 " markdown
 au BufNewFile,BufRead *.md set filetype=markdown
 
+" TeX and friends
+au BufNewFile,BufRead *.tex set filetype=tex
+
 " on git commit messages set column width to 72
 au FileType gitcommit setlocal spell textwidth=72
 
 au FileType markdown set textwidth=120
+au FileType tex set textwidth=120
 
 if &diff
     set textwidth=0
