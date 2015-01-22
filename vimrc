@@ -36,7 +36,11 @@ let g:vim_markdown_initial_foldlevel=1
 
 syntax on
 set t_Co=256
-color desert
+set background=dark
+"let g:solarized_visibility="high"
+let g:solarized_visibility="low"
+color solarized
+"color desert
 
 " changed default terminal search highlighting
 " to something more visible
