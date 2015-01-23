@@ -38,6 +38,7 @@ syntax on
 set t_Co=256
 set background=dark
 "let g:solarized_visibility="high"
+"let g:solarized_visibility="medium"
 let g:solarized_visibility="low"
 color solarized
 "color desert
@@ -167,6 +168,9 @@ set scrolloff=10
 " bind \ (backward slash) to grep shortcut
 command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 nnoremap \ :Ag<SPACE>
+
+" remove trailing whitespace from bestofvim.com
+nnoremap <Leader>rtw :%s/\s\+$//e<CR>
 
 if has('autocmd')
     autocmd filetype python set expandtab
