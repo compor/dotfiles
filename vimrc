@@ -202,6 +202,20 @@ if &diff
     set colorcolumn=0
 endif
 
+
+" toggle whitespace visibility based on solarized modes
+function! s:ToggleVisibility()
+    if g:solarized_visibility != 'high'
+        let g:solarized_visibility = 'high'
+    else
+        let g:solarized_visibility = 'low'
+    endif
+    color solarized
+endfunction
+
+map <leader>w :call <SID>ToggleVisibility()<CR>
+
+
 " strip trailing whitespace for the below file suffixes
 au BufWritePre *.c,*.cpp,*.cc,*.h,*.hh,*.hpp,*.java :%s/\s\+$//e
 
