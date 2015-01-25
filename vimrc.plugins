@@ -1,0 +1,18 @@
+
+" plugin list for Vundle
+
+Plugin 'gmarik/Vundle.vim'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'scrooloose/nerdtree'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
+Plugin 'kshenoy/vim-signature'
+Plugin 'majutsushi/tagbar'
+Plugin 'nelstrom/vim-markdown-folding'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'kien/ctrlp.vim'
+
+
