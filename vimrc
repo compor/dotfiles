@@ -23,6 +23,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'nelstrom/vim-markdown-folding'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'kien/ctrlp.vim'
 
 call vundle#end()
 
