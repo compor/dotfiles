@@ -9,21 +9,12 @@ set runtimepath+=~/.vim/bundle/Vundle.vim
 scriptencoding utf-8
 set encoding=utf-8
 
+" setup plugins
 call vundle#begin()
 
-Plugin 'gmarik/Vundle.vim'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'scrooloose/nerdtree'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
-Plugin 'honza/vim-snippets'
-Plugin 'kshenoy/vim-signature'
-Plugin 'majutsushi/tagbar'
-Plugin 'nelstrom/vim-markdown-folding'
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'kien/ctrlp.vim'
+if filereadable(expand("~/.vimrc.plugins"))
+    source ~/.vimrc.plugins
+endif
 
 call vundle#end()
 
@@ -46,12 +37,8 @@ color solarized
 
 " changed default terminal search highlighting
 " to something more visible
-highlight Search ctermfg=20 ctermbg=120 gui=none guifg=bg guibg=Red
-highlight IncSearch ctermfg=20 ctermbg=120 gui=none guifg=bg guibg=Red
-highlight DiffAdd cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
-highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
-highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
-highlight DiffText cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
+"highlight Search ctermfg=20 ctermbg=120 gui=none guifg=bg guibg=Red
+"highlight IncSearch ctermfg=20 ctermbg=120 gui=none guifg=bg guibg=Red
 
 " allows hiding buffers although they might contain unsaved modifications
 set hidden
@@ -199,8 +186,14 @@ au FileType markdown set textwidth=120
 au FileType tex set textwidth=120
 
 if &diff
+    " disable annoying visual stuff when in diff mode
+    syntax off
     set textwidth=0
     set colorcolumn=0
+    highlight DiffAdd cterm=bold ctermfg=11 ctermbg=17 gui=none guifg=bg guibg=Red
+    highlight DiffDelete cterm=bold ctermfg=11 ctermbg=17 gui=none guifg=bg guibg=Red
+    highlight DiffChange cterm=bold ctermfg=Green ctermbg=17 gui=none guifg=bg guibg=Red
+    highlight DiffText cterm=bold ctermfg=11 ctermbg=88 gui=none guifg=bg guibg=Red
 endif
 
 
