@@ -18,6 +18,9 @@ endif
 
 call vundle#end()
 
+" show operation mode
+set showmode
+
 filetype plugin indent on
 
 " change the mapleader from \ to ,
