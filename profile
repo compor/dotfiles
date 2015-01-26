@@ -10,13 +10,13 @@ umask 077
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
+    if [ -f "$HOME/bin/detect_os.sh" ]; then
+        . "$HOME/bin/detect_os.sh"
+    fi
+
     # include .bashrc if it exists
     if [ -f "$HOME/.bashrc" ]; then
 	    . "$HOME/.bashrc"
-    fi
-
-    if [ -f "$HOME/bin/detect_os.sh" ]; then
-        . "$HOME/bin/detect_os.sh"
     fi
 fi
 
