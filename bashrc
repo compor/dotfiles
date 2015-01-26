@@ -110,7 +110,3 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-
-# restrict mask as much as possible
-umask 077
-
