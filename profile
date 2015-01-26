@@ -43,6 +43,8 @@ CLASSPATH=
 export CLASSPATH
 
 
+# set editors
+
 export EDITOR=$(which vim)
 export CVSEDITOR=$(which vim)
 
@@ -50,15 +52,21 @@ if [ "$OPSYS_TYPE" == "linux" ]; then
     export VISUAL=$(which gvim)
 fi
 
-
 if [ "$OPSYS_DISTRO" == "apple" ]; then
     export VISUAL=$(which macvim)
 fi
 
 
+# start ssh-agent
+# http://mah.everybody.org/docs/ssh
+
+SSHAGENT=$(which /usr/bin/ssh-agent)
+SSHAGENTARGS="-s"
+
+if [ -z "$SSH_AUTH_SOCK" ] && [ -x "$SSHAGENT" ]; then
+    eval $($SSHAGENT $SSHAGENTARGS)
+    trap "kill $SSH_AGENT_PID" 0
+fi
+
 export ANDROID_EMULATOR_FORCE_32BIT=true
-
-
-eval $(ssh-agent)
-
 
