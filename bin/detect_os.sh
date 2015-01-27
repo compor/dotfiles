@@ -5,7 +5,7 @@ AWK=$(which awk)
 
 # determine OS type
 
-declare -gx OPSYS_TYPE="unknown"
+declare -gxl OPSYS_TYPE="unknown"
 
 declare -l UNAME_OUTPUT=$(uname)
 
@@ -56,7 +56,7 @@ case "$OPSYS_TYPE" in
 
         if [[ -n $INTROSPECT_TOOL ]]; then
             # distro
-            declare OUTPUT_STR
+            declare -l OUTPUT_STR
             OUTPUT_STR=$($INTROSPECT_TOOL -productName | $TR -d [:blank:])
 
             case "$OUTPUT_STR" in
