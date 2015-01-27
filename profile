@@ -18,10 +18,6 @@ export LC_TIME=en_DK.UTF-8 # YYYY-MM-DD
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
-    if [ -f "$HOME/bin/detect_os.sh" ]; then
-        . "$HOME/bin/detect_os.sh"
-    fi
-
     # include .bashrc if it exists
     if [ -f "$HOME/.bashrc" ]; then
 	    . "$HOME/.bashrc"
