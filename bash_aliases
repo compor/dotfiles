@@ -39,10 +39,14 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 
 if [[ $OPSYS_DISTRO == "ubuntu" ]]; then
-    alias sysupd='sudo apt-get update'
-    alias sysinst='sudo apt-get install'
+    alias pkgupd='sudo apt-get update'
+    alias pkgupg='sudo apt-get upgrade'
+    alias pkgins='sudo apt-get install'
+    alias pkgfnd='sudo apt-cache search'
 elif [[ $OPSYS_DISTRO == "apple" ]]; then
-    alias sysupd='brew update && brew cask update'
-    alias sysinst='brew install'
+    alias pkgupd='brew update && brew cask update'
+    alias pkgupg='brew upgrade'
+    alias pkgins='brew install'
+    alias pkgfnd='brew search'
 fi
 
