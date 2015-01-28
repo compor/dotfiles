@@ -63,13 +63,22 @@ fi
 
 # start ssh-agent
 # http://mah.everybody.org/docs/ssh
+# with tweaks for damn mac os x
 
-SSHAGENT=$(which /usr/bin/ssh-agent)
+SSHAGENT=$(which ssh-agent)
 SSHAGENTARGS="-s"
+SSHAGENTPID=$(pgrep ssh-agent)
+SSHENV="${HOME}/.ssh/ssh_env"
 
-if [ -z "$SSH_AUTH_SOCK" ] && [ -x "$SSHAGENT" ]; then
+if [ -z "${SSHAGENTPID}" ] && [ -x "${SSHAGENT}" ]; then
     eval $($SSHAGENT $SSHAGENTARGS)
-    trap "kill $SSH_AGENT_PID" 0
+    echo "export SSH_AGENT_PID=${SSH_AGENT_PID}" > "${SSHENV}"
+    echo "export SSH_AUTH_SOCK=${SSH_AUTH_SOCK}" >> "${SSHENV}"
+    trap "kill ${SSH_AGENT_PID}" 0
+else
+    if [ -r "${SSHENV}" ]; then
+        . "${SSHENV}" &> /dev/null
+    fi
 fi
 
 export ANDROID_EMULATOR_FORCE_32BIT=true
