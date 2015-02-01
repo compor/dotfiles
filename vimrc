@@ -185,7 +185,7 @@ au BufNewFile,BufRead *.tex set filetype=tex
 " on git commit messages set column width to 72
 au FileType gitcommit setlocal spell textwidth=72
 
-au FileType markdown set textwidth=120
+"au FileType markdown set textwidth=120
 au FileType tex set textwidth=120
 
 if &diff
