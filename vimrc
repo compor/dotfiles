@@ -182,6 +182,7 @@ nnoremap <Leader>rtw :%s/\s\+$//e<CR>
 
 if has('autocmd')
     autocmd filetype python set expandtab
+    autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
 endif
 
 " disable highlighting for coursera compilers COOL files
@@ -257,6 +258,8 @@ nnoremap <silent> <Leader>b :TagbarToggle<CR>
 nnoremap <leader><Space> za
 vnoremap <leader><Space> za
 
+" hardmode
+nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
 
 " local config
 if filereadable($HOME . "/.vimrc.local")
