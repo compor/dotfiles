@@ -261,8 +261,16 @@ nmap <leader>bq :bp <BAR> bd #<CR>
 
 
 " mappings for plugins
-" NERDTree
+" nerdtree
 map <C-n> :NERDTreeToggle<CR>
+nmap <leader>n :NERDTreeToggle<CR>
+
+" ctrlp
+nnoremap <leader>p :CtrlP<CR>
+
+nmap <leader>pb :CtrlPBuffer<CR>
+nmap <leader>pm :CtrlPMixed<CR>
+nmap <leader>pr :CtrlPMRU<CR>
 
 " tagbar
 nnoremap <silent> <Leader>b :TagbarToggle<CR>
