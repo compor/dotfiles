@@ -273,7 +273,7 @@ nmap <leader>pm :CtrlPMixed<CR>
 nmap <leader>pr :CtrlPMRU<CR>
 
 " tagbar
-nnoremap <silent> <Leader>b :TagbarToggle<CR>
+nnoremap <silent> <Leader>t :TagbarToggle<CR>
 
 " space for fold toggling
 nnoremap <leader><Space> za
