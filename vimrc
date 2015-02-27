@@ -104,15 +104,29 @@ set incsearch
 " stolen from http://robots.thoughtbot.com/faster-grepping-in-vim
 " The Silver Searcher
 if executable('ag')
-  " Use ag over grep
+
+
+    " use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
 
-  " disabled because ctrlp is not used for now
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  "let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+    if exists(':CtrlP')
+        " ag is fast enough that ctrlp doesn't need to cache
+        let g:ctrlp_use_caching = 0
 
-  " ag is fast enough that CtrlP doesn't need to cache
-  "let g:ctrlp_use_caching = 0
+        " use ag in ctrlp for listing files lightning fast and respects .gitignore
+        let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+    endif
+endif
+
+if exists(':CtrlP')
+    " use current file dir and current repo dir as cwd
+    let g:ctrlp_working_path_mode = 'ra'
+
+    " some default ignores
+    let g:ctrlp_custom_ignore = {
+        \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
+        \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
+    \}
 endif
 
 set visualbell
