@@ -175,7 +175,7 @@ set scrolloff=10
 
 " bind \ (backward slash) to grep shortcut
 command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-nnoremap \ :Ag<SPACE>
+nnoremap \ :Ag<Space>
 
 " remove trailing whitespace from bestofvim.com
 nnoremap <Leader>rtw :%s/\s\+$//e<CR>
@@ -227,7 +227,7 @@ function! s:ToggleVisibility()
     color solarized
 endfunction
 
-map <leader>w :call <SID>ToggleVisibility()<CR>
+nmap <leader>W :call <SID>ToggleVisibility()<CR>
 
 
 " strip trailing whitespace for the below file suffixes
@@ -255,8 +255,9 @@ map <C-n> :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>b :TagbarToggle<CR>
 
 " space for fold toggling
-nnoremap <Space> za
-vnoremap <Space> za
+nnoremap <leader><Space> za
+vnoremap <leader><Space> za
+
 
 " local config
 if filereadable($HOME . "/.vimrc.local")
