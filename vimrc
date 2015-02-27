@@ -233,9 +233,6 @@ nmap <leader>W :call <SID>ToggleVisibility()<CR>
 " strip trailing whitespace for the below file suffixes
 au BufWritePre *.c,*.cpp,*.cc,*.h,*.hh,*.hpp,*.java :%s/\s\+$//e
 
-" auto save and load views
-"au BufWinLeave *.* mkview
-"au BufWinEnter *.* silent loadview
 
 " try out ctags manually for now
 nnoremap <F6> :!ctags -R<CR>
@@ -243,6 +240,8 @@ nnoremap <F6> :!ctags -R<CR>
 " save changes to open file even if not opened as root
 cnoremap sudow w !sudo tee % >/dev/null
 
+" save to file
+nnoremap <leader>w :w<CR>
 "clear highlighted searches by pressing / again
 nmap <silent> <leader>/ :nohlsearch<CR>
 
