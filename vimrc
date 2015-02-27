@@ -23,8 +23,11 @@ set showmode
 
 filetype plugin indent on
 
-" change the mapleader from \ to ,
-let mapleader=","
+" change the mapleader
+nnoremap <Space> <nop>
+let mapleader="\<Space>"
+
+inoremap <Space> <Space>
 
 " vim/markdown plugin options
 let g:vim_markdown_initial_foldlevel=1
