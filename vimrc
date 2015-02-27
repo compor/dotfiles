@@ -245,6 +245,19 @@ cnoremap sudow w !sudo tee % >/dev/null
 nnoremap <leader>w :w<CR>
 "clear highlighted searches by pressing / again
 nmap <silent> <leader>/ :nohlsearch<CR>
+" buffer movements mappings
+
+" move to next buffer
+nmap <leader>l :bnext<CR>
+
+" move to previous buffer
+nmap <leader>h :bprevious<CR>
+
+" show all open buffers
+nmap <leader>b :ls<CR>
+
+" close current buffer and move to previous one
+nmap <leader>bq :bp <BAR> bd #<CR>
 
 
 " mappings for plugins
