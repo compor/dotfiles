@@ -33,12 +33,16 @@ inoremap <Space> <Space>
 let g:vim_markdown_initial_foldlevel=1
 
 " ultisnips plugin options
-let g:UltiSnipsExpandTrigger='<c-k>'
-let g:UltiSnipsJumpForwardTrigger='<c-k>'
-let g:UltiSnipsJumpBackwardTrigger='<c-s-k>'
+let g:UltiSnipsExpandTrigger='<c-j>'
+let g:UltiSnipsJumpForwardTrigger='<c-j>'
+let g:UltiSnipsJumpBackwardTrigger='<c-k>'
 
-" if you want :UltiSnipsEdit to split your window.
-"let g:UltiSnipsEditSplit="vertical"
+" ycm
+let g:ycm_complete_in_comments = 1
+let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_key_list_select_completion=[]
+let g:ycm_key_list_previous_completion=[]
 
 syntax on
 set t_Co=256
