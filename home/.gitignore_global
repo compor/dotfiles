@@ -36,3 +36,7 @@
 ehthumbs.db
 Thumbs.db
 
+# IDE files #
+######################
+.ycm_extra_conf.py*
+
