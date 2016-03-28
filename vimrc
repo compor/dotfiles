@@ -9,7 +9,7 @@ set runtimepath+=~/.vim/bundle/Vundle.vim
 scriptencoding utf-8
 set encoding=utf-8
 
-" setup plugins
+    " setup plugins
 call vundle#begin()
 
 if filereadable(expand("~/.vimrc.plugins"))
@@ -32,9 +32,22 @@ inoremap <Space> <Space>
 " vim/markdown plugin options
 let g:vim_markdown_initial_foldlevel=1
 
+" ultisnips plugin options
+let g:UltiSnipsExpandTrigger='<c-j>'
+let g:UltiSnipsJumpForwardTrigger='<c-j>'
+let g:UltiSnipsJumpBackwardTrigger='<c-k>'
+
+" ycm
+let g:ycm_complete_in_comments = 1
+let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_key_list_select_completion=[]
+let g:ycm_key_list_previous_completion=[]
+
 syntax on
 set t_Co=256
 set background=dark
+"let g:solarized_termcolors=256
 "let g:solarized_visibility="high"
 "let g:solarized_visibility="medium"
 let g:solarized_visibility="low"
@@ -90,7 +103,7 @@ set foldcolumn=1
 set foldlevel=4
 
 " ignore letter case in searches
-set ignorecase
+"set ignorecase
 
 " ignore the above if search pattern containes uppercase
 set smartcase
@@ -137,7 +150,7 @@ set undolevels=1000
 set title
 set wildignore=*.swp,*.bak,*.pyc,*.class
 
-set pastetoggle=<leader>p
+"set pastetoggle=<leader>r
 
 " highlight trailing spaces
 set list
@@ -174,8 +187,8 @@ set tags+=.tags
 set scrolloff=10
 
 " bind \ (backward slash) to grep shortcut
-command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-nnoremap \ :Ag<Space>
+"command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+"nnoremap \ :Ag<Space>
 
 " remove trailing whitespace from bestofvim.com
 nnoremap <Leader>rtw :%s/\s\+$//e<CR>
@@ -254,7 +267,7 @@ nmap <leader>l :bnext<CR>
 nmap <leader>h :bprevious<CR>
 
 " show all open buffers
-nmap <leader>b :ls<CR>
+"nmap <leader>b :ls<CR>
 
 " close current buffer and move to previous one
 nmap <leader>bq :bp <BAR> bd #<CR>
@@ -263,24 +276,26 @@ nmap <leader>bq :bp <BAR> bd #<CR>
 " mappings for plugins
 " nerdtree
 map <C-n> :NERDTreeToggle<CR>
-nmap <leader>n :NERDTreeToggle<CR>
+"nmap <leader>n :NERDTreeToggle<CR>
+nmap <leader>n :NERDTreeTabsToggle<CR>
 
 " ctrlp
 nnoremap <leader>p :CtrlP<CR>
 
-nmap <leader>pb :CtrlPBuffer<CR>
+nmap <leader>b :CtrlPBuffer<CR>
 nmap <leader>pm :CtrlPMixed<CR>
 nmap <leader>pr :CtrlPMRU<CR>
 
 " tagbar
-nnoremap <silent> <Leader>t :TagbarToggle<CR>
+nnoremap <silent> <F9> :TagbarToggle<CR>
+nnoremap <silent> <F10> :TagbarTogglePause<CR>
 
 " space for fold toggling
 nnoremap <leader><Space> za
 vnoremap <leader><Space> za
 
 " hardmode
-nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
+"nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
 
 " local config
 if filereadable($HOME . "/.vimrc.local")
