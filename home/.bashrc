@@ -22,9 +22,13 @@ fi
 
 
 # sudo-aware shell prompt
-LOGNAME=$(logname)
+if [ -z "$LOGNAME" ]; then
+  LOGNAME=$(logname)
+fi
+
 UUSER=$([ "${LOGNAME}" = "${USER}" ] && echo ${USER} || echo '$(tput setaf 1)${LOGNAME}$(tput sgr0) as ${USER}')
 PS1="[${UUSER}@\h \W]\\$ "
+
 
 
 # don't put duplicate lines in the history. See bash(1) for more options
