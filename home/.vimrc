@@ -23,6 +23,9 @@ set showmode
 
 filetype plugin indent on
 
+" clipboard behaviour
+set clipboard=unnamed
+
 " change the mapleader
 nnoremap <Space> <nop>
 let mapleader="\<Space>"
