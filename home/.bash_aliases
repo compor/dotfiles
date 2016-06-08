@@ -2,12 +2,12 @@
 #
 #
 
-alias ls='ls --color=auto'
+alias c='clear'
+
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
 
-alias c='clear'
-
+alias ls='ls --color=auto'
 alias sl='ls'
 alias ll='ls -alF'
 alias la='ls -A'
@@ -15,6 +15,8 @@ alias l='ls -CF'
 
 alias mkdir='mkdir -vp'
 alias mount='mount | column -t'
+
+alias j='autojump'
 
 # safety first
 alias mv='mv -i'
