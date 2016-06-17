@@ -248,7 +248,7 @@ nmap <leader>W :call <SID>ToggleVisibility()<CR>
 
 
 " strip trailing whitespace for the below file suffixes
-au BufWritePre *.c,*.cpp,*.cc,*.h,*.hh,*.hpp,*.java :%s/\s\+$//e
+au BufWritePre *.c,*.cpp,*.cc,*.h,*.hh,*.hpp,*.java,*.cmake :%s/\s\+$//e
 
 
 " try out ctags manually for now
