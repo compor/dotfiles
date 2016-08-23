@@ -29,6 +29,7 @@ set clipboard=unnamed
 " change the mapleader
 nnoremap <Space> <nop>
 let mapleader="\<Space>"
+let maplocalleader="\\"
 
 inoremap <Space> <Space>
 
