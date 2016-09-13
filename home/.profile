@@ -69,6 +69,9 @@ if [ "$OPSYS_DISTRO" == "apple" ]; then
 fi
 
 
+# unset dbus socket address
+unset DBUS_SESSION_BUS_ADDRESS
+
 # start ssh-agent
 # http://mah.everybody.org/docs/ssh
 # with tweaks for damn mac os x
