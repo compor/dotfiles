@@ -1,5 +1,7 @@
 " vimperatorrc file 
 
+colorscheme solarized-dark
+
 set gui=
 set runtimepath=~/.vimperator
 source! ~/.vimperatorrc.local
