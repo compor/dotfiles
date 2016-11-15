@@ -27,6 +27,8 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
+# change capslock key to ctrl and vice versa
+setxkbmap -option ctrl:swapcaps
 
 # setup paths
 
