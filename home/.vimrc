@@ -299,7 +299,7 @@ nnoremap <leader><Space> za
 vnoremap <leader><Space> za
 
 " hardmode
-"nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
+nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
 
 " local config
 if filereadable($HOME . "/.vimrc.local")
