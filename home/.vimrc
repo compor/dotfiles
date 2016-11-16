@@ -298,6 +298,11 @@ nnoremap <silent> <F10> :TagbarTogglePause<CR>
 nnoremap <leader><Space> za
 vnoremap <leader><Space> za
 
+" vim-session
+let g:session_sutosave='no'
+let g:session_autoload='no'
+
+
 " hardmode
 nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
 
