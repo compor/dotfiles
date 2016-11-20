@@ -36,7 +36,7 @@ setxkbmap -option ctrl:swapcaps
 #COURSERA_ALGS="/usr/algae/"
 
 #PATH="${COURSERA_ALGS}/bin/":$PATH
-PATH="/usr/class/cs143/bin/":$PATH
+#PATH="/usr/class/cs143/bin/":$PATH
 PATH="/usr/local/bin/":$PATH
 
 # set PATH so it includes user's private bin if it exists
