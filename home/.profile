@@ -39,6 +39,9 @@ setxkbmap -option ctrl:swapcaps
 #PATH="/usr/class/cs143/bin/":$PATH
 PATH="/usr/local/bin/":$PATH
 
+# add go lang path
+PATH="/usr/local/go/bin/":$PATH
+
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
