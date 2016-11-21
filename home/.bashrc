@@ -106,9 +106,14 @@ if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
 
+# tmuxinator completions
+if [ -f ~/.bash/tmuxinator/tmuxinator.bash ]; then
+  source ~/.bash/tmuxinator/tmuxinator.bash
+fi
+
 # alias definitions
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+  . ~/.bash_aliases
 fi
 
 if [ -n "$TMUX" ]; then
