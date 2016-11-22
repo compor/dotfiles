@@ -32,6 +32,5 @@ Plugin 'sjl/splice.vim'
 Plugin 'qpkorr/vim-bufkill'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-session'
-Plugin 'wikitopian/hardmode'
-
+Plugin 'takac/vim-hardtime'
 
