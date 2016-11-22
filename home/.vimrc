@@ -9,11 +9,11 @@ set runtimepath+=~/.vim/bundle/Vundle.vim
 scriptencoding utf-8
 set encoding=utf-8
 
-    " setup plugins
+" setup plugins
 call vundle#begin()
 
 if filereadable(expand("~/.vimrc.plugins"))
-    source ~/.vimrc.plugins
+  source ~/.vimrc.plugins
 endif
 
 call vundle#end()
@@ -300,6 +300,13 @@ vnoremap <leader><Space> za
 " vim-session
 let g:session_sutosave='no'
 let g:session_autoload='no'
+
+" hardtime
+nnoremap <leader>h :HardTimeToggle<CR>
+let g:hardtime_default_on = 1
+let g:hardtime_ignore_buffer_patterns = [ "NERD.*" ]
+let g:hardtime_ignore_quickfix = 1
+let g:hardtime_allow_different_key = 1
 
 
 
