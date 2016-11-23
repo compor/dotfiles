@@ -118,6 +118,7 @@ fi
 
 if [ -n "$TMUX" ]; then
   function refresh_ssh_vars() {
+    echo "refreshing ssh vars"
     export $(tmux show-environment | grep "^SSH_AUTH_SOCK")
     export $(tmux show-environment | grep "^DISPLAY")
   }
