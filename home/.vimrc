@@ -310,6 +310,9 @@ let g:hardtime_allow_different_key = 1
 let g:list_of_visual_keys = []
 let g:list_of_disabled_keys = [ "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>" ]
 
+" vim-tmux-navigator
+let g:tmux_navigator_save_on_switch = 1
+
 
 
 " local config
