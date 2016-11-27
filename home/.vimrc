@@ -314,7 +314,8 @@ let g:list_of_disabled_keys = [ "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>" ]
 " vim-tmux-navigator
 let g:tmux_navigator_save_on_switch = 1
 
-
+" vim-clang-format
+let g:clang_format#auto_format = 1
 
 " local config
 if filereadable($HOME . "/.vimrc.local")
