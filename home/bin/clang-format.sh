@@ -1,1 +1,0 @@
-/home/vasich/.homesick/repos/dotfiles/home/bin/clang-format.sh
