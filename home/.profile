@@ -29,6 +29,8 @@ fi
 
 # change capslock key to ctrl and vice versa
 setxkbmap -option ctrl:swapcaps
+# apply this to disable gnome from resetting the keyboard setting in X
+# gsettings set org.gnome.settings-daemon.plugins.keyboard active false 
 
 # setup paths
 
