@@ -23,6 +23,7 @@
   lsnc = log --pretty=format:"%h\\ %d\\ %s\\ [%cn]" --decorate
   ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s\\ %Cgreen(%cr)\\ %Cblue[%cn]" --decorate --numstat
   llnc = log --pretty=format:"%h\\ %s\\ [%cn]"
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   add = add -v
   rev = merge --no-ff --no-commit
   mrequest = push -u origin HEAD
