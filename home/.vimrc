@@ -247,6 +247,17 @@ endfunction
 nmap <leader>W :call <SID>ToggleVisibility()<CR>
 
 
+function StripTrailingWhitespace()
+  if !&binary && &filetype != 'diff'
+    normal mz
+    normal Hmy
+    %s/\s\+$//e
+    normal 'yz<CR>
+    normal `z
+  endif
+endfunction
+
+
 " strip trailing whitespace for the below file suffixes
 au BufWritePre *.c,*.cpp,*.cc,*.h,*.hh,*.hpp,*.java,*.cmake :%s/\s\+$//e
 
