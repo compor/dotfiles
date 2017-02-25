@@ -1,0 +1,13 @@
+[ui]
+username = Chris Vasiladiotis <cvassiladiotis@gmail.com>
+editor = vim
+
+[extensions]
+color =
+pager =
+record =
+
+[pager]
+pager = more
+attend = annotate, cat, diff, qdiff, export, help, log, glog, config
+
