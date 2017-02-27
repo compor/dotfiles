@@ -52,12 +52,16 @@ fi
 export PATH
 
 
-# setup java classpath
+# setup java paths
+
+JAVA_HOME="/usr/lib/jvm/default-java"
 
 # for coursera algorithms part 1
 #CLASSPATH=$CLASSPATH:${COURSERA_ALGS}/stdlib.jar:${COURSERA_ALGS}/algs4.jar
+
 CLASSPATH=
 
+export JAVA_HOME
 export CLASSPATH
 
 
