@@ -6,6 +6,7 @@ editor = vim
 color =
 pager =
 record =
+rebase =
 
 [pager]
 pager = more
