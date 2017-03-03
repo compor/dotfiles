@@ -6,11 +6,10 @@ mapfile -t LOCATIONS < ${HOME}/.clang-format-locations.txt
 
 
 for LOC in ${LOCATIONS[@]}; do 
-  LOC_NORM=$(dirname ${LOC})
-  TOOL="${LOC_NORM}/${TOOL_NAME}"
+  TOOL="${LOC}/${TOOL_NAME}"
 
   if [ -e "${TOOL}" ]; then 
-    LIB_PATH="${LOC_NORM}/../lib/"
+    LIB_PATH="${LOC}/../lib/"
 
     break
   fi
