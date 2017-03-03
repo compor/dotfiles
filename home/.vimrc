@@ -326,7 +326,7 @@ let g:list_of_disabled_keys = [ "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>" ]
 let g:tmux_navigator_save_on_switch = 1
 
 " vim-clang-format
-"let g:clang_format#command = 'clang-format.sh'
+let g:clang_format#command = 'clang-format.sh'
 let g:clang_format#code_style = "llvm"
 let g:clang_format#auto_format = 1
 let g:clang_format#detect_style_file = 1
