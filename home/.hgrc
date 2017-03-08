@@ -8,6 +8,7 @@ pager =
 record =
 rebase =
 histedit =
+strip =
 
 [pager]
 pager = more

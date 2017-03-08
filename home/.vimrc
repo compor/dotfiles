@@ -197,9 +197,9 @@ set scrolloff=10
 " remove trailing whitespace from bestofvim.com
 nnoremap <Leader>rtw :%s/\s\+$//e<CR>
 
-if has('autocmd')
-    autocmd filetype python set expandtab
-endif
+"if has('autocmd')
+    "autocmd filetype python set expandtab
+"endif
 
 " disable highlighting for coursera compilers COOL files
 au BufNewFile,BufRead *.cl set filetype=
