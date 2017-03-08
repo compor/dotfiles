@@ -154,7 +154,7 @@ set undolevels=1000
 set title
 set wildignore=*.swp,*.bak,*.pyc,*.class
 
-"set pastetoggle=<leader>r
+set pastetoggle=<F2>
 
 " highlight trailing spaces
 set list
