@@ -1,0 +1,4 @@
+# local inputrc for libreadline
+
+set completion-ignore-case On
+
