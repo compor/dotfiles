@@ -12,6 +12,7 @@ alias sl='ls'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias l1='ls -F1'
 
 alias mkdir='mkdir -vp'
 alias mount='mount | column -t'
