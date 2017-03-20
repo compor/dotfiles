@@ -35,4 +35,5 @@ Plugin 'xolox/vim-session'
 Plugin 'takac/vim-hardtime'
 Plugin 'rhysd/vim-clang-format'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'chochos/ceylon-vim'
 
