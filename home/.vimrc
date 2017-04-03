@@ -56,12 +56,6 @@ set background=dark
 "let g:solarized_visibility="medium"
 let g:solarized_visibility="low"
 color solarized
-"color desert
-
-" changed default terminal search highlighting
-" to something more visible
-"highlight Search ctermfg=20 ctermbg=120 gui=none guifg=bg guibg=Red
-"highlight IncSearch ctermfg=20 ctermbg=120 gui=none guifg=bg guibg=Red
 
 " allows hiding buffers although they might contain unsaved modifications
 set hidden
@@ -106,9 +100,6 @@ set foldmethod=syntax
 set foldcolumn=1
 set foldlevel=4
 
-" ignore letter case in searches
-"set ignorecase
-
 " ignore the above if search pattern containes uppercase
 set smartcase
 
@@ -134,14 +125,14 @@ if executable('ag')
 endif
 
 if exists(':CtrlP')
-    " use current file dir and current repo dir as cwd
-    let g:ctrlp_working_path_mode = 'ra'
+  " use current file dir and current repo dir as cwd
+  let g:ctrlp_working_path_mode = 'ra'
 
-    " some default ignores
-    let g:ctrlp_custom_ignore = {
+  " some default ignores
+  let g:ctrlp_custom_ignore = {
         \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
         \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
-    \}
+        \}
 endif
 
 set visualbell
@@ -191,6 +182,7 @@ set scrolloff=10
 " remove trailing whitespace from bestofvim.com
 nnoremap <Leader>rtw :%s/\s\+$//e<CR>
 
+" remember last edit location
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
