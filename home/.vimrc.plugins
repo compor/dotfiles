@@ -41,4 +41,5 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'nvie/vim-flake8'
 Plugin 'vim-airline/vim-airline'
+Plugin 'dawikur/algorithm-mnemonics.vim'
 
