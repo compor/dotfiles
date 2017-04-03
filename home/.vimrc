@@ -33,27 +33,9 @@ let maplocalleader="\\"
 
 inoremap <Space> <Space>
 
-" vim/markdown plugin options
-let g:vim_markdown_initial_foldlevel=1
-
-" ultisnips plugin options
-let g:UltiSnipsExpandTrigger='<c-j>'
-let g:UltiSnipsJumpForwardTrigger='<c-j>'
-let g:UltiSnipsJumpBackwardTrigger='<c-k>'
-
-" ycm
-let g:ycm_complete_in_comments = 1
-let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_key_list_select_completion=[ '<TAB>', '<Enter>' ]
-let g:ycm_key_list_previous_completion=[ '<S-TAB>', '<S-Enter>' ]
-
 syntax on
 set t_Co=256
 set background=dark
-"let g:solarized_termcolors=256
-"let g:solarized_visibility="high"
-"let g:solarized_visibility="medium"
 let g:solarized_visibility="low"
 color solarized
 
@@ -74,6 +56,10 @@ set numberwidth=5
 
 " do not redraw screen when executing macros
 set lazyredraw
+
+" specify new splits position
+set splitbelow
+set splitright
 
 set tabstop=4
 set smarttab
@@ -143,21 +129,24 @@ set undolevels=1000
 set title
 set wildignore=*.swp,*.bak,*.pyc,*.class
 
-set pastetoggle=<F2>
+set pastetoggle=<F10>
 
 " highlight trailing spaces
 set list
 set listchars=trail:·
 set listchars+=tab:˫\ 
 
-" show cursor line and col number plus relative position in file
-" statusline takes precedence
-set ruler
+" status line always on
+set laststatus=2 
+
+" always display the tabline, even if there is only one tab
+"set showtabline=2
+
+" hide the default mode text (e.g. -- INSERT -- below the statusline)
+set noshowmode
 
 " set status line options
-" status line always on
-set laststatus=2
-
+set ruler
 set statusline=             "clear status line
 set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
 set statusline+=%{&ff}]     "file format
@@ -182,56 +171,72 @@ set scrolloff=10
 " remove trailing whitespace from bestofvim.com
 nnoremap <Leader>rtw :%s/\s\+$//e<CR>
 
-" remember last edit location
+" space for fold toggling
+nnoremap <leader><Space> za
+vnoremap <leader><Space> za
+
 if has("autocmd")
+  " remember last edit location
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+  " follow python pep8 standards
+  au BufNewFile,BufRead *.py
+      \ set tabstop=4
+      \ set softtabstop=4
+      \ set shiftwidth=4
+      \ set textwidth=79
+      \ set expandtab
+      \ set autoindent
+      \ set fileformat=unix
+
+  " disable highlighting for coursera compilers COOL files
+  au BufNewFile,BufRead *.cl set filetype=
+
+  " flex file should use lex file syntax
+  au BufNewFile,BufRead *.flex set filetype=lex
+
+  " qml
+  au BufNewFile,BufRead *.qml set filetype=javascript
+
+  " markdown
+  au BufNewFile,BufRead *.md set filetype=markdown
+  au FileType markdown set textwidth=120
+
+  " TeX and friends
+  au BufNewFile,BufRead *.tex set filetype=tex
+  au FileType tex set textwidth=120
+  
+  " on git commit messages set column width to 72
+  au FileType gitcommit setlocal spell textwidth=72
+ 
+  " strip trailing whitespace for the below file suffixes
+  au BufWritePre *.c,*.cpp,*.cc,*.h,*.hh,*.hpp,*.java,*.cmake :%s/\s\+$//e
+
+  " python syntax highlighting
+  autocmd BufRead,BufNewFile *.py let python_highlight_all=1
 endif
 
-"if has('autocmd')
-    "autocmd filetype python set expandtab
-"endif
-
-" disable highlighting for coursera compilers COOL files
-au BufNewFile,BufRead *.cl set filetype=
-
-" flex file should use lex file syntax
-au BufNewFile,BufRead *.flex set filetype=lex
-
-" qml
-au BufNewFile,BufRead *.qml set filetype=javascript
-
-" markdown
-au BufNewFile,BufRead *.md set filetype=markdown
-
-" TeX and friends
-au BufNewFile,BufRead *.tex set filetype=tex
-
-" on git commit messages set column width to 72
-au FileType gitcommit setlocal spell textwidth=72
-
-"au FileType markdown set textwidth=120
-au FileType tex set textwidth=120
 
 if &diff
-    " disable annoying visual stuff when in diff mode
-    syntax off
-    set textwidth=0
-    set colorcolumn=0
-    highlight DiffAdd cterm=bold ctermfg=11 ctermbg=17 gui=none guifg=bg guibg=Red
-    highlight DiffDelete cterm=bold ctermfg=11 ctermbg=17 gui=none guifg=bg guibg=Red
-    highlight DiffChange cterm=bold ctermfg=Green ctermbg=17 gui=none guifg=bg guibg=Red
-    highlight DiffText cterm=bold ctermfg=11 ctermbg=88 gui=none guifg=bg guibg=Red
+  " disable annoying visual stuff when in diff mode
+  syntax off
+  set textwidth=0
+  set colorcolumn=0
+  highlight DiffAdd cterm=bold ctermfg=11 ctermbg=17 gui=none guifg=bg guibg=Red
+  highlight DiffDelete cterm=bold ctermfg=11 ctermbg=17 gui=none guifg=bg guibg=Red
+  highlight DiffChange cterm=bold ctermfg=Green ctermbg=17 gui=none guifg=bg guibg=Red
+  highlight DiffText cterm=bold ctermfg=11 ctermbg=88 gui=none guifg=bg guibg=Red
 endif
 
 
 " toggle whitespace visibility based on solarized modes
 function! s:ToggleVisibility()
-    if g:solarized_visibility != 'high'
-        let g:solarized_visibility = 'high'
-    else
-        let g:solarized_visibility = 'low'
-    endif
-    color solarized
+  if g:solarized_visibility != 'high'
+    let g:solarized_visibility = 'high'
+  else
+    let g:solarized_visibility = 'low'
+  endif
+  color solarized
 endfunction
 
 nmap <leader>W :call <SID>ToggleVisibility()<CR>
@@ -246,11 +251,6 @@ function StripTrailingWhitespace()
     normal `z
   endif
 endfunction
-
-
-" strip trailing whitespace for the below file suffixes
-au BufWritePre *.c,*.cpp,*.cc,*.h,*.hh,*.hpp,*.java,*.cmake :%s/\s\+$//e
-
 
 " try out ctags manually for now
 nnoremap <F6> :!ctags -R<CR>
@@ -278,6 +278,24 @@ nmap <leader>bq :bp <BAR> bd #<CR>
 
 
 " mappings for plugins
+
+" vim/markdown plugin options
+let g:vim_markdown_initial_foldlevel=1
+
+" ultisnips plugin options
+let g:UltiSnipsExpandTrigger='<c-j>'
+let g:UltiSnipsJumpForwardTrigger='<c-j>'
+let g:UltiSnipsJumpBackwardTrigger='<c-k>'
+
+" ycm
+let g:ycm_complete_in_comments = 1
+let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_key_list_select_completion=[ '<TAB>', '<Enter>' ]
+let g:ycm_key_list_previous_completion=[ '<S-TAB>', '<S-Enter>' ]
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
 " nerdtree
 map <C-n> :NERDTreeToggle<CR>
 "nmap <leader>n :NERDTreeToggle<CR>
@@ -293,10 +311,6 @@ nmap <leader>pr :CtrlPMRU<CR>
 " tagbar
 nnoremap <silent> <F9> :TagbarToggle<CR>
 nnoremap <silent> <F10> :TagbarTogglePause<CR>
-
-" space for fold toggling
-nnoremap <leader><Space> za
-vnoremap <leader><Space> za
 
 " vim-session
 let g:session_sutosave='no'
@@ -323,6 +337,14 @@ let g:clang_format#detect_style_file = 1
 
 nnoremap <leader>f :ClangFormat<CR>
 
+" simplyfold
+let g:SimpylFold_docstring_preview=1
+
+" airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+
+ 
 " local config
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local

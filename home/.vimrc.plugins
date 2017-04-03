@@ -37,4 +37,8 @@ Plugin 'rhysd/vim-clang-format'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'chochos/ceylon-vim'
 Plugin 'pboettch/vim-cmake-syntax'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'nvie/vim-flake8'
+Plugin 'vim-airline/vim-airline'
 
