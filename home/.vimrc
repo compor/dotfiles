@@ -121,18 +121,16 @@ set incsearch
 " stolen from http://robots.thoughtbot.com/faster-grepping-in-vim
 " The Silver Searcher
 if executable('ag')
-
-
-    " use ag over grep
+  " use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
 
-    if exists(':CtrlP')
-        " ag is fast enough that ctrlp doesn't need to cache
-        let g:ctrlp_use_caching = 0
+  if exists(':CtrlP')
+    " ag is fast enough that ctrlp doesn't need to cache
+    let g:ctrlp_use_caching = 0
 
-        " use ag in ctrlp for listing files lightning fast and respects .gitignore
-        let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-    endif
+    " use ag in ctrlp for listing files lightning fast and respects .gitignore
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  endif
 endif
 
 if exists(':CtrlP')
@@ -190,12 +188,12 @@ set tags+=.tags
 " show 10 lines above and below cursor
 set scrolloff=10
 
-" bind \ (backward slash) to grep shortcut
-"command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-"nnoremap \ :Ag<Space>
-
 " remove trailing whitespace from bestofvim.com
 nnoremap <Leader>rtw :%s/\s\+$//e<CR>
+
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
 
 "if has('autocmd')
     "autocmd filetype python set expandtab
