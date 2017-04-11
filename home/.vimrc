@@ -344,7 +344,9 @@ let g:SimpylFold_docstring_preview=1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
- 
+" eclim
+let g:EclimCompletionMethod = 'omnifunc'
+
 " local config
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
