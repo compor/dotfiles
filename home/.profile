@@ -97,7 +97,8 @@ if [ -z "${SSHAGENTPID}" -a -e "${SSHAGENT}" ]; then
     echo "export SSH_AGENT_PID=${SSH_AGENT_PID}" > "${SSHENV}"
     echo "export SSH_AUTH_SOCK=${SSH_AUTH_SOCK}" >> "${SSHENV}"
     . "${SSHENV}" &> /dev/null
-    trap "kill ${SSH_AGENT_PID}" 0
+    trap "kill ${SSH_AGENT_PID}" EXIT
+    trap "rm ${SSHENV}" EXIT
 fi
 
 if [ -r "${SSHENV}" ]; then
