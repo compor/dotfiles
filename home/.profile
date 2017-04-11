@@ -90,17 +90,18 @@ unset DBUS_SESSION_BUS_ADDRESS
 SSHAGENT=$(which ssh-agent)
 SSHAGENTARGS="-s"
 SSHAGENTPID=$(pgrep ssh-agent)
-SSHENV="${HOME}/.ssh/ssh_env"
+SSHENV="${HOME}/.ssh/env"
 
-if [ -z "${SSHAGENTPID}" ] && [ -x "${SSHAGENT}" ]; then
+if [ -z "${SSHAGENTPID}" -a -e "${SSHAGENT}" ]; then
     eval $($SSHAGENT $SSHAGENTARGS)
     echo "export SSH_AGENT_PID=${SSH_AGENT_PID}" > "${SSHENV}"
     echo "export SSH_AUTH_SOCK=${SSH_AUTH_SOCK}" >> "${SSHENV}"
+    . "${SSHENV}" &> /dev/null
     trap "kill ${SSH_AGENT_PID}" 0
-else
-    if [ -r "${SSHENV}" ]; then
-        . "${SSHENV}" &> /dev/null
-    fi
+fi
+
+if [ -r "${SSHENV}" ]; then
+    . "${SSHENV}" &> /dev/null
 fi
 
 export ANDROID_EMULATOR_FORCE_32BIT=true
