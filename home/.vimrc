@@ -61,6 +61,9 @@ set lazyredraw
 set splitbelow
 set splitright
 
+" set popup menu height
+set pumheight=15
+
 set tabstop=4
 set smarttab
 set shiftwidth=4
