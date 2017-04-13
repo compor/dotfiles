@@ -181,14 +181,15 @@ if has("autocmd")
 
   " follow python pep8 standards
   au BufNewFile,BufRead *.py
-      \ set tabstop=4
-      \ set softtabstop=4
-      \ set shiftwidth=4
-      \ set textwidth=79
-      \ set expandtab
-      \ set autoindent
-      \ set fileformat=unix
-
+      \ set tabstop=4 |
+      \ set softtabstop=4 |
+      \ set shiftwidth=4 |
+      \ set textwidth=79 |
+      \ set expandtab |
+      \ set autoindent |
+      \ set fileformat=unix |
+      \ let python_highlight_all=1
+      
   " disable highlighting for coursera compilers COOL files
   au BufNewFile,BufRead *.cl set filetype=
 
@@ -212,8 +213,6 @@ if has("autocmd")
   " strip trailing whitespace for the below file suffixes
   au BufWritePre *.c,*.cpp,*.cc,*.h,*.hh,*.hpp,*.java,*.cmake :%s/\s\+$//e
 
-  " python syntax highlighting
-  autocmd BufRead,BufNewFile *.py let python_highlight_all=1
 endif
 
 
