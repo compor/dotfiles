@@ -329,6 +329,15 @@ let g:hardtime_maxcount = 3
 let g:list_of_visual_keys = []
 let g:list_of_disabled_keys = [ "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>" ]
 
+"window  horizontal  up      -->   :topleft    split
+"window  horizontal  down    -->   :botright   split
+"window  vertical    left    -->   :topleft    vsplit
+"window  vertical    right   -->   :botright   vsplit
+"buffer  horizontal  up      -->   :leftabove  split
+"buffer  horizontal  down    -->   :rightbelow split
+"buffer  vertical    left    -->   :leftabove  vsplit
+"buffer  vertical    right   -->   :rightbelow vsplit
+
 " vim-tmux-navigator
 let g:tmux_navigator_save_on_switch = 1
 
