@@ -254,6 +254,9 @@ function StripTrailingWhitespace()
   endif
 endfunction
 
+" change buffer and delete previous one
+command Bd bp\|bd \#
+
 " try out ctags manually for now
 nnoremap <F6> :!ctags -R<CR>
 
