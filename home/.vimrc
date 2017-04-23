@@ -319,8 +319,14 @@ nnoremap <silent> <F9> :TagbarToggle<CR>
 nnoremap <silent> <F10> :TagbarTogglePause<CR>
 
 " vim-session
-let g:session_sutosave='no'
+let g:session_command_aliases=1
+let g:session_autosve='no'
 let g:session_autoload='no'
+let g:session_autosave_periodic=10
+" save tabs
+set sessionoptions+=tabpages
+" do not save hidden and unloaded buffers
+set sessionoptions-=buffers
 
 " hardtime
 nnoremap <leader>h :HardTimeToggle<CR>
