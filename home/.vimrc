@@ -52,8 +52,8 @@ set backspace=indent,eol,start
 " jump momentarily (configurable) to the matching bracket
 set showmatch
 
-" precede each line with its line number
-set number
+" precede each line with its relative line number
+set relativenumber
 
 " set width for each line number
 set numberwidth=5
