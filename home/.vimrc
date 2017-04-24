@@ -261,8 +261,8 @@ endfunction
 " change buffer and delete previous one
 command Bd bp\|bd \#
 
-" try out ctags manually for now
-nnoremap <F6> :!ctags -R<CR>
+" ctags
+command MakeTags execute "!ctags -R ."
 
 " save changes to open file even if not opened as root
 cnoremap sudow w !sudo tee % >/dev/null
