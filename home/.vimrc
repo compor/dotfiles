@@ -23,6 +23,10 @@ set showmode
 
 filetype plugin indent on
 
+set path+=**
+
+set wildmenu
+
 " clipboard behaviour
 set clipboard=unnamed
 
