@@ -262,7 +262,7 @@ endfunction
 command Bd bp\|bd \#
 
 " ctags
-command MakeTags execute "!ctags -R ."
+command MakeTags execute "!ctags -R . -o .tags"
 
 " save changes to open file even if not opened as root
 cnoremap sudow w !sudo tee % >/dev/null
