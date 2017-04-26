@@ -68,12 +68,12 @@ set splitright
 " set popup menu height
 set pumheight=15
 
-set tabstop=4
+set tabstop=2
 set smarttab
-set shiftwidth=4
+set shiftwidth=2
 set shiftround
 set expandtab
-set softtabstop=4
+set softtabstop=2
 
 set autoindent
 set copyindent
