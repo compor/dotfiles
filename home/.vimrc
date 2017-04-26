@@ -251,7 +251,7 @@ endfunction
 nmap <leader>W :call <SID>ToggleVisibility()<CR>
 
 
-function StripTrailingWhitespace()
+function! StripTrailingWhitespace()
   if !&binary && &filetype != 'diff'
     normal mz
     normal Hmy
@@ -262,10 +262,10 @@ function StripTrailingWhitespace()
 endfunction
 
 " change buffer and delete previous one
-command Bd bp\|bd \#
+command! Bd bp\|bd \#
 
 " ctags
-command MakeTags execute "!ctags -R . -o .tags"
+command! MakeTags execute "!ctags -R . -o .tags"
 
 " save changes to open file even if not opened as root
 cnoremap sudow w !sudo tee % >/dev/null
