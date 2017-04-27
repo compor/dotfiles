@@ -330,6 +330,7 @@ let g:session_command_aliases=1
 let g:session_autosve='no'
 let g:session_autoload='no'
 let g:session_autosave_periodic=10
+let g:session_autosave_silent=1
 " save tabs
 set sessionoptions+=tabpages
 " do not save hidden and unloaded buffers
