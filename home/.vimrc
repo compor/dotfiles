@@ -223,6 +223,9 @@ if has("autocmd")
  
   " strip trailing whitespace for the below file suffixes
   au! BufWritePre *.c,*.cpp,*.cc,*.h,*.hh,*.hpp,*.java,*.cmake :%s/\s\+$//e
+  
+  " clang-format plaugin
+  au! FileType c,cpp nnoremap <buffer> <leader>f :ClangFormat<CR>
 endif
 
 
@@ -363,8 +366,6 @@ let g:clang_format#command = 'clang-format.sh'
 let g:clang_format#code_style = "llvm"
 let g:clang_format#auto_format = 0
 let g:clang_format#detect_style_file = 1
-
-nnoremap <leader>f :ClangFormat<CR>
 
 " simplyfold
 let g:SimpylFold_docstring_preview=1
