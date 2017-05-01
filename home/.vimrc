@@ -224,8 +224,11 @@ if has("autocmd")
   " strip trailing whitespace for the below file suffixes
   au! BufWritePre *.c,*.cpp,*.cc,*.h,*.hh,*.hpp,*.java,*.cmake :%s/\s\+$//e
   
-  " clang-format plaugin
+  " clang-format plugin
   au! FileType c,cpp nnoremap <buffer> <leader>f :ClangFormat<CR>
+ 
+  " auto-format plugin
+  au! FileType java,python nnoremap <buffer> <leader>f :Autoformat<CR>
 endif
 
 
