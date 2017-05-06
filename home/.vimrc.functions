@@ -25,3 +25,12 @@ function! StripTrailingWhitespace()
   endif
 endfunction
 
+
+" add double quotes to line
+function! DQuote()
+  if !&binary && &filetype != 'diff'
+    let line = getline('.')
+    let dqline = join(["\"", "\""], line)
+    call setline('.', dqline)
+  endif
+endfunction
