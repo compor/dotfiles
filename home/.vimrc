@@ -90,7 +90,7 @@ set nobackup
 set noswapfile
 
 set foldmethod=syntax
-set foldcolumn=1
+"set foldcolumn=1
 set foldlevel=4
 
 " ignore the above if search pattern containes uppercase
