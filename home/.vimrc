@@ -102,37 +102,6 @@ set hlsearch
 " highlight matches while the search pattern is typed in
 set incsearch
 
-" load functions
-if filereadable(expand("~/.vimrc.functions"))
-  source ~/.vimrc.functions
-endif
-
-" stolen from http://robots.thoughtbot.com/faster-grepping-in-vim
-" The Silver Searcher
-if executable('ag')
-  " use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  if exists(':CtrlP')
-    " ag is fast enough that ctrlp doesn't need to cache
-    let g:ctrlp_use_caching = 0
-
-    " use ag in ctrlp for listing files lightning fast and respects .gitignore
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-  endif
-endif
-
-if exists(':CtrlP')
-  " use current file dir and current repo dir as cwd
-  let g:ctrlp_working_path_mode = 'ra'
-
-  " some default ignores
-  let g:ctrlp_custom_ignore = {
-        \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
-        \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
-        \}
-endif
-
 set visualbell
 set noerrorbells
 
@@ -180,9 +149,10 @@ set tags+=.tags
 " show 10 lines above and below cursor
 set scrolloff=10
 
-" space for fold toggling
-nnoremap <leader><Space> za
-vnoremap <leader><Space> za
+" load functions
+if filereadable(expand("~/.vimrc.functions"))
+  source ~/.vimrc.functions
+endif
 
 if has("autocmd")
   " remember last edit location
@@ -257,6 +227,10 @@ command! MakeTags execute "!ctags -R . -o .tags"
 
 " custom mappings 
 
+" space for fold toggling
+nnoremap <leader><Space> za
+vnoremap <leader><Space> za
+
 " save changes to open file even if not opened as root
 cnoremap sudow w !sudo tee % >/dev/null
 
@@ -280,7 +254,34 @@ nmap <leader>h :bprevious<CR>
 nmap <leader>bq :bp <BAR> bd #<CR>
 
 
-" mappings for plugins
+" settings and mappings for plugins
+
+" stolen from http://robots.thoughtbot.com/faster-grepping-in-vim
+" The Silver Searcher
+if executable('ag')
+  " use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+endif
+
+" CtrlP plugin
+if exists(':CtrlP')
+  " use current file dir and current repo dir as cwd
+  let g:ctrlp_working_path_mode = 'ra'
+
+  " some default ignores
+  let g:ctrlp_custom_ignore = {
+        \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
+        \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
+        \}
+
+  if executable('ag')
+    " ag is fast enough that ctrlp doesn't need to cache
+    let g:ctrlp_use_caching = 0
+
+    " use ag in ctrlp for listing files lightning fast and respects .gitignore
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  endif
+endif
 
 " vim/markdown plugin options
 let g:vim_markdown_initial_foldlevel=1
