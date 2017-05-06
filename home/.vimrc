@@ -102,6 +102,11 @@ set hlsearch
 " highlight matches while the search pattern is typed in
 set incsearch
 
+" load functions
+if filereadable(expand("~/.vimrc.functions"))
+  source ~/.vimrc.functions
+endif
+
 " stolen from http://robots.thoughtbot.com/faster-grepping-in-vim
 " The Silver Searcher
 if executable('ag')
@@ -175,9 +180,6 @@ set tags+=.tags
 " show 10 lines above and below cursor
 set scrolloff=10
 
-" remove trailing whitespace from bestofvim.com
-nnoremap <Leader>rtw :%s/\s\+$//e<CR>
-
 " space for fold toggling
 nnoremap <leader><Space> za
 vnoremap <leader><Space> za
@@ -244,28 +246,7 @@ if &diff
 endif
 
 
-" toggle whitespace visibility based on solarized modes
-function! s:ToggleVisibility()
-  if g:solarized_visibility != 'high'
-    let g:solarized_visibility = 'high'
-  else
-    let g:solarized_visibility = 'low'
-  endif
-  color solarized
-endfunction
-
-nmap <leader>W :call <SID>ToggleVisibility()<CR>
-
-
-function! StripTrailingWhitespace()
-  if !&binary && &filetype != 'diff'
-    normal mz
-    normal Hmy
-    %s/\s\+$//e
-    normal 'yz<CR>
-    normal `z
-  endif
-endfunction
+" custom commands
 
 " change buffer and delete previous one
 command! Bd bp\|bd \#
@@ -273,11 +254,15 @@ command! Bd bp\|bd \#
 " ctags
 command! MakeTags execute "!ctags -R . -o .tags"
 
+
+" custom mappings 
+
 " save changes to open file even if not opened as root
 cnoremap sudow w !sudo tee % >/dev/null
 
 " save to file
 nnoremap <leader>w :w<CR>
+
 "clear highlighted searches by pressing / again
 nmap <silent> <leader>/ :nohlsearch<CR>
 " buffer movements mappings
