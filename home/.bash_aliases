@@ -25,6 +25,8 @@ alias cp='cp -i'
 alias ln='ln -i'
 alias rm='rm -i'
 
+alias mk='make'
+
 # TODO add checks for mac os
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
