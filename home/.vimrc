@@ -1,9 +1,10 @@
 " vimrc file used with vim 7.4 and various plugins
 
 set nocompatible
+filetype off
 
 set runtimepath=~/.vim
-set runtimepath+=/usr/share/vim/vim74
+set runtimepath+=/usr/share/vim/vim80
 set runtimepath+=~/.vim/bundle/Vundle.vim
 
 scriptencoding utf-8
