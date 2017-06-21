@@ -303,7 +303,8 @@ let g:ycm_collect_identifiers_from_comments_and_strings=1
 let g:ycm_key_list_select_completion=[ '<TAB>', '<Enter>' ]
 let g:ycm_key_list_previous_completion=[ '<S-TAB>', '<S-Enter>' ]
 let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+map <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+map <leader>gt :YcmCompleter GetType<CR>
 
 " nerdtree
 map <C-n> :NERDTreeToggle<CR>
