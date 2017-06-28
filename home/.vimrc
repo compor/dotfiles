@@ -254,6 +254,9 @@ nmap <leader>h :bprevious<CR>
 " close current buffer and move to previous one
 nmap <leader>bq :bp <BAR> bd #<CR>
 
+" location list navigation
+nnoremap ]l :lnext<CR>
+nnoremap [l :lprevious<CR>
 
 " settings and mappings for plugins
 
@@ -303,7 +306,7 @@ let g:ycm_collect_identifiers_from_comments_and_strings=1
 let g:ycm_key_list_select_completion=[ '<TAB>', '<Enter>' ]
 let g:ycm_key_list_previous_completion=[ '<S-TAB>', '<S-Enter>' ]
 let g:ycm_autoclose_preview_window_after_completion=1
-let g:ycm_always_populate_location_list = 1
+let g:ycm_always_populate_location_list=1
 map <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 map <leader>gt :YcmCompleter GetType<CR>
 
