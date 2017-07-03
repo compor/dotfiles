@@ -39,4 +39,5 @@ Plugin 'nvie/vim-flake8'
 Plugin 'vim-airline/vim-airline'
 Plugin 'dawikur/algorithm-mnemonics.vim'
 Plugin 'wesQ3/vim-windowswap'
+Plugin 'tpope/vim-unimpaired'
 

@@ -255,8 +255,8 @@ nmap <leader>h :bprevious<CR>
 nmap <leader>bq :bp <BAR> bd #<CR>
 
 " location list navigation
-nnoremap ]l :lnext<CR>
-nnoremap [l :lprevious<CR>
+"nnoremap ]l :lnext<CR>
+"nnoremap [l :lprevious<CR>
 
 " settings and mappings for plugins
 
