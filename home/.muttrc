@@ -1,19 +1,27 @@
-#
+# vim:ft=muttrc
 
 source ~/.mutt-colors-solarized/mutt-colors-solarized-dark-16.muttrc
-
+source ~/.muttrc.keybindings
 source ~/.mutt/uoe_account.txt
 
-set from = "c.vasiladiotis@sms.ed.ac.uk"
-set realname = "Chris Vasiladiotis"
+set sort=threads
+set sort_aux=last-date-received
 
-set folder = "imaps://imap.staffmail.ed.ac.uk:993"
-set spoolfile = "+INBOX"
+set editor=vim
+
+set charset=utf-8
+set send_charset=utf-8
+
+set from="c.vasiladiotis@sms.ed.ac.uk"
+set realname="Chris Vasiladiotis"
+
+set folder="imaps://imap.staffmail.ed.ac.uk:993"
+set spoolfile="+INBOX"
 set postponed="+[UoE-Staffmail]/Drafts"
 
 set message_cachedir=~/.mutt/cache/bodies
 set certificate_file=~/.mutt/certificates
 
-set move = no
-set imap_keepalive = 900
+set move=no
+set imap_keepalive=900
 
