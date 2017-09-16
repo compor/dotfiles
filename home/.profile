@@ -19,12 +19,9 @@ export LC_COLLATE=C
 export LC_TIME=en_DK.UTF-8 # YYYY-MM-DD
 
 
-# if running bash
-if [ -n "$BASH_VERSION" ]; then
-    # include .bashrc if it exists
-    if [ -f "$HOME/.bashrc" ]; then
-	    . "$HOME/.bashrc"
-    fi
+# if running bash include .bashrc if it exists
+if [ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ]; then
+  . "$HOME/.bashrc"
 fi
 
 # change capslock key to ctrl and vice versa
