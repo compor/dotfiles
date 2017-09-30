@@ -17,6 +17,7 @@
   s = status -sb
   co = checkout
   ci = commit
+  cm = commit -m
   br = branch
   bv = branch -avv
   ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s\\ %Cgreen(%cr)\\ %Cblue[%cn]" --decorate
