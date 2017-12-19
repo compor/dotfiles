@@ -34,3 +34,14 @@ function! DQuote()
     call setline('.', dqline)
   endif
 endfunction
+
+
+" execute the current line in last active tmux pane
+function! ExecInTmux()
+  let line = getline('.')
+  call system("tmux send-keys -t ! \"" . line . "\" . Enter")
+endfunction
+
+" map tmux execution of current line
+nmap <leader>t :call ExecInTmux()<CR>
+
