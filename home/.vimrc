@@ -29,7 +29,7 @@ set path+=**
 set wildmenu
 
 " clipboard behaviour
-set clipboard=unnamed
+"set clipboard=unnamed
 
 " change the mapleader
 nnoremap <Space> <nop>
