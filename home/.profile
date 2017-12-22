@@ -10,6 +10,7 @@
 
 
 [ -e ~/bin/git-aware-setup.sh ] && source ~/bin/git-aware-setup.sh
+[ -e ~/bin/fzf-setup.sh ] && source ~/bin/fzf-setup.sh
 
 # set locale
 export LANGUAGE=en_US.UTF-8
