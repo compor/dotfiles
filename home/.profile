@@ -8,8 +8,8 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-export GITAWAREPROMPT=~/.bash/git-aware-prompt
-source "${GITAWAREPROMPT}/main.sh"
+
+[ -e ~/bin/git-aware-setup.sh ] && source ~/bin/git-aware-setup.sh
 
 # set locale
 export LANGUAGE=en_US.UTF-8
