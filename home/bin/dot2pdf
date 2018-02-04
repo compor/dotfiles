@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+for CUR_FILE in "${@}"; do 
+  FILE_PREFIX=${CUR_FILE%.*}
+  PREFIX_LEN=${#FILE_PREFIX}
+  
+  PREFIX_OFFSET=$(echo "${PREFIX_LEN}-1" | bc)
+
+  PDF_FILENAME="${CUR_FILE:0:${PREFIX_LEN}}.pdf"
+
+  dot -Tpdf ${CUR_FILE} -o ${PDF_FILENAME}
+
+  [[ $? -eq 0 ]] && echo "Converted ${CUR_FILE} to ${PDF_FILENAME}"
+done
+
