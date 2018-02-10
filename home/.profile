@@ -65,7 +65,7 @@ export PATH
 JAVA_HOME=
 
 JAVA_HOME_DEFAULT="/usr/lib/jvm/default-java"
-if [ -d "${JAVA_HOME_DEFAULT}"]; then
+if [ -d "${JAVA_HOME_DEFAULT}" ]; then
   JAVA_HOME="${JAVA_HOME_DEFAULT}"
 fi
 CLASSPATH=
