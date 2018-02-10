@@ -22,7 +22,7 @@ export LC_TIME=en_DK.UTF-8 # YYYY-MM-DD
 
 # if running bash include .bashrc if it exists
 if [ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ]; then
-  . "$HOME/.bashrc"
+  source "$HOME/.bashrc"
 fi
 
 # change capslock key to ctrl and vice versa
@@ -30,21 +30,25 @@ setxkbmap -option ctrl:swapcaps
 # apply this to disable gnome from resetting the keyboard setting in X
 # gsettings set org.gnome.settings-daemon.plugins.keyboard active false 
 
+#
 # setup paths
+#
 
-# for coursera algorithms part 1
-#COURSERA_ALGS="/usr/algae/"
-
-#PATH="${COURSERA_ALGS}/bin/":$PATH
-#PATH="/usr/class/cs143/bin/":$PATH
-PATH="/usr/local/bin/":$PATH
+LOCAL_PATH="/usr/local/bin/"
+if [ -d "${LOCAL_PATH}" ]; then
+  PATH="${LOCAL_PATH}":$PATH
+fi
 
 # add go lang path
-PATH="/usr/local/go/bin/":$PATH
+GOLANG_PATH="/usr/local/go/bin/"
+if [ -d "${GOLANG_PATH}" ]; then
+  PATH="${GOLANG_PATH}":$PATH
+fi
 
 # set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
+USER_PATH="${HOME}/bin/"
+if [ -d "${USER_PATH}" ]; then
+  PATH="${USER_PATH}":$PATH
 fi
 
 export PATH
@@ -52,29 +56,28 @@ export PATH
 
 # setup java paths
 
-JAVA_HOME="/usr/lib/jvm/default-java"
+JAVA_HOME=
 
-# for coursera algorithms part 1
-#CLASSPATH=$CLASSPATH:${COURSERA_ALGS}/stdlib.jar:${COURSERA_ALGS}/algs4.jar
-
+JAVA_HOME_DEFAULT="/usr/lib/jvm/default-java"
+if [ -d "${JAVA_HOME_DEFAULT}"]; then
+  JAVA_HOME="${JAVA_HOME_DEFAULT}"
+fi
 CLASSPATH=
 
 export JAVA_HOME
 export CLASSPATH
 
 
-
 # set editors
-
 export EDITOR=$(which vim)
 export CVSEDITOR=$(which vim)
 
 if [ "$OPSYS_TYPE" == "linux" ]; then
-    export VISUAL=$(which gvim)
+  export VISUAL=$(which gvim)
 fi
 
 if [ "$OPSYS_DISTRO" == "apple" ]; then
-    export VISUAL=$(which macvim)
+  export VISUAL=$(which macvim)
 fi
 
 
@@ -91,17 +94,18 @@ SSHAGENTPID=$(pgrep ssh-agent)
 SSHENV="${HOME}/.ssh/env"
 
 if [ -z "${SSHAGENTPID}" -a -e "${SSHAGENT}" ]; then
-    eval $($SSHAGENT $SSHAGENTARGS)
-    echo "export SSH_AGENT_PID=${SSH_AGENT_PID}" > "${SSHENV}"
-    echo "export SSH_AUTH_SOCK=${SSH_AUTH_SOCK}" >> "${SSHENV}"
-    . "${SSHENV}" &> /dev/null
-    trap "kill ${SSH_AGENT_PID}" EXIT
-    trap "rm ${SSHENV}" EXIT
+  eval $($SSHAGENT $SSHAGENTARGS)
+  echo "export SSH_AGENT_PID=${SSH_AGENT_PID}" > "${SSHENV}"
+  echo "export SSH_AUTH_SOCK=${SSH_AUTH_SOCK}" >> "${SSHENV}"
+  source "${SSHENV}" &> /dev/null
+  trap "kill ${SSH_AGENT_PID}" EXIT
+  trap "rm ${SSHENV}" EXIT
 fi
 
 if [ -r "${SSHENV}" ]; then
-    . "${SSHENV}" &> /dev/null
+  source "${SSHENV}" &> /dev/null
 fi
 
+# set up for android studio
 export ANDROID_EMULATOR_FORCE_32BIT=true
 
