@@ -51,6 +51,12 @@ if [ -d "${USER_PATH}" ]; then
   PATH="${USER_PATH}":$PATH
 fi
 
+# add cmake path
+CMAKE_PATH="/usr/local/cmake/bin/"
+if [ -d "${CMAKE_PATH}" ]; then
+  PATH="${CMAKE_PATH}":$PATH
+fi
+
 export PATH
 
 
