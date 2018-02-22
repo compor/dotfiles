@@ -1,0 +1,34 @@
+
+# start ssh-agent
+
+SSH_ENV_FILE="${HOME}/.ssh/env"
+SSH_AGENT_ARGS="-s"
+
+SSH_AGENT=$(which ssh-agent)
+SSH_AGENT_PID=$(pgrep ssh-agent)
+
+echo ${SSH_AGENT}
+echo ${SSH_AGENT_PID}
+
+function start_ssh_agent() {
+  echo "starting ssh-agent"
+
+  eval $($SSH_AGENT $SSH_AGENT_ARGS)
+  echo "export SSH_AGENT_PID=${SSH_AGENT_PID}" > "${SSH_ENV_FILE}"
+  echo "export SSH_AUTH_SOCK=${SSH_AUTH_SOCK}" >> "${SSH_ENV_FILE}"
+
+  echo "ssh-agent started"
+
+  chmod a+r "${SSH_ENV_FILE}"
+  source "${SSH_ENV_FILE}" > /dev/null
+}
+
+
+if [ -z "${SSH_AGENT_PID}" -a -e "${SSH_AGENT}" ]; then
+  if [ -e "${SSH_ENV_FILE}" ]; then
+    source "${SSH_ENV_FILE}" > /dev/null
+  else
+    start_ssh_agent
+  fi
+fi
+
