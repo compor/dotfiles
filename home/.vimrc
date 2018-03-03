@@ -348,15 +348,12 @@ let g:clang_format#code_style = "llvm"
 let g:clang_format#auto_format = 0
 let g:clang_format#detect_style_file = 1
 
-" simplyfold
+" simpylfold
 let g:SimpylFold_docstring_preview=1
 
 " airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-
-" eclim
-let g:EclimCompletionMethod = 'omnifunc'
 
 " local config
 if filereadable($HOME . "/.vimrc.local")
