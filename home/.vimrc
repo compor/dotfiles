@@ -330,16 +330,6 @@ set sessionoptions+=tabpages
 " do not save hidden and unloaded buffers
 set sessionoptions-=buffers
 
-" hardtime
-nnoremap <leader>h :HardTimeToggle<CR>
-let g:hardtime_default_on = 1
-let g:hardtime_ignore_buffer_patterns = [ "NERD.*", "Tagbar*" ]
-let g:hardtime_ignore_quickfix = 1
-let g:hardtime_allow_different_key = 1
-let g:hardtime_maxcount = 3
-let g:list_of_visual_keys = []
-let g:list_of_disabled_keys = [ "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>" ]
-
 "window  horizontal  up      -->   :topleft    split
 "window  horizontal  down    -->   :botright   split
 "window  vertical    left    -->   :topleft    vsplit
