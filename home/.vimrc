@@ -201,7 +201,8 @@ if has("autocmd")
   au! FileType c,cpp nnoremap <buffer> <leader>f :ClangFormat<CR>
  
   " auto-format plugin
-  au! FileType java,python nnoremap <buffer> <leader>f :Autoformat<CR>
+  au! BufNewFile,BufRead * if &filetype != "c" && &filetype != "cpp" 
+        \ | nnoremap <buffer> <leader>f :Autoformat<CR>
 endif
 
 
