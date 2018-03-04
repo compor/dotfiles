@@ -1,6 +1,13 @@
-" vimrc file used with vim 7.4 and various plugins
+" vimrc file
 
+" use vim instead of vi settings
+" must be set first as it changes other options as side effect
 set nocompatible
+
+" 
+" general config
+"
+
 filetype off
 
 set runtimepath=~/.vim
@@ -19,8 +26,7 @@ endif
 
 call vundle#end()
 
-" show operation mode
-set showmode
+set showmode " show operation mode
 
 filetype plugin indent on
 
@@ -28,8 +34,7 @@ set path+=**
 
 set wildmenu
 
-" clipboard behaviour
-"set clipboard=unnamed
+"set clipboard=unnamed " clipboard behaviour
 
 " change the mapleader
 nnoremap <Space> <nop>
@@ -38,51 +43,41 @@ let maplocalleader="\\"
 
 inoremap <Space> <Space>
 
-syntax on
+syntax on " turn on syntax highlighting
 set t_Co=256
 set background=dark
 let g:solarized_visibility="low"
 color solarized
 
-" allows hiding buffers although they might contain unsaved modifications
-set hidden
+set hidden " allows hiding buffers although they might have unsaved mods
 
-" delete over indent, end and start of line
-set backspace=indent,eol,start
+set backspace=indent,eol,start " delete over indent, end and start of line
 
-" jump momentarily (configurable) to the matching bracket
-set showmatch
+set showmatch " jump momentarily (configurable) to the matching bracket
 
-" precede each line with its relative line number
-set relativenumber
+set relativenumber " precede each line with its relative line number
 
-" set width for each line number
-set numberwidth=5
+set numberwidth=5 " set width for each line number
 
-" do not redraw screen when executing macros
-set lazyredraw
+set lazyredraw " do not redraw screen when executing macros
 
 " specify new splits position
 set splitbelow
 set splitright
 
-" set popup menu height
-set pumheight=15
+set pumheight=15 " set popup menu height
 
+" indentation settings
 set tabstop=2
 set smarttab
 set shiftwidth=2
 set shiftround
 set expandtab
 set softtabstop=2
-
 set autoindent
 set copyindent
 
-" do not wrap search scans
-set nowrapscan
-
-set nowrap
+set nowrap " do not wrap lines
 
 set textwidth=80
 set colorcolumn=+1
@@ -90,20 +85,18 @@ set colorcolumn=+1
 set nobackup
 set noswapfile
 
+" folding settings
 set foldmethod=syntax
 "set foldcolumn=1
 set foldlevel=4
 
-" ignore the above if search pattern containes uppercase
-set smartcase
+" search settings
+set smartcase " ignore the above if search pattern containes uppercase
+set hlsearch " highlight matches of the search pattern
+set incsearch " highlight matches while the search pattern is typed in
+set nowrapscan " do not wrap search scans
 
-" highlight matches of the search pattern
-set hlsearch
-
-" highlight matches while the search pattern is typed in
-set incsearch
-
-set visualbell
+set visualbell " no sounds
 set noerrorbells
 
 set history=1000
@@ -118,14 +111,9 @@ set list
 set listchars=trail:·
 set listchars+=tab:˫\ 
 
-" status line always on
-set laststatus=2 
+set laststatus=2 " status line always on
 
-" always display the tabline, even if there is only one tab
-"set showtabline=2
-
-" hide the default mode text (e.g. -- INSERT -- below the statusline)
-set noshowmode
+"set showtabline=2 " always display the tabline, even if there is only one tab
 
 " set status line options
 set ruler
@@ -147,8 +135,7 @@ set statusline+=\ %P        "percent through file
 set tags&
 set tags+=.tags
 
-" show 10 lines above and below cursor
-set scrolloff=10
+set scrolloff=10 " show 10 lines above and below cursor
 
 " load functions
 if filereadable(expand("~/.vimrc.functions"))
@@ -311,11 +298,6 @@ let g:ycm_always_populate_location_list=1
 map <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 map <leader>gt :YcmCompleter GetType<CR>
 
-" nerdtree
-map <C-n> :NERDTreeToggle<CR>
-"nmap <leader>n :NERDTreeToggle<CR>
-nmap <leader>n :NERDTreeTabsToggle<CR>
-
 " tagbar
 nnoremap <silent> <F9> :TagbarToggle<CR>
 nnoremap <silent> <F10> :TagbarTogglePause<CR>
@@ -356,7 +338,12 @@ let g:SimpylFold_docstring_preview=1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
-" local config
+" load extra config
+if filereadable($HOME . "/.vimrc.extra")
+  source ~/.vimrc.extra
+endif
+
+" load local config
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
 endif

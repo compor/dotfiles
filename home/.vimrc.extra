@@ -1,0 +1,8 @@
+" load extra configs
+
+let config_dir = '~/.vimrc.d'
+
+for file_path in split(globpath(config_dir, '*.vim'), '\n')
+  exe 'source' file_path
+endfor
+
