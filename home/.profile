@@ -45,6 +45,12 @@ if [ -d "${GOLANG_PATH}" ]; then
   PATH="${GOLANG_PATH}":$PATH
 fi
 
+# add rust lang path
+RUSTLANG_PATH="${HOME}/.cargo/bin/"
+if [ -d "${RUSTLANG_PATH}" ]; then
+  PATH="${RUSTLANG_PATH}":$PATH
+fi
+
 # set PATH so it includes user's private bin if it exists
 USER_PATH="${HOME}/bin/"
 if [ -d "${USER_PATH}" ]; then
@@ -115,3 +121,5 @@ fi
 # set up for android studio
 export ANDROID_EMULATOR_FORCE_32BIT=true
 
+
+export PATH="$HOME/.cargo/bin:$PATH"
