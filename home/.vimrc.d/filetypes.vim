@@ -1,7 +1,12 @@
 
 if has("autocmd")
   " remember last edit location
-  au! BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+  "au! BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+  augroup resCur
+    autocmd!
+    autocmd BufReadPost * call setpos(".", getpos("'\""))
+  augroup END
 
   " follow python pep8 standards
   au! BufNewFile,BufRead *.py
