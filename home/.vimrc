@@ -4,9 +4,7 @@
 " must be set first as it changes other options as side effect
 set nocompatible
 
-"
 " general config
-"
 
 filetype off
 
@@ -119,11 +117,6 @@ set tags+=.tags
 
 set scrolloff=10 " show 10 lines above and below cursor
 
-" load functions
-if filereadable(expand("~/.vimrc.functions"))
-  source ~/.vimrc.functions
-endif
-
 if &diff
   " disable annoying visual stuff when in diff mode
   syntax off
@@ -187,6 +180,11 @@ endif
 " load extra config
 if filereadable($HOME . "/.vimrc.extra")
   source ~/.vimrc.extra
+endif
+
+" load functions
+if filereadable(expand("~/.vimrc.d/config-functions.vim"))
+  source ~/.vimrc.d/config-functions.vim
 endif
 
 " load local config
