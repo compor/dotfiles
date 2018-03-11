@@ -4,7 +4,7 @@
 " must be set first as it changes other options as side effect
 set nocompatible
 
-" 
+"
 " general config
 "
 
@@ -26,7 +26,9 @@ endif
 
 call vundle#end()
 
-set showmode " show operation mode
+set noshowmode " do not show operation mode
+set laststatus=2 " status line always on
+set showtabline=2 " always display tabline
 
 filetype plugin indent on
 
@@ -109,27 +111,7 @@ set pastetoggle=<F10>
 " highlight trailing spaces
 set list
 set listchars=trail:·
-set listchars+=tab:˫\ 
-
-set laststatus=2 " status line always on
-
-"set showtabline=2 " always display the tabline, even if there is only one tab
-
-" set status line options
-set ruler
-set statusline=             "clear status line
-set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
-set statusline+=%{&ff}]     "file format
-set statusline+=%h          "help file flag
-set statusline+=%m          "modified flag
-set statusline+=%r          "read only flag
-set statusline+=%y          "filetype
-set statusline+=[%<%F%*]    "full path
-set statusline+=%=          "left/right separator
-set statusline+=%c,         "cursor column
-set statusline+=%l/%L       "cursor line/total lines
-set statusline+=\ [0x%04B\] "character under cursor
-set statusline+=\ %P        "percent through file
+set listchars+=tab:˫\
 
 " reset expected tags files and add some more
 set tags&
@@ -163,33 +145,22 @@ command! Bd bp\|bd \#
 command! MakeTags execute "!ctags -R . -o .tags"
 
 
-" custom mappings 
+" custom mappings
 
 " space for fold toggling
 nnoremap <leader><Space> za
 vnoremap <leader><Space> za
 
-" save changes to open file even if not opened as root
-cnoremap sudow w !sudo tee % >/dev/null
+cnoremap sudow w !sudo tee % >/dev/null " save open file even if not root
+nnoremap <leader>w :w<CR> " save to file
 
-" save to file
-nnoremap <leader>w :w<CR>
+nmap <silent> <leader>/ :nohlsearch<CR> "clear highlighted searches
 
-"clear highlighted searches by pressing / again
-nmap <silent> <leader>/ :nohlsearch<CR>
 " buffer movements mappings
-
-" move to next buffer
-nmap <leader>l :bnext<CR>
-
-" move to previous buffer
-nmap <leader>h :bprevious<CR>
-
-" show all open buffers
-"nmap <leader>b :ls<CR>
-
-" close current buffer and move to previous one
-nmap <leader>bq :bp <BAR> bd #<CR>
+nmap <leader>l :bnext<CR> " move to next buffer
+nmap <leader>h :bprevious<CR> " move to previous buffer
+"nmap <leader>b :ls<CR> " show all open buffers
+nmap <leader>bq :bp <BAR> bd #<CR> " close current buffer and move to previous
 
 " location list navigation
 "nnoremap ]l :lnext<CR>
@@ -203,17 +174,6 @@ if executable('ag')
   " use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
 endif
-
-" vim-session
-let g:session_command_aliases=1
-let g:session_autosve='no'
-let g:session_autoload='no'
-let g:session_autosave_periodic=10
-let g:session_autosave_silent=1
-" save tabs
-set sessionoptions+=tabpages
-" do not save hidden and unloaded buffers
-set sessionoptions-=buffers
 
 "window  horizontal  up      -->   :topleft    split
 "window  horizontal  down    -->   :botright   split
