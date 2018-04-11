@@ -58,7 +58,7 @@ shopt -s checkwinsize
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
+  debian_chroot=$(cat /etc/debian_chroot)
 fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
@@ -100,6 +100,15 @@ xterm*|rxvt*)
 *)
   ;;
 esac
+
+# use powerline prompt
+function _update_ps1() {
+  PS1=$(powerline-shell $?)
+}
+
+if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
+  PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
 
 # set vi editing mode
 set -o vi
