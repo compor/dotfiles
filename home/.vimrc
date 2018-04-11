@@ -87,8 +87,8 @@ set noswapfile
 
 " folding settings
 set foldmethod=syntax
-"set foldcolumn=1
 set foldlevel=4
+"set foldcolumn=1
 
 " search settings
 set smartcase " ignore the above if search pattern containes uppercase
@@ -144,16 +144,29 @@ command! MakeTags execute "!ctags -R . -o .tags"
 nnoremap <leader><Space> za
 vnoremap <leader><Space> za
 
-cnoremap sudow w !sudo tee % >/dev/null " save open file even if not root
-nnoremap <leader>w :w<CR> " save to file
+" save open file even if not root
+cnoremap sudow w !sudo tee % >/dev/null
 
-nmap <silent> <leader>/ :nohlsearch<CR> "clear highlighted searches
+" save to file
+nnoremap <leader>w :w<CR>
+
+"clear highlighted searches
+nmap <silent> <leader>/ :nohlsearch<CR>
+
 
 " buffer movements mappings
-nmap <leader>l :bnext<CR> " move to next buffer
-nmap <leader>h :bprevious<CR> " move to previous buffer
-"nmap <leader>b :ls<CR> " show all open buffers
+
+" move to next buffer
+nmap <leader>l :bnext<CR>
+
+" move to previous buffer
+nmap <leader>h :bprevious<CR>
+
+" show all open buffers
+"nmap <leader>b :ls<CR>
+
 nmap <leader>bq :bp <BAR> bd #<CR> " close current buffer and move to previous
+
 
 " location list navigation
 "nnoremap ]l :lnext<CR>
@@ -191,5 +204,4 @@ endif
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
 endif
-
 
