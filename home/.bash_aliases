@@ -17,6 +17,10 @@ alias l1='ls -F1'
 alias mkdir='mkdir -vp'
 alias mount='mount | column -t'
 
+# navigation
+alias p='pushd'
+alias o='popd'
+
 # safety first
 alias mv='mv -i'
 alias cp='cp -i'
