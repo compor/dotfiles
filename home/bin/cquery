@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+TOOL_NAME='cquery'
+
+mapfile -t LOCATIONS < ~/.cquery-locations.txt
+
+
+for LOC in "${LOCATIONS[@]}"; do
+  TOOL="${LOC}/${TOOL_NAME}"
+done
+
+${TOOL} "${@}"
+
