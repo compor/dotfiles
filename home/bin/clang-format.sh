@@ -2,13 +2,13 @@
 
 TOOL_NAME='clang-format'
 
-mapfile -t LOCATIONS < ${HOME}/.clang-format-locations.txt
+mapfile -t LOCATIONS < ~/.clang-format-locations.txt
 
 
-for LOC in ${LOCATIONS[@]}; do 
+for LOC in "${LOCATIONS[@]}"; do
   TOOL="${LOC}/${TOOL_NAME}"
 
-  if [ -e "${TOOL}" ]; then 
+  if [ -e "${TOOL}" ]; then
     LIB_PATH="${LOC}/../lib/"
 
     break

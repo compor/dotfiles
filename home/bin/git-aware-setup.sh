@@ -8,13 +8,13 @@ if [ -n "$BASH_VERSION" ]; then
 
   # attempt to install
   if [ ! -d "$GITAWAREPROMPT_DIR" ]; then
-    mkdir -p ${GITAWAREPROMPT_DEST}
-    git clone ${GITAWAREPROMPT_URL} ${GITAWAREPROMPT_DIR}
+    mkdir -p "${GITAWAREPROMPT_DEST}"
+    git clone "${GITAWAREPROMPT_URL}" "${GITAWAREPROMPT_DIR}"
   fi
 
   # use if it exists
   if [ -d "$GITAWAREPROMPT_DIR" ]; then
     export GITAWAREPROMPT=${GITAWAREPROMPT_DIR}
-    source "${GITAWAREPROMPT}/main.sh"
+    . "${GITAWAREPROMPT}/main.sh"
   fi
 fi # BASH_VERSION
