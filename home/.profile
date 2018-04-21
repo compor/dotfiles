@@ -8,8 +8,8 @@
 #umask 022
 
 
-#[ -e ~/bin/git-aware-setup.sh ] && source ~/bin/git-aware-setup.sh
-[ -e ~/bin/fzf-setup.sh ] && source ~/bin/fzf-setup.sh
+#[ -e ~/bin/git-aware-setup.sh ] && . ~/bin/git-aware-setup.sh
+[ -e ~/bin/fzf-setup.sh ] && . ~/bin/fzf-setup.sh
 
 # set locale
 export LANGUAGE=en_US.UTF-8
@@ -21,13 +21,13 @@ export LC_TIME=en_DK.UTF-8 # YYYY-MM-DD
 
 # if running bash include .bashrc if it exists
 if [ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ]; then
-  source "$HOME/.bashrc"
+  . "$HOME/.bashrc"
 fi
 
 # change capslock key to ctrl and vice versa
 setxkbmap -option ctrl:swapcaps
 # apply this to disable gnome from resetting the keyboard setting in X
-# gsettings set org.gnome.settings-daemon.plugins.keyboard active false 
+# gsettings set org.gnome.settings-daemon.plugins.keyboard active false
 
 #
 # setup paths
@@ -36,6 +36,12 @@ setxkbmap -option ctrl:swapcaps
 LOCAL_PATH="/usr/local/bin/"
 if [ -d "${LOCAL_PATH}" ]; then
   PATH="${LOCAL_PATH}":$PATH
+fi
+
+# add ruby path
+RUBYGEM_PATH="${HOME}/.gem/bin/"
+if [ -d "${RUBYGEM_PATH}" ]; then
+  PATH="${RUBYGEM_PATH}":$PATH
 fi
 
 # add go lang path
