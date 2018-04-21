@@ -14,7 +14,7 @@ set encoding=utf-8
 
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
@@ -189,6 +189,27 @@ endif
 "buffer  horizontal  down    -->   :rightbelow split
 "buffer  vertical    left    -->   :leftabove  vsplit
 "buffer  vertical    right   -->   :rightbelow vsplit
+
+" TODO move to separate file
+if executable('cquery')
+  au User lsp_setup call lsp#register_server({
+        \ 'name': 'cquery',
+        \ 'cmd': {server_info->['cquery']},
+        \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
+        \ 'initialization_options': { 'cacheDirectory': '/tmp/cquery/cache' },
+        \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
+        \ })
+endif
+
+" TODO move to separate file
+if executable('pyls')
+  " pip install python-language-server
+  au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'whitelist': ['python'],
+        \ })
+endif
 
 " load extra config
 if filereadable($HOME . "/.vimrc.extra")
