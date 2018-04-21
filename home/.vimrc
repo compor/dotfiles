@@ -6,29 +6,30 @@ set nocompatible
 
 " general config
 
-filetype off
-
 set runtimepath=~/.vim
 set runtimepath+=/usr/share/vim/vim80
-set runtimepath+=~/.vim/bundle/Vundle.vim
 
 scriptencoding utf-8
 set encoding=utf-8
 
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 " setup plugins
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
 if filereadable(expand("~/.vimrc.plugins"))
   source ~/.vimrc.plugins
 endif
 
-call vundle#end()
+call plug#end()
 
 set noshowmode " do not show operation mode
 set laststatus=2 " status line always on
 set showtabline=2 " always display tabline
-
-filetype plugin indent on
 
 set path+=**
 
@@ -43,7 +44,6 @@ let maplocalleader="\\"
 
 inoremap <Space> <Space>
 
-syntax on " turn on syntax highlighting
 set t_Co=256
 set background=dark
 let g:solarized_visibility="low"
