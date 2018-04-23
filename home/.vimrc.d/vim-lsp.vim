@@ -11,7 +11,14 @@ nn <silent> <leader>gt :LspHover<cr>
 nn <leader>rr :LspRename<cr>
 
 let g:lsp_signs_enabled = 1 " enable signs
+
+let g:lsp_signs_error = {'text': 'E'}
+let g:lsp_signs_warning = {'text': 'W'}
+let g:lsp_signs_hint = {'text': 'I'}
+
 let g:lsp_diagnostics_echo_cursor = 1 " enable echo under cursor when in normal mode
+
+let g:lsp_preview_keep_focus = 0
 
 if executable('cquery')
   au User lsp_setup call lsp#register_server({
