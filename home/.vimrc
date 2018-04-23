@@ -50,15 +50,10 @@ let g:solarized_visibility="low"
 color solarized
 
 set hidden " allows hiding buffers although they might have unsaved mods
-
 set backspace=indent,eol,start " delete over indent, end and start of line
-
 set showmatch " jump momentarily (configurable) to the matching bracket
-
 set relativenumber " precede each line with its relative line number
-
 set numberwidth=5 " set width for each line number
-
 set lazyredraw " do not redraw screen when executing macros
 
 " specify new splits position
@@ -165,8 +160,8 @@ nmap <leader>h :bprevious<CR>
 " show all open buffers
 "nmap <leader>b :ls<CR>
 
-nmap <leader>bq :bp <BAR> bd #<CR> " close current buffer and move to previous
-
+" close current buffer and move to previous
+nmap <leader>bq :bp <BAR> bd #<CR>
 
 " location list navigation
 "nnoremap ]l :lnext<CR>
@@ -189,27 +184,6 @@ endif
 "buffer  horizontal  down    -->   :rightbelow split
 "buffer  vertical    left    -->   :leftabove  vsplit
 "buffer  vertical    right   -->   :rightbelow vsplit
-
-" TODO move to separate file
-if executable('cquery')
-  au User lsp_setup call lsp#register_server({
-        \ 'name': 'cquery',
-        \ 'cmd': {server_info->['cquery']},
-        \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
-        \ 'initialization_options': { 'cacheDirectory': '/tmp/cquery/cache' },
-        \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
-        \ })
-endif
-
-" TODO move to separate file
-if executable('pyls')
-  " pip install python-language-server
-  au User lsp_setup call lsp#register_server({
-        \ 'name': 'pyls',
-        \ 'cmd': {server_info->['pyls']},
-        \ 'whitelist': ['python'],
-        \ })
-endif
 
 " load extra config
 if filereadable($HOME . "/.vimrc.extra")

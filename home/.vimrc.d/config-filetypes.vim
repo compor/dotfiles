@@ -52,5 +52,14 @@ if has("autocmd")
   " auto-format plugin
   au! BufNewFile,BufRead * if &filetype != "c" && &filetype != "cpp" 
         \ | nnoremap <buffer> <leader>f :Autoformat<CR>
+
+  " vim-lsp plugin
+  autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
+  " vim-lsp-cquery
+  autocmd FileType c,cc,cpp,cxx,h,hpp nnoremap <leader>fv :LspCqueryDerived<CR>
+  autocmd FileType c,cc,cpp,cxx,h,hpp nnoremap <leader>fc :LspCqueryCallers<CR>
+  autocmd FileType c,cc,cpp,cxx,h,hpp nnoremap <leader>fb :LspCqueryBase<CR>
+  autocmd FileType c,cc,cpp,cxx,h,hpp nnoremap <leader>fi :LspCqueryVars<CR>
 endif
 
