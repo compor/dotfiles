@@ -157,15 +157,8 @@ nmap <leader>l :bnext<CR>
 " move to previous buffer
 nmap <leader>h :bprevious<CR>
 
-" show all open buffers
-"nmap <leader>b :ls<CR>
-
 " close current buffer and move to previous
 nmap <leader>bq :bp <BAR> bd #<CR>
-
-" location list navigation
-"nnoremap ]l :lnext<CR>
-"nnoremap [l :lprevious<CR>
 
 " settings and mappings for plugins
 
