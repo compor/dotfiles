@@ -9,6 +9,7 @@ endfunction
 
 Plug 'flazz/vim-colorschemes'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'jistr/vim-nerdtree-tabs'
 Plug 'scrooloose/nerdcommenter'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
@@ -29,7 +30,6 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-surround'
 Plug 'rhysd/vim-llvm'
 Plug 'Chiel92/vim-autoformat'
-Plug 'jistr/vim-nerdtree-tabs'
 Plug 'sjl/gundo.vim'
 Plug 'sjl/splice.vim'
 Plug 'xolox/vim-misc'
