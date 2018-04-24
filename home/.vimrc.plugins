@@ -39,6 +39,7 @@ Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/asyncomplete-ultisnips.vim', Cond(has('python3'))
 Plug 'pdavydov108/vim-lsp-cquery'
 Plug 'w0rp/ale'
 Plug 'mhinz/vim-signify'
