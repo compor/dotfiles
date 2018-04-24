@@ -1,5 +1,5 @@
 
-imap <c-space> <Plug>(asyncomplete_force_refresh)
+imap <c-a> <Plug>(asyncomplete_force_refresh)
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
@@ -16,7 +16,8 @@ let g:lsp_signs_error = {'text': 'E'}
 let g:lsp_signs_warning = {'text': 'W'}
 let g:lsp_signs_hint = {'text': 'I'}
 
-let g:lsp_diagnostics_echo_cursor = 1 " enable echo under cursor when in normal mode
+" enable echo under cursor when in normal mode
+let g:lsp_diagnostics_echo_cursor = 0 
 
 let g:lsp_preview_keep_focus = 0
 
