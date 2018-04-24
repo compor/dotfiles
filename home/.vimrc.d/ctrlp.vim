@@ -1,5 +1,5 @@
 
-if exists(':CtrlP')
+if &runtimepath =~ 'ctrlp.vim'
   " use current file dir and current repo dir as cwd
   let g:ctrlp_working_path_mode = 'ra'
 
