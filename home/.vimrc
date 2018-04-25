@@ -151,12 +151,6 @@ nmap <silent> <leader>/ :nohlsearch<CR>
 
 " buffer movements mappings
 
-" move to next buffer
-nmap <leader>l :bnext<CR>
-
-" move to previous buffer
-nmap <leader>h :bprevious<CR>
-
 " close current buffer and move to previous
 nmap <leader>bq :bp <BAR> bd #<CR>
 
