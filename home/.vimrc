@@ -163,20 +163,9 @@ nmap <leader>bq :bp <BAR> bd #<CR>
 " settings and mappings for plugins
 
 " stolen from http://robots.thoughtbot.com/faster-grepping-in-vim
-" The Silver Searcher
 if executable('ag')
-  " use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
 endif
-
-"window  horizontal  up      -->   :topleft    split
-"window  horizontal  down    -->   :botright   split
-"window  vertical    left    -->   :topleft    vsplit
-"window  vertical    right   -->   :botright   vsplit
-"buffer  horizontal  up      -->   :leftabove  split
-"buffer  horizontal  down    -->   :rightbelow split
-"buffer  vertical    left    -->   :leftabove  vsplit
-"buffer  vertical    right   -->   :rightbelow vsplit
 
 " load extra config
 if filereadable($HOME . "/.vimrc.extra")
@@ -187,6 +176,13 @@ endif
 if filereadable(expand("~/.vimrc.d/config-functions.vim"))
   source ~/.vimrc.d/config-functions.vim
 endif
+
+" load extra configs
+let config_dir = $HOME . '/.vimrc.d'
+
+for file_path in split(globpath(config_dir, '*.vim'), '\n')
+  exe 'source' file_path
+endfor
 
 " load local config
 if filereadable($HOME . "/.vimrc.local")
