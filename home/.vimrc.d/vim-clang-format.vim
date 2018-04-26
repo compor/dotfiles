@@ -1,5 +1,5 @@
 
-if exists(':ClangFormat')
+if &runtimepath =~ 'vim-clang-format'
   let g:clang_format#command = 'clang-format.sh'
   let g:clang_format#code_style = "llvm"
   let g:clang_format#auto_format = 0
