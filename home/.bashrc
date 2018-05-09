@@ -156,5 +156,7 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+eval $(thefuck --alias frak)
+
 # added by travis gem
 [ -f /home/vasich/.travis/travis.sh ] && source /home/vasich/.travis/travis.sh
