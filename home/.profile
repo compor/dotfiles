@@ -33,39 +33,39 @@ setxkbmap -option ctrl:swapcaps
 # setup paths
 #
 
-LOCAL_PATH="/usr/local/bin/"
-if [ -d "${LOCAL_PATH}" ]; then
-  PATH="${LOCAL_PATH}":$PATH
+_LOCAL_PATH="/usr/local/bin/"
+if [ -d "${_LOCAL_PATH}" ]; then
+  PATH="${_LOCAL_PATH}":$PATH
 fi
 
 # add ruby path
-RUBYGEM_PATH="${HOME}/.gem/bin/"
-if [ -d "${RUBYGEM_PATH}" ]; then
-  PATH="${RUBYGEM_PATH}":$PATH
+_RUBYGEM_PATH="${HOME}/.gem/bin/"
+if [ -d "${_RUBYGEM_PATH}" ]; then
+  PATH="${_RUBYGEM_PATH}":$PATH
 fi
 
 # add go lang path
-GOLANG_PATH="/usr/local/go/bin/"
-if [ -d "${GOLANG_PATH}" ]; then
-  PATH="${GOLANG_PATH}":$PATH
+_GOLANG_PATH="/usr/local/go/bin/"
+if [ -d "${_GOLANG_PATH}" ]; then
+  PATH="${_GOLANG_PATH}":$PATH
 fi
 
 # add rust lang path
-RUSTLANG_PATH="${HOME}/.cargo/bin/"
-if [ -d "${RUSTLANG_PATH}" ]; then
-  PATH="${RUSTLANG_PATH}":$PATH
+_RUSTLANG_PATH="${HOME}/.cargo/bin/"
+if [ -d "${_RUSTLANG_PATH}" ]; then
+  PATH="${_RUSTLANG_PATH}":$PATH
 fi
 
 # set PATH so it includes user's private bin if it exists
-USER_PATH="${HOME}/bin/"
-if [ -d "${USER_PATH}" ]; then
-  PATH="${USER_PATH}":$PATH
+_USER_PATH="${HOME}/bin/"
+if [ -d "${_USER_PATH}" ]; then
+  PATH="${_USER_PATH}":$PATH
 fi
 
 # add cmake path
-CMAKE_PATH="/usr/local/cmake/bin/"
-if [ -d "${CMAKE_PATH}" ]; then
-  PATH="${CMAKE_PATH}":$PATH
+_CMAKE_PATH="/usr/local/cmake/bin/"
+if [ -d "${_CMAKE_PATH}" ]; then
+  PATH="${_CMAKE_PATH}":$PATH
 fi
 
 export PATH
@@ -89,11 +89,11 @@ export CLASSPATH
 export EDITOR=$(which vim)
 export CVSEDITOR=$(which vim)
 
-if [ "$OPSYS_TYPE" == "linux" ]; then
+if [ "${OPSYS_TYPE}" = "linux" ]; then
   export VISUAL=$(which gvim)
 fi
 
-if [ "$OPSYS_DISTRO" == "apple" ]; then
+if [ "${OPSYS_DISTRO}" = "apple" ]; then
   export VISUAL=$(which macvim)
 fi
 
@@ -114,13 +114,13 @@ if [ -z "${SSHAGENTPID}" -a -e "${SSHAGENT}" ]; then
   eval $($SSHAGENT $SSHAGENTARGS)
   echo "export SSH_AGENT_PID=${SSH_AGENT_PID}" > "${SSHENV}"
   echo "export SSH_AUTH_SOCK=${SSH_AUTH_SOCK}" >> "${SSHENV}"
-  source "${SSHENV}" &> /dev/null
-  trap "kill ${SSH_AGENT_PID}" EXIT
-  trap "rm ${SSHENV}" EXIT
+  . "${SSHENV}" >/dev/null 2>&1
+  trap 'kill "${SSH_AGENT_PID}"' EXIT
+  trap 'rm "${SSHENV}"' EXIT
 fi
 
 if [ -r "${SSHENV}" ]; then
-  source "${SSHENV}" &> /dev/null
+  . "${SSHENV}" >/dev/null 2>&1
 fi
 
 # set up for android studio
