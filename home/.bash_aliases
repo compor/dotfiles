@@ -30,6 +30,7 @@ alias rm='rm -i'
 # other programs
 alias mk='make'
 alias rr='ranger'
+alias mux='tmuxinator'
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
