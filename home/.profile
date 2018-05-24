@@ -43,8 +43,8 @@ _RUBYGEM_PATH="${HOME}/.gem/bin/"
 if [ -d "${_RUBYGEM_PATH}" ]; then
   PATH="${_RUBYGEM_PATH}":$PATH
 fi
-export GEM_HOME="${HOME}/.gem/"
-export GEM_PATH="${HOME}/.gem/"
+export GEM_HOME="${HOME}/.gem"
+export GEM_PATH="${HOME}/.gem"
 
 # add go lang path
 _GOLANG_PATH="/usr/local/go/bin/"
