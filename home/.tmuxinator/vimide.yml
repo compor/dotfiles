@@ -1,0 +1,13 @@
+# vim ide
+
+name: vimide
+root: ~/
+
+windows:
+  - build:
+      layout: even-horizontal
+      panes:
+        - 
+        - 
+  - src:
+    
