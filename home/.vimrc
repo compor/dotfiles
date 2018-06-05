@@ -7,7 +7,7 @@ set nocompatible
 " general config
 
 set runtimepath=~/.vim
-set runtimepath+=/usr/share/vim/vim80
+set runtimepath+=/usr/share/vim/vim81
 
 scriptencoding utf-8
 set encoding=utf-8
