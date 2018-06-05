@@ -99,6 +99,12 @@ if [ "${OPSYS_DISTRO}" = "apple" ]; then
   export VISUAL=$(which macvim)
 fi
 
+# set thefuck utility alias
+THEFUCK=$(which thefuck)
+
+if [ -e "${THEFUCK}" ]; then
+  eval $(thefuck --alias frak)
+fi
 
 # unset dbus socket address
 unset DBUS_SESSION_BUS_ADDRESS
