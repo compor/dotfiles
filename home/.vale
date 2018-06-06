@@ -1,0 +1,12 @@
+StylesPath = ~/.vale_styles
+
+MinAlertLevel = warning # suggestion, warning or error
+
+[*.{md,txt}] # Only Markdown and .txt files
+
+# List of styles to load
+BasedOnStyles = vale, Joblint, proselint, write-good
+
+# Style.Rule = {YES, NO, suggestion, warning, error} to
+# enable/disable a rule or change its level.
+vale.Editorializing = NO
