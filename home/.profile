@@ -51,6 +51,11 @@ if [ -d "${_GOLANG_PATH}" ]; then
   PATH="${_GOLANG_PATH}":$PATH
 fi
 
+_GOPATH=$(go env GOPATH)
+if [ -d "${_GOPATH}" ]; then
+  PATH="${_GOPATH}/bin":$PATH
+fi
+
 # add rust lang path
 _RUSTLANG_PATH="${HOME}/.cargo/bin/"
 if [ -d "${_RUSTLANG_PATH}" ]; then
