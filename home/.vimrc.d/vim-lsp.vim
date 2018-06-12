@@ -17,7 +17,7 @@ let g:lsp_signs_warning = {'text': 'W'}
 let g:lsp_signs_hint = {'text': 'I'}
 
 " enable echo under cursor when in normal mode
-let g:lsp_diagnostics_echo_cursor = 0 
+let g:lsp_diagnostics_echo_cursor = 0
 
 let g:lsp_preview_keep_focus = 0
 
@@ -40,3 +40,11 @@ if executable('pyls')
         \ })
 endif
 
+if executable('bash-language-server')
+  " npm i -g bash-language-server
+  au User lsp_setup call lsp#register_server({
+        \ 'name': 'bash-language-server',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'bash-language-server start']},
+        \ 'whitelist': ['sh'],
+        \ })
+endif
