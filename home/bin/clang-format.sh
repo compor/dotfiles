@@ -2,8 +2,7 @@
 
 TOOL_NAME='clang-format'
 
-mapfile -t LOCATIONS < ~/.clang-format-locations.txt
-
+mapfile -t LOCATIONS <~/.clang-format-locations.txt
 
 for LOC in "${LOCATIONS[@]}"; do
   TOOL="${LOC}/${TOOL_NAME}"
@@ -16,4 +15,3 @@ for LOC in "${LOCATIONS[@]}"; do
 done
 
 LD_LIBRARY_PATH="${LIB_PATH}" ${TOOL} "${@}"
-

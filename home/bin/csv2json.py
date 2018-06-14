@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-import sys
 import os
 from os.path import basename
 import argparse
@@ -8,7 +7,7 @@ import csv
 import json
 
 
-def rbac_csv2json(input_filename, output_filename):
+def csv2json(input_filename, output_filename):
     with open(input_filename) as f:
         reader = csv.DictReader(f)
         rows = list(reader)
@@ -26,4 +25,4 @@ if __name__ == "__main__":
     filename = basename(args.input_filename)
     output_filename = os.path.splitext(filename)[0] + ".json"
 
-    rbac_csv2json(args.input_filename, output_filename)
+    csv2json(args.input_filename, output_filename)

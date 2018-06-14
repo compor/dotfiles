@@ -12,4 +12,3 @@ for CUR_FILE in "${@}"; do
 
   [[ $? -eq 0 ]] && echo "Converted ${CUR_FILE} to ${PDF_FILENAME}"
 done
-
