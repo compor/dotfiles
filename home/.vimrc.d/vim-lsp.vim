@@ -37,6 +37,7 @@ if executable('pyls')
         \ 'name': 'pyls',
         \ 'cmd': {server_info->['pyls']},
         \ 'whitelist': ['python'],
+        \ 'workspace_config': {'pyls': {'plugins': {'pydocstyle': {'enabled': v:true}}}}
         \ })
 endif
 
@@ -46,5 +47,14 @@ if executable('bash-language-server')
         \ 'name': 'bash-language-server',
         \ 'cmd': {server_info->[&shell, &shellcmdflag, 'bash-language-server start']},
         \ 'whitelist': ['sh'],
+        \ })
+endif
+
+if executable('go-langserver')
+  " go get -u github.com/sourcegraph/go-langserver
+  au User lsp_setup call lsp#register_server({
+        \ 'name': 'go-langserver',
+        \ 'cmd': {server_info->['go-langserver', '-mode', 'stdio']},
+        \ 'whitelist': ['go'],
         \ })
 endif
