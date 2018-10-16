@@ -21,6 +21,13 @@ let g:lsp_diagnostics_echo_cursor = 0
 
 let g:lsp_preview_keep_focus = 0
 
+" debugging flags
+"let g:lsp_log_verbose = 1
+"let g:lsp_log_file = expand('~/vim-lsp.log')
+
+" for asyncomplete.vim log
+"let g:asyncomplete_log_file = expand('~/asyncomplete.log')
+
 if executable('cquery')
   au User lsp_setup call lsp#register_server({
         \ 'name': 'cquery',
