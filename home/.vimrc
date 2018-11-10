@@ -112,6 +112,8 @@ set tags+=.tags
 
 set scrolloff=10 " show 10 lines above and below cursor
 
+set cursorline
+
 if &diff
   " disable annoying visual stuff when in diff mode
   syntax off

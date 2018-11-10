@@ -49,4 +49,5 @@ Plug 'w0rp/ale'
 Plug 'mhinz/vim-signify'
 Plug 'vim-scripts/argtextobj.vim'
 Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
