@@ -57,11 +57,3 @@ if executable('bash-language-server')
         \ })
 endif
 
-"if executable('go-langserver')
-  "" go get -u github.com/sourcegraph/go-langserver
-  "au User lsp_setup call lsp#register_server({
-        "\ 'name': 'go-langserver',
-        "\ 'cmd': {server_info->['go-langserver', '-mode', 'stdio']},
-        "\ 'whitelist': ['go'],
-        "\ })
-"endif
