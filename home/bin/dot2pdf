@@ -8,7 +8,8 @@ for CUR_FILE in "${@}"; do
 
   PDF_FILENAME="${CUR_FILE:0:${PREFIX_LEN}}.pdf"
 
+  echo -n "Converting ${CUR_FILE} to ${PDF_FILENAME} ... "
   dot -Tpdf "${CUR_FILE}" -o "${PDF_FILENAME}"
 
-  [[ $? -eq 0 ]] && echo "Converted ${CUR_FILE} to ${PDF_FILENAME}"
+  [[ $? -eq 0 ]] && echo "done"
 done
