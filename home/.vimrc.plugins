@@ -54,4 +54,5 @@ Plug 'editorconfig/editorconfig-vim'
 Plug '~/.bash/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'fcpg/vim-osc52'
+Plug 'ambv/black'
 
