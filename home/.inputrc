@@ -1,4 +1,64 @@
 # local inputrc for libreadline
 
-set completion-ignore-case On
+# carry over site-wide config
+$include /etc/inputrc
+
+# input/output
+
+# allow UTF-8 input and output, instead of showing stuff like $'\0123\0456'
+set input-meta on
+set output-meta on
+set convert-meta off
+
+
+# mode
+
+# editing mode
+set editing-mode vi
+
+# mode indicator in prompt (show insert/command)
+# customize the actual string by setting the vars:
+# vi-ins-mode-string
+# vi-cmd-mode-string
+set show-mode-in-prompt on
+
+$if term=linux
+  set vi-ins-mode-string \1\e[?0c\2
+  set vi-cmd-mode-string \1\e[?8c\2
+$else
+  set vi-ins-mode-string \1\e[6 q\2
+  set vi-cmd-mode-string \1\e[2 q\2
+$endif
+
+
+# completion options
+
+# ignore case in tab completion
+set completion-ignore-case on
+
+# single tab displays all possible completions
+# when no partial completions are possible
+set show-all-if-unmodified on
+
+# be more intelligent when autocompleting by also looking at the text after
+# the cursor. For example, when the current line is "cd ~/src/mozil", and
+# the cursor is on the "z", pressing Tab will not autocomplete it to "cd
+# ~/src/mozillail", but to "cd ~/src/mozilla". (This is supported by the
+# Readline used by Bash 4.)
+set skip-completed-text on
+
+# color files by types
+set colored-stats on
+
+# append char to indicate type
+set visible-stats on
+
+# mark symlinked directories
+set mark-symlinked-directories on
+
+# color the common prefix
+set colored-completion-prefix on
+
+# color the common prefix in menu-complete
+set menu-complete-display-prefix on
 
