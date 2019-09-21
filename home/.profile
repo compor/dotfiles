@@ -113,27 +113,27 @@ fi
 # unset dbus socket address
 unset DBUS_SESSION_BUS_ADDRESS
 
-# start ssh-agent
-# http://mah.everybody.org/docs/ssh
-# with tweaks for damn mac os x
+## start ssh-agent
+## http://mah.everybody.org/docs/ssh
+## with tweaks for damn mac os x
 
-SSHAGENT=$(which ssh-agent)
-SSHAGENTARGS="-s"
-SSHAGENTPID=$(pgrep ssh-agent)
-SSHENV="${HOME}/.ssh/env"
+#SSHAGENT=$(which ssh-agent)
+#SSHAGENTARGS="-s"
+#SSHAGENTPID=$(pgrep ssh-agent)
+#SSHENV="${HOME}/.ssh/env"
 
-if [ -z "${SSHAGENTPID}" -a -e "${SSHAGENT}" ]; then
-  eval $($SSHAGENT $SSHAGENTARGS)
-  echo "export SSH_AGENT_PID=${SSH_AGENT_PID}" > "${SSHENV}"
-  echo "export SSH_AUTH_SOCK=${SSH_AUTH_SOCK}" >> "${SSHENV}"
-  . "${SSHENV}" >/dev/null 2>&1
-  trap 'kill "${SSH_AGENT_PID}"' EXIT
-  trap 'rm "${SSHENV}"' EXIT
-fi
+#if [ -z "${SSHAGENTPID}" -a -e "${SSHAGENT}" ]; then
+  #eval $($SSHAGENT $SSHAGENTARGS)
+  #echo "export SSH_AGENT_PID=${SSH_AGENT_PID}" > "${SSHENV}"
+  #echo "export SSH_AUTH_SOCK=${SSH_AUTH_SOCK}" >> "${SSHENV}"
+  #. "${SSHENV}" >/dev/null 2>&1
+  #trap 'kill "${SSH_AGENT_PID}"' EXIT
+  #trap 'rm "${SSHENV}"' EXIT
+#fi
 
-if [ -r "${SSHENV}" ]; then
-  . "${SSHENV}" >/dev/null 2>&1
-fi
+#if [ -r "${SSHENV}" ]; then
+  #. "${SSHENV}" >/dev/null 2>&1
+#fi
 
 # set up for android studio
 export ANDROID_EMULATOR_FORCE_32BIT=true
