@@ -132,13 +132,14 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 if [ -n "$TMUX" ]; then
-  function refresh_ssh_vars() {
-    echo "refreshing ssh vars"
-    export $(tmux show-environment | grep "^SSH_AUTH_SOCK")
-    export $(tmux show-environment | grep "^DISPLAY")
+  function refresh() {
+    echo "refreshing vars"
+    eval $(tmux showenv -s DISPLAY)
+    eval $(tmux showenv -s SSH_AUTH_SOCK)
+    eval $(tmux showenv -s SSH_CONNECTION)
   }
 else
-  function refresh_ssh_vars() {
+  function refresh() {
     :
   }
 fi
