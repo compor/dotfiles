@@ -1,6 +1,7 @@
 [user]
   name = Chris Vassiladiotis
   email = cvassiladiotis@gmail.com
+	signingkey = 9201AE3F
 [core]
   editor = vim
   excludesfile = ~/.gitignore
@@ -39,3 +40,9 @@
 
 [status]
 	showUntrackedFiles = all
+[credential]
+	helper = store
+[commit]
+	gpgsign = true
+[pull]
+	rebase = true

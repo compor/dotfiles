@@ -18,7 +18,7 @@ if has("autocmd")
       \ set autoindent |
       \ set fileformat=unix |
       \ let python_highlight_all=1
-      
+
   " disable highlighting for coursera compilers COOL files
   au! BufNewFile,BufRead *.cl set filetype=
 
@@ -38,19 +38,23 @@ if has("autocmd")
 
   " TeX and friends
   au! BufNewFile,BufRead *.tex set filetype=tex
-  au! FileType tex set textwidth=120
-  
+  au! FileType tex
+        \ set textwidth=0 |
+        \ set fo+=n |
+        \ set wrap linebreak |
+        \ let &showbreak="\u21aa "
+
   " on git commit messages set column width to 72
   au! FileType gitcommit setlocal spell textwidth=72
- 
+
   " strip trailing whitespace for the below file suffixes
   au! BufWritePre *.c,*.cpp,*.cc,*.h,*.hh,*.hpp,*.java,*.cmake :%s/\s\+$//e
-  
+
   " clang-format plugin
   au! FileType c,cpp nnoremap <buffer> <leader>f :ClangFormat<CR>
- 
+
   " auto-format plugin
-  au! BufNewFile,BufRead * if &filetype != "c" && &filetype != "cpp" 
+  au! BufNewFile,BufRead * if &filetype != "c" && &filetype != "cpp"
         \ | nnoremap <buffer> <leader>f :Autoformat<CR>
 
   " vim-lsp plugin

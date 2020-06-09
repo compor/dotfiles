@@ -9,15 +9,21 @@ set sort_aux=last-date-received
 
 set editor=vim
 
-set charset=utf-8
-set send_charset=utf-8
+set charset="utf-8"
+set send_charset="utf-8"
+set rfc2047_parameters=yes
 
 set from="c.vasiladiotis@sms.ed.ac.uk"
 set realname="Chris Vasiladiotis"
 
 set folder="imaps://imap.staffmail.ed.ac.uk:993"
+
 set spoolfile="+INBOX"
-set postponed="+[UoE-Staffmail]/Drafts"
+set record="+Sent"
+set trash="+Trash"
+set postponed="+Drafts"
+
+mailboxes $spoolfile $record $trash $postponed
 
 set message_cachedir=~/.mutt/cache/bodies
 set certificate_file=~/.mutt/certificates

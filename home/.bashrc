@@ -11,7 +11,6 @@ if [ -f "$HOME/bin/detect_os.sh" ]; then
   . "$HOME/bin/detect_os.sh"
 fi
 
-
 #
 # interactive usage
 #
@@ -19,17 +18,13 @@ fi
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-
-
 # sudo-aware shell prompt
 if [ -z "$LOGNAME" ]; then
   LOGNAME=$(logname)
 fi
 
-UUSER=$([ "${LOGNAME}" = "${USER}" ] && echo ${USER} || echo '$(tput setaf 1)${LOGNAME}$(tput sgr0) as ${USER}')
+UUSER=$([ "${LOGNAME}" = "${USER}" ] && echo "${USER}" || echo '$(tput setaf 1)${LOGNAME}$(tput sgr0) as ${USER}')
 PS1="[${UUSER}@\h \W]\\$ "
-
-
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
@@ -39,8 +34,8 @@ HISTCONTROL=erasedups:ignorespace
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=1024
+HISTFILESIZE=2048
 
 # ignore specific commands
 HISTIGNORE="ls:ll:pwd:clear:"
@@ -63,8 +58,8 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-  xterm-color) color_prompt=;;
-  xterm-256color) color_prompt=yes;;
+xterm-color) color_prompt='' ;;
+xterm-256color) color_prompt=yes ;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -74,39 +69,46 @@ esac
 
 if [ -n "$force_color_prompt" ]; then
   if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-  # We have color support; assume it's compliant with Ecma-48
-  # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-  # a case would tend to support setf rather than setaf.)
-  color_prompt=yes
-    else
-  color_prompt=
-    fi
+    # We have color support; assume it's compliant with Ecma-48
+    # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+    # a case would tend to support setf rather than setaf.)
+    color_prompt=yes
+  else
+    color_prompt=
+  fi
 fi
 
 if [ "$color_prompt" = yes ]; then
-  #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-  PS1="\${debian_chroot:+(\$debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
+  PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+  #PS1="\${debian_chroot:+(\$debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
 else
-  #PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-  PS1="\${debian_chroot:+(\$debian_chroot)}\u@\h:\w \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
+  PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+  #PS1="\${debian_chroot:+(\$debian_chroot)}\u@\h:\w \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
 fi
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
-xterm*|rxvt*)
+xterm* | rxvt*)
   PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
   ;;
-*)
-  ;;
+*) ;;
+
 esac
 
 # use powerline prompt
 function _update_ps1() {
-  PS1=$(powerline-shell $?)
+  PS1="$(
+    powerline-go -error $? \
+      -path-aliases "/bulk/workbench/repos=REPOS,/bulk/workbench/=WBNCH,/bulk/carenot/downloads/=DOWNLOADS" \
+      -newline \
+      -numeric-exit-codes \
+      -modules \
+      "venv,user,host,ssh,cwd,perms,git,hg,jobs,exit,root,docker,aws"
+  )"
 }
 
-if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
+if [ "$TERM" != "linux" ] && [ -x "$(which powerline-go)" ]; then
   PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 fi
 
@@ -118,7 +120,11 @@ shopt -s cdspell
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+  if [ -r ~/.dircolors ]; then
+    eval "$(dircolors -b ~/.dircolors)"
+  else
+    eval "$(dircolors -b)"
+  fi
 fi
 
 # tmuxinator completions
@@ -129,6 +135,13 @@ fi
 # alias definitions
 if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
+fi
+
+if [ -f "${HOME}/.gpg-agent-info" ]; then
+  . "${HOME}/.gpg-agent-info"
+  export GPG_AGENT_INFO
+  #export SSH_AUTH_SOCK
+  #export SSH_AGENT_PID
 fi
 
 if [ -n "$TMUX" ]; then
@@ -157,7 +170,9 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-eval $(thefuck --alias frak)
+if [ "$TERM" != "linux" ] && [ -x "$(which thefuck)" ]; then
+  eval "$(thefuck --alias frak)"
+fi
 
 # added by travis gem
 [ -f /home/vasich/.travis/travis.sh ] && source /home/vasich/.travis/travis.sh

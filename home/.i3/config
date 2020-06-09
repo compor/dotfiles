@@ -5,13 +5,15 @@ set $sup Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+#font pango:monospace 8
+font pango:Source Code Pro for Powerline 8
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # Use this terminal
-bindsym $mod+Return exec konsole
+bindsym $mod+Return exec urxvt
+#bindsym $mod+Return exec konsole
 #bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
@@ -23,11 +25,10 @@ bindsym $mod+d exec dmenu_run
 # for applications with a .desktop file
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
+# use this to refresh status bar
+set $refresh_i3status killall -SIGUSR1 i3status
+
 # change focus
-#bindsym $mod+j focus left
-#bindsym $mod+k focus down
-#bindsym $mod+l focus up
-#bindsym $mod+semicolon focus right
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
@@ -40,10 +41,6 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-#bindsym $mod+Shift+j move left
-#bindsym $mod+Shift+k move down
-#bindsym $mod+Shift+l move up
-#bindsym $mod+Shift+semicolon move right
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
@@ -80,7 +77,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+c focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -120,49 +117,76 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+#bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10 && xbacklight > ~/.config/brightness && $refresh_i3status
+#bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10 && xbacklight > ~/.config/brightness && $refresh_i3status
 
 # Touchpad controls
-#bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
+#bindsym XF86TouchpadToggle exec --no-startup-id /some/path/toggletouchpad.sh # toggle touchpad
 
 # Media player controls
-bindsym XF86AudioPlay exec playerctl play
-bindsym XF86AudioPause exec playerctl pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec --no-startup-id playerctl play
+bindsym XF86AudioPause exec --no-startup-id playerctl pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+    # pressing left will shrink the window’s width.
+    # pressing right will grow the window’s width.
+    # Pressing up will shrink the window’s height.
+    # pressing down will grow the window’s height.
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+    # same bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+    # back to normal: Enter or Escape or $mod+r
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
+
+# scratchpads
+# dropdown
+# settings for dropdown
+for_window [instance="dropdown"] floating enable
+for_window [instance="dropdown"] resize set 1200 600
+for_window [instance="dropdown"] move scratchpad
+for_window [instance="dropdown"] border pixel 5
+# start scratchpad
+exec --no-startup-id urxvt -name dropdown
+# keybinding for scratchpad
+bindsym $mod+t [instance="dropdown"] scratchpad show; [instance="dropdown"] move position center
+
+# file browser
+# settings for file browser
+for_window [instance="file browser"] floating enable
+for_window [instance="file browser"] resize set 1200 600
+for_window [instance="file browser"] move scratchpad
+for_window [instance="file browser"] border pixel 5
+# start scratchpad
+exec --no-startup-id urxvt -name "file browser" -e lf
+# keybinding for scratchpad
+bindsym $mod+u [instance="file browser"] scratchpad show; [instance="file browser"] move position center
+
+
+# file manager
+bindsym $mod+Shift+Return exec urxvt -e lf
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -191,15 +215,76 @@ mode "$mode_system" {
 
 bindsym $mod+Shift+o mode "$mode_system"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+client.focused          #665c54 #665c54 #eddbb2 #2e9ef4   #665c54
+client.focused_inactive #282828 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #3c3836 #3c3836 #a89984 #292d2e   #222222
+client.urgent           #cc241d #cc241d #ebdbb2 #cc241d   #cc241d
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+client.background       #ffffff
+
+# start i3bar to display a workspace bar
+# plus the system information i3status finds out, if available
 bar {
-        status_command i3status
-	      tray_output primary
-	      position top
+    status_command i3status
+    tray_output primary
+    position top
+
+
+  colors {
+    # whole color settings
+    background #3c3836
+    statusline #ebdbb2
+    separator  #666666
+
+
+    focused_workspace  #458588 #458588 #ebdbb2
+    active_workspace   #83a598 #83a598 #ebdbb2
+    inactive_workspace #504945 #504945 #ebdbb2
+    urgent_workspace   #cc241d #cc241d #504945
+  }
 }
 
-exec "setxkbmap -layout us,gr,de"
-exec "setxkbmap -option 'grp:ctrl_alt_toggle'"
-exec "setxkbmap -option 'ctrl:swapcaps'"
+# redshift modes
+bindsym $mod+Shift+s mode "$mode_redshift"
+
+set $mode_redshift Set colour temperature: (a)uto, (r)eset, (2)500K, (3)000K, (4)000K, (5)000K
+set $kill_redshift pkill -9 redshift;
+
+mode "$mode_redshift" {
+    bindsym a exec --no-startup-id "$kill_redshift redshift -P -t 5000:4000", mode "default"
+    bindsym r exec --no-startup-id "$kill_redshift redshift -x", mode "default"
+    bindsym 2 exec --no-startup-id "$kill_redshift redshift -P -O 2500", mode "default"
+    bindsym 3 exec --no-startup-id "$kill_redshift redshift -P -O 3000", mode "default"
+    bindsym 4 exec --no-startup-id "$kill_redshift redshift -P -O 4000", mode "default"
+    bindsym 5 exec --no-startup-id "$kill_redshift redshift -P -O 5000", mode "default"
+
+    # exit mode: "Enter" or "Escape"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+#exec --no-startup-id "setxkbmap -model pc105 -layout us,gr,de -option 'grp:ctrl_alt_toggle'"
+#exec --no-startup-id setxkbmap -option 'ctrl:swapcaps'
+
+set $primary_monitor "eDP1"
+set $secondary_monitor "HDMI1"
+
+exec /usr/bin/xrandr --output $primary_monitor --primary
+exec /usr/bin/xrandr --auto --output $secondary_monitor --mode 1920x1200 --above $primary_monitor
+
+# move between screens
+bindsym $mod+shift+m move workspace to output $secondary_monitor
+bindsym $mod+m move workspace to output $primary_monitor
+
+#exec --no-startup-id feh --bg-scale ~/.i3/desktop-bg-plain-black.jpg
+exec --no-startup-id xsetroot -solid "#282828"
+
+exec --no-startup-id dunst
+exec --no-startup-id nm-applet
+exec --no-startup-id start-pulseaudio-x11
+exec --no-startup-id pasystray
+exec --no-startup-id blueman-applet
+exec --no-startup-id redshift
+exec --no-startup-id udiskie --no-automount --tray
 

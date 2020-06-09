@@ -7,8 +7,6 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-
-#[ -e ~/bin/git-aware-setup.sh ] && . ~/bin/git-aware-setup.sh
 [ -e ~/bin/fzf-setup.sh ] && . ~/bin/fzf-setup.sh
 
 # set locale
@@ -17,7 +15,6 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LC_COLLATE=C
 export LC_TIME=en_DK.UTF-8 # YYYY-MM-DD
-
 
 # if running bash include .bashrc if it exists
 if [ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ]; then
@@ -28,6 +25,8 @@ fi
 setxkbmap -option ctrl:swapcaps
 # apply this to disable gnome from resetting the keyboard setting in X
 # gsettings set org.gnome.settings-daemon.plugins.keyboard active false
+
+setxkbmap -model pc105 -layout us,gr,de -option 'grp:ctrl_alt_toggle'
 
 #
 # setup paths
@@ -76,7 +75,6 @@ fi
 
 export PATH
 
-
 # setup java paths
 
 JAVA_HOME=
@@ -90,6 +88,18 @@ CLASSPATH=
 export JAVA_HOME
 export CLASSPATH
 
+# setup pkg-config path
+_PKG_CONFIG_PATHS=(
+  /usr/share/pkgconfig
+  /usr/lib/x86_64-linux-gnu/pkgconfig
+  /usr/local/lib/pkgconfig
+)
+for p in "${_PKG_CONFIG_PATHS[@]}"; do
+  if [ -d "${p}" ]; then
+    PKG_CONFIG_PATH="${p}":$PKG_CONFIG_PATH
+  fi
+done
+export PKG_CONFIG_PATH
 
 # set editors
 export EDITOR=$(which vim)
@@ -97,17 +107,8 @@ export CVSEDITOR=$(which vim)
 
 if [ "${OPSYS_TYPE}" = "linux" ]; then
   export VISUAL=$(which gvim)
-fi
-
-if [ "${OPSYS_DISTRO}" = "apple" ]; then
+elif [ "${OPSYS_DISTRO}" = "apple" ]; then
   export VISUAL=$(which macvim)
-fi
-
-# set thefuck utility alias
-THEFUCK=$(which thefuck)
-
-if [ -e "${THEFUCK}" ]; then
-  eval $(thefuck --alias frak)
 fi
 
 # unset dbus socket address
@@ -115,4 +116,3 @@ unset DBUS_SESSION_BUS_ADDRESS
 
 # set up for android studio
 export ANDROID_EMULATOR_FORCE_32BIT=true
-

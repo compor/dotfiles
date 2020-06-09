@@ -7,7 +7,7 @@ set nocompatible
 " general config
 
 set runtimepath=~/.vim
-set runtimepath+=/usr/share/vim/vim81
+set runtimepath+=/usr/share/vim/vim82
 
 scriptencoding utf-8
 set encoding=utf-8
@@ -44,10 +44,15 @@ let maplocalleader="\\"
 
 inoremap <Space> <Space>
 
-set t_Co=256
-set background=dark
-let g:solarized_visibility="low"
-color solarized
+"set t_Co=256
+
+"set background=dark
+"let g:solarized_visibility="low"
+"color solarized
+
+"let g:gruvbox_italic=1
+"let g:gruvbox_termcolors=16
+color gruvbox
 
 set hidden " allows hiding buffers although they might have unsaved mods
 set backspace=indent,eol,start " delete over indent, end and start of line
