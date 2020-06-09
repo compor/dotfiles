@@ -232,19 +232,17 @@ bar {
     tray_output primary
     position top
 
+    colors {
+      # whole color settings
+      background #3c3836
+      statusline #ebdbb2
+      separator  #666666
 
-  colors {
-    # whole color settings
-    background #3c3836
-    statusline #ebdbb2
-    separator  #666666
-
-
-    focused_workspace  #458588 #458588 #ebdbb2
-    active_workspace   #83a598 #83a598 #ebdbb2
-    inactive_workspace #504945 #504945 #ebdbb2
-    urgent_workspace   #cc241d #cc241d #504945
-  }
+      focused_workspace  #458588 #458588 #ebdbb2
+      active_workspace   #83a598 #83a598 #ebdbb2
+      inactive_workspace #504945 #504945 #ebdbb2
+      urgent_workspace   #cc241d #cc241d #504945
+    }
 }
 
 # redshift modes
@@ -270,6 +268,7 @@ bindsym $mod+comma exec xkblayout-state set +1 && \
   xkblayout-state print "%s" > /tmp/lang && $refresh_i3status
 #exec --no-startup-id "setxkbmap -model pc105 -layout us,gr,de -option 'grp:shift_toggle'"
 #exec --no-startup-id setxkbmap -option 'ctrl:swapcaps'
+exec xkblayout-state print "%s" > /tmp/lang
 
 set $primary_monitor "eDP1"
 set $secondary_monitor "HDMI1"
@@ -281,8 +280,8 @@ exec /usr/bin/xrandr --auto --output $secondary_monitor --mode 1920x1200 --above
 bindsym $mod+shift+m move workspace to output $secondary_monitor
 bindsym $mod+m move workspace to output $primary_monitor
 
-#exec --no-startup-id feh --bg-scale ~/.i3/desktop-bg-plain-black.jpg
-exec --no-startup-id xsetroot -solid "#282828"
+#exec_always --no-startup-id feh --bg-scale ~/.i3/desktop-bg-plain-black.jpg
+exec_always --no-startup-id xsetroot -solid "#282828"
 
 exec --no-startup-id dunst
 exec --no-startup-id nm-applet
