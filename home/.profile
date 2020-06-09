@@ -26,7 +26,7 @@ setxkbmap -option ctrl:swapcaps
 # apply this to disable gnome from resetting the keyboard setting in X
 # gsettings set org.gnome.settings-daemon.plugins.keyboard active false
 
-setxkbmap -model pc105 -layout us,gr,de -option 'grp:ctrl_alt_toggle'
+setxkbmap -model pc105 -layout us,gr,de -option 'grp:shift_toggle'
 
 #
 # setup paths

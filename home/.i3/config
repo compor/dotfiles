@@ -123,9 +123,11 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 
 # Sreen brightness controls
 #bindsym XF86MonBrightnessUp exec xbacklight -inc 10
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10 && xbacklight > ~/.config/brightness && $refresh_i3status
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10 && \
+  xbacklight > ~/.config/brightness && $refresh_i3status
 #bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10 && xbacklight > ~/.config/brightness && $refresh_i3status
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10 && \
+  xbacklight > ~/.config/brightness && $refresh_i3status
 
 # Touchpad controls
 #bindsym XF86TouchpadToggle exec --no-startup-id /some/path/toggletouchpad.sh # toggle touchpad
@@ -264,7 +266,9 @@ mode "$mode_redshift" {
     bindsym Escape mode "default"
 }
 
-#exec --no-startup-id "setxkbmap -model pc105 -layout us,gr,de -option 'grp:ctrl_alt_toggle'"
+bindsym $mod+comma exec xkblayout-state set +1 && \
+  xkblayout-state print "%s" > /tmp/lang && $refresh_i3status
+#exec --no-startup-id "setxkbmap -model pc105 -layout us,gr,de -option 'grp:shift_toggle'"
 #exec --no-startup-id setxkbmap -option 'ctrl:swapcaps'
 
 set $primary_monitor "eDP1"
