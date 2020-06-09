@@ -1,0 +1,17 @@
+/* vim:ft=css */
+
+configuration {
+ theme: "gruvbox-dark-soft";
+ font: "Source Code Pro for Powerline 7";
+ sidebar-mode: true;
+ location: 1;
+ lines:10;
+
+ modi: "run,drun,window,run,ssh";
+ drun-match-fields: "name,generic,exec,categories";
+ terminal: "urxvt";
+ sort: true;
+ matching: "fuzzy";
+ combi-modi: "window,run";
+}
+
