@@ -1,0 +1,10 @@
+#!/bin/bash
+
+BINFO=$(acpi -b)
+
+echo "${BINFO}" | grep -q Discharging
+res=$?
+
+if [[ "${res}" -eq 0 && $(echo "${BINFO}" | cut -f 5 -d " ") < 00:15:00 ]]; then
+  DISPLAY=:0.0 /usr/bin/notify-send "low battery" "$BINFO"
+fi
