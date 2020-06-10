@@ -124,12 +124,10 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume @DEFA
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
 
 # Sreen brightness controls
-#bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10 && \
-  xbacklight > ~/.config/brightness && $refresh_i3status
-#bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
+  xbacklight | awk '{print int($1)}' > ~/.config/brightness && $refresh_i3status
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10 && \
-  xbacklight > ~/.config/brightness && $refresh_i3status
+  xbacklight | awk '{print int($1)}' > ~/.config/brightness && $refresh_i3status
 
 # Touchpad controls
 #bindsym XF86TouchpadToggle exec --no-startup-id /some/path/toggletouchpad.sh # toggle touchpad
