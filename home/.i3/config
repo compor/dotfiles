@@ -166,6 +166,8 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+#for_window [class="Pavucontrol"] floating enable
+
 # scratchpads
 # dropdown
 # settings for dropdown
@@ -255,12 +257,12 @@ set $mode_redshift Set colour temperature: (a)uto, (r)eset, (2)500K, (3)000K, (4
 set $kill_redshift pkill -9 redshift;
 
 mode "$mode_redshift" {
-    bindsym a exec --no-startup-id "$kill_redshift redshift -P -t 5000:4000", mode "default"
+    bindsym a exec --no-startup-id "$kill_redshift redshift", mode "default"
     bindsym r exec --no-startup-id "$kill_redshift redshift -x", mode "default"
-    bindsym 2 exec --no-startup-id "$kill_redshift redshift -P -O 2500", mode "default"
-    bindsym 3 exec --no-startup-id "$kill_redshift redshift -P -O 3000", mode "default"
-    bindsym 4 exec --no-startup-id "$kill_redshift redshift -P -O 4000", mode "default"
-    bindsym 5 exec --no-startup-id "$kill_redshift redshift -P -O 5000", mode "default"
+    bindsym 2 exec --no-startup-id "$kill_redshift redshift -O 2500", mode "default"
+    bindsym 3 exec --no-startup-id "$kill_redshift redshift -O 3000", mode "default"
+    bindsym 4 exec --no-startup-id "$kill_redshift redshift -O 4000", mode "default"
+    bindsym 5 exec --no-startup-id "$kill_redshift redshift -O 5000", mode "default"
 
     # exit mode: "Enter" or "Escape"
     bindsym Return mode "default"
