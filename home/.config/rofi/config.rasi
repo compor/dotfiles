@@ -5,6 +5,7 @@ configuration {
   font: "Source Code Pro for Powerline 7";
   sidebar-mode: true;
   location: 1;
+  monitor: -4;
   lines:10;
 
   modi: "run,drun,window,ssh";
