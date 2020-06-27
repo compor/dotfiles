@@ -2,11 +2,11 @@
 
 configuration {
   theme: "gruvbox-dark-soft";
-  font: "Source Code Pro for Powerline 7";
+  font: "SauceCodePro Nerd Font Mono 8";
   sidebar-mode: true;
   location: 1;
   monitor: -4;
-  lines:10;
+  lines: 10;
 
   modi: "run,drun,window,ssh";
   drun-match-fields: "name,generic,exec,categories";
@@ -14,6 +14,8 @@ configuration {
   sort: true;
   matching: "fuzzy";
   combi-modi: "window,run";
+
+  /*run-shell-command: "{terminal} -e \"{cmd}; read -n 1 -s\"";*/
 
   kb-mode-next: "Tab,Control+l";
   kb-mode-previous: "Control+h,ISO_Left_Tab";
