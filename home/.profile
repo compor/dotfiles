@@ -28,6 +28,9 @@ setxkbmap -option ctrl:swapcaps
 
 setxkbmap -model pc105 -layout us,gr,de -option 'grp:shift_toggle'
 
+# esc delay affects neomutt
+export ESCDELAY=0
+
 #
 # setup paths
 #
