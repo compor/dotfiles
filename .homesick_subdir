@@ -1,3 +1,5 @@
 .homesick/repos/dotfiles/home/.vimperator/colors
 .bash/tmuxinator
 .config
+.neomutt
+bin
