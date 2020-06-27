@@ -6,13 +6,17 @@ set $sup Mod4
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 #font pango:monospace 8
-font pango:Source Code Pro for Powerline 8
+#font pango:FiraCode Nerd Font 7
+font pango:SauceCodePro Nerd Font Mono 7
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+#set $term urxvt
+set $term urxvtcd
+
 # Use this terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec $term
 #bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
@@ -176,7 +180,7 @@ for_window [instance="dropdown"] resize set 1200 600
 for_window [instance="dropdown"] move scratchpad
 for_window [instance="dropdown"] border pixel 5
 # start scratchpad
-exec --no-startup-id urxvt -name dropdown
+exec --no-startup-id $term -name dropdown
 # keybinding for scratchpad
 bindsym $mod+t [instance="dropdown"] scratchpad show; [instance="dropdown"] move position center
 
@@ -187,13 +191,13 @@ for_window [instance="file browser"] resize set 1200 600
 for_window [instance="file browser"] move scratchpad
 for_window [instance="file browser"] border pixel 5
 # start scratchpad
-exec --no-startup-id urxvt -name "file browser" -e lf
+exec --no-startup-id $term -name "file browser" -e ranger
 # keybinding for scratchpad
-bindsym $mod+u [instance="file browser"] scratchpad show; [instance="file browser"] move position center
+bindsym $mod+Shift+f [instance="file browser"] scratchpad show; [instance="file browser"] move position center
 
 
 # file manager
-bindsym $mod+Shift+Return exec urxvt -e lf
+bindsym $mod+Shift+Return exec $term -e ranger
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -273,29 +277,25 @@ mode "$mode_redshift" {
 }
 
 bindsym $mod+comma exec xkblayout-state set +1 && \
-  xkblayout-state print "%s" > /tmp/lang && $refresh_i3status
-#exec --no-startup-id "setxkbmap -model pc105 -layout us,gr,de -option 'grp:shift_toggle'"
-#exec --no-startup-id setxkbmap -option 'ctrl:swapcaps'
-exec xkblayout-state print "%s" > /tmp/lang
+  xkblayout-state print "%s" > ~/.config/lang && $refresh_i3status
+exec xkblayout-state print "%s" > ~/.config/lang
 
 set $primary_monitor "eDP1"
 set $secondary_monitor "HDMI1"
 
-exec /usr/bin/xrandr --output $primary_monitor --primary
-exec /usr/bin/xrandr --auto --output $secondary_monitor --mode 1920x1200 --above $primary_monitor
+exec ~/.screenlayout/dual-home-melite.sh
 
 # move between screens
 bindsym $mod+shift+m move workspace to output $secondary_monitor
 bindsym $mod+m move workspace to output $primary_monitor
 
-#exec_always --no-startup-id feh --bg-scale ~/.i3/desktop-bg-plain-black.jpg
 exec_always --no-startup-id xsetroot -solid "#282828"
 
 exec --no-startup-id dunst
 exec --no-startup-id nm-applet
-exec --no-startup-id start-pulseaudio-x11
-exec --no-startup-id pasystray
 exec --no-startup-id blueman-applet
 exec --no-startup-id udiskie --no-automount --tray
 exec --no-startup-id redshift
+exec start-pulseaudio-x11
+exec --no-startup-id pasystray
 
