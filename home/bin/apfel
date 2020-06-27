@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+FLAG_FILE=".config/pomo"
+SOUND_FILE="/usr/share/sounds/freedesktop/stereo/complete.oga"
+
+[ -z "${1}" ] && echo "Please provide time in minutes." && exit 1
+
+INTERVAL=$((${1} * 60))
+touch ${FLAG_FILE}
+sleep ${INTERVAL}
+
+rm -f ${FLAG_FILE}
+if [ -e "${SOUND_FILE}" ]; then
+  paplay "${SOUND_FILE}"
+fi
+
+notify-send -u critical -t 10000 "Time is up!"
