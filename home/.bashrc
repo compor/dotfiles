@@ -38,7 +38,7 @@ HISTSIZE=1024
 HISTFILESIZE=2048
 
 # ignore specific commands
-HISTIGNORE="ls:ll:pwd:clear:"
+HISTIGNORE="history:ls:ll:pwd:clear:[bf]g:exit"
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -47,6 +47,12 @@ shopt -s checkwinsize
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
+
+# more sophisticated glob matching
+shopt -s extglob
+
+# move into a directory by using just the name
+shopt -s autocd
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -106,9 +112,9 @@ function _update_ps1() {
   )"
 }
 
-if [ "$TERM" != "linux" ] && [ -x "$(which powerline-go)" ]; then
-  PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-fi
+#if [ "$TERM" != "linux" ] && [ -x "$(which powerline-go)" ]; then
+#PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+#fi
 
 # set vi editing mode
 set -o vi
@@ -171,6 +177,8 @@ fi
 if [ "$TERM" != "linux" ] && [ -x "$(which thefuck)" ]; then
   eval "$(thefuck --alias frak)"
 fi
+
+eval "$(starship init bash)"
 
 # added by travis gem
 [ -f /home/vasich/.travis/travis.sh ] && source /home/vasich/.travis/travis.sh
