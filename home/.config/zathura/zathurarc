@@ -1,0 +1,22 @@
+# vim: set ft=conf
+
+# settings
+
+set scroll-page-aware "true"
+set scroll-step 50
+
+set selection-clipboard clipboard
+
+set window-title-basename true
+
+# keybindings
+
+# toggling the inverted colours
+map <C-i> recolor
+
+# adjusting the document
+map [normal] E adjust_window best-fit
+map [fullscreen] E adjust_window best-fit
+map [normal] e adjust_window width
+map [fullscreen] e adjust_window width
+

@@ -3,3 +3,4 @@
 .config
 .neomutt
 bin
+.config/zathura
