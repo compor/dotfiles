@@ -5,3 +5,4 @@
 bin
 .config/zathura
 .Xresources.d
+.config/dunst
