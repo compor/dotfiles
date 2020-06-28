@@ -2,5 +2,3 @@
 --tag-relative=yes
 --exclude=.git
 --exclude=CVS
-
-
