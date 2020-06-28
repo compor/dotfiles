@@ -4,3 +4,4 @@
 .neomutt
 bin
 .config/zathura
+.Xresources.d
