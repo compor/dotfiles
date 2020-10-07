@@ -18,7 +18,7 @@ if &runtimepath =~ 'ctrlp.vim'
   endif
 
   nnoremap <leader>p :CtrlP<CR>
-  nmap <leader>b :CtrlPBuffer<CR>
+  "nmap <leader>b :CtrlPBuffer<CR>
   nmap <leader>pm :CtrlPMixed<CR>
   nmap <leader>pr :CtrlPMRU<CR>
 endif
