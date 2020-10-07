@@ -47,10 +47,12 @@ Plug 'w0rp/ale'
 Plug 'mhinz/vim-signify'
 Plug 'vim-scripts/argtextobj.vim'
 Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+"Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'editorconfig/editorconfig-vim'
 "Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug '~/.bash/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'fcpg/vim-osc52'
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'jackguo380/vim-lsp-cxx-highlight'

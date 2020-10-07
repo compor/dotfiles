@@ -83,7 +83,20 @@ set textwidth=80
 set colorcolumn=+1
 
 set nobackup
+set nowritebackup
 set noswapfile
+
+" message display
+set cmdheight=2
+
+" for diagnostic messages
+set updatetime=300
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
 
 " folding settings
 set foldmethod=syntax
