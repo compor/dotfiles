@@ -1,0 +1,11 @@
+
+while [ 1 ]; do
+  sleep 2
+
+  others=$(whos | wc -l)
+
+  if [ $others -ne 1 ]; then
+    notify-send "We've got company!"
+    exit
+  fi
+done

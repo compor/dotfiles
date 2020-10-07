@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
-INPUT_FILE="${1}"
-[[ -z ${INPUT_FILE} ]] && echo "error: input file not provided" && exit 1
+INPUT_FILE=/dev/stdin
+
+if [ ! -z "${1}" ]; then
+  INPUT_FILE="${1}"
+fi
 
 awk 'BEGIN{ sum = 0 } { t = 0; t += $1; sum += t } END{ print sum / NR }' \
   "${INPUT_FILE}"
