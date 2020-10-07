@@ -1,4 +1,7 @@
 
+" prefer latex in tex files
+let g:tex_flavor = "latex"
+
 if has("autocmd")
   " remember last edit location
   "au! BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
