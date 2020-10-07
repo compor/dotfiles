@@ -7,3 +7,4 @@ bin
 .Xresources.d
 .config/dunst
 .config/powerline-shell
+.vim
