@@ -1,0 +1,28 @@
+#
+
+add_newline = false
+
+[line_break]
+disabled = true
+
+[character]
+symbol = ">"
+
+[battery]
+disabled = true
+
+[[battery.display]]
+threshold = 15
+style = "bold red"
+
+[directory]
+truncation_length = 10
+truncate_to_repo = true
+
+[cmd_duration]
+min_time = 5000
+show_milliseconds = false
+
+[golang]
+symbol = " "
+
