@@ -11,7 +11,7 @@ sleep ${INTERVAL}
 
 rm -f ${FLAG_FILE}
 if [ -e "${SOUND_FILE}" ]; then
-  paplay "${SOUND_FILE}"
+  paplay --volume=40000 "${SOUND_FILE}"
 fi
 
 notify-send -u critical -t 10000 "Time is up!"
