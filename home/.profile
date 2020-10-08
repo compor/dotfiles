@@ -21,6 +21,10 @@ if [ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ]; then
   . "$HOME/.bashrc"
 fi
 
+# set GPG agent handling
+GPG_TTY=$(tty)
+export GPG_TTY
+
 # change capslock key to ctrl and vice versa
 setxkbmap -option ctrl:swapcaps
 # apply this to disable gnome from resetting the keyboard setting in X
