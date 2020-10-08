@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+READELF=$(which readelf)
+GREP=$(which egrep)
+PROG=${1}
+
+[[ -z ${READELF} || -z ${GREP} ]] && exit 1
+[[ -z ${PROG} ]] && exit 2
+
+${READELF} -s ${PROG} | ${GREP} -q "\s(_+)?mcount\b"
