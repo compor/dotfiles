@@ -83,4 +83,14 @@ bind pager L list-reply
 # '?' is used for search-opposite
 bind pager H help
 
+# editor
+
+bind editor <Tab> complete-query
+bind editor ^T    complete
+
+# both index and pager
+
+macro index,pager E \
+        "<pipe-message>khard add-email<return>" \
+        "add the sender email address to khard"
 
