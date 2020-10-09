@@ -182,3 +182,5 @@ eval "$(starship init bash)"
 
 # added by travis gem
 [ -f /home/vasich/.travis/travis.sh ] && source /home/vasich/.travis/travis.sh
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
