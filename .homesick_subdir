@@ -8,3 +8,4 @@ bin
 .config/dunst
 .config/powerline-shell
 .vim
+.config/khard
