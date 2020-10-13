@@ -9,3 +9,4 @@ bin
 .config/powerline-shell
 .vim
 .config/khard
+.config/vdirsyncer

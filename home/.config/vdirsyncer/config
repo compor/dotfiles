@@ -1,0 +1,18 @@
+[general]
+status_path = "~/.vdirsyncer/status/"
+
+[pair main_contacts]
+a = "main_contacts_local"
+b = "main_contacts_remote"
+collections = ["from a", "from b"]
+
+[storage main_contacts_local]
+type = "filesystem"
+path = "~/.contacts/"
+fileext = ".vcf"
+
+[storage main_contacts_remote]
+type = "carddav"
+url = "http://192.168.1.100:5232/cvasiladiotis/90dd875a-c30d-9a2e-eb7d-8f87221b0223/"
+username = "cvasiladiotis"
+password.fetch = [ "command", "pass", "show", "pilon/radicale/cvasiladiotis"]
