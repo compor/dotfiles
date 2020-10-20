@@ -1,4 +1,4 @@
-" vim functions 
+" vim functions
 
 " toggle whitespace visibility based on solarized modes
 function! ToggleVisibility()
@@ -45,3 +45,12 @@ endfunction
 " map tmux execution of current line
 nmap <leader>t :call ExecInTmux()<CR>
 
+function! ToggleQuickFix()
+  if empty(filter(getwininfo(), 'v:val.quickfix'))
+    copen
+  else
+    cclose
+  endif
+endfunction
+
+nnoremap <silent> <leader>q :call ToggleQuickFix()<CR>
