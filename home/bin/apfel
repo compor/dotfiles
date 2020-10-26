@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-FLAG_FILE=".config/pomo"
+FLAG_FILE="${HOME}/.config/pomo"
 SOUND_FILE="/usr/share/sounds/freedesktop/stereo/complete.oga"
 
 [ -z "${1}" ] && echo "Please provide time in minutes." && exit 1
