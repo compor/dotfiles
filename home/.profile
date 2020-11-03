@@ -21,9 +21,8 @@ if [ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ]; then
   . "$HOME/.bashrc"
 fi
 
-# set GPG agent handling
-GPG_TTY=$(tty)
-export GPG_TTY
+eval $(gpg-agent --daemon --enable-ssh-support \
+            --write-env-file "${HOME}/.gpg-agent-info")
 
 # change capslock key to ctrl and vice versa
 setxkbmap -option ctrl:swapcaps
