@@ -2,10 +2,13 @@
 
 let g:coc_global_extensions = [
       \ 'coc-snippets',
+      \ 'coc-texlab',
       \ 'coc-json',
       \ 'coc-vimlsp',
       \ 'coc-go',
       \ 'coc-python',
+      \ 'coc-yaml',
+      \ 'coc-ccls',
       \ 'coc-cmake'
       \ ]
 
@@ -69,7 +72,7 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
-nmap <F2> <Plug>(coc-rename)
+nmap <silent> gR <Plug>(coc-rename)
 
 " Remap for format selected region
 "xmap <leader>f  <Plug>(coc-format-selected)
