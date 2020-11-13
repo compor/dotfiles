@@ -10,3 +10,4 @@ bin
 .vim
 .config/khard
 .config/vdirsyncer
+.gnupg
