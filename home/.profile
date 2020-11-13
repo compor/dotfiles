@@ -33,7 +33,7 @@ if [[ "${GPG_VERSION}" -lt 2200 ]]; then
     eval "$(gpg-agent --daemon --enable-ssh-support --write-env-file "${GPG_ENVFILE}")"
   fi
 else
-  eval "$(gpg-conf --launch gpg-agent)"
+  eval "$(gpgconf --launch gpg-agent)"
 fi
 
 # change capslock key to ctrl and vice versa
