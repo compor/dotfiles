@@ -141,12 +141,17 @@ if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
 
-if [ -f "${HOME}/.gpg-agent-info" ]; then
-  . "${HOME}/.gpg-agent-info"
+GPG_ENVFILE="${HOME}/.gnupg/gpg-agent.env"
+
+if [ -f "${GPG_ENVFILE}" ]; then
+  . "${GPG_ENVFILE}"
   export GPG_AGENT_INFO
-  #export SSH_AUTH_SOCK
-  export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-  #export SSH_AGENT_PID
+  export SSH_AUTH_SOCK
+else
+  GPG_AGENT_INFO=$(gpgconf --list-dirs agent-socket)
+  SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+  export GPG_AGENT_INFO
+  export SSH_AUTH_SOCK
 fi
 
 GPG_TTY=$(tty)

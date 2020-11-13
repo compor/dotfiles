@@ -7,7 +7,7 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-[ -e ~/bin/fzf-setup.sh ] && . ~/bin/fzf-setup.sh
+[[ -e ${HOME}/bin/fzf-setup.sh ]] && . "${HOME}/bin/fzf-setup.sh"
 
 # set locale
 export LANGUAGE=en_US.UTF-8
@@ -21,8 +21,20 @@ if [ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ]; then
   . "$HOME/.bashrc"
 fi
 
-eval $(gpg-agent --daemon --enable-ssh-support \
-            --write-env-file "${HOME}/.gpg-agent-info")
+GPG_VERSION=$(gpg-agent --version | head -n1 | awk '{print $3}' |
+  awk -F. '{ v=1000*$1+100*$2+$3; print v}')
+
+GPG_ENVFILE="${HOME}/.gnupg/gpg-agent.env"
+
+if [[ "${GPG_VERSION}" -lt 2200 ]]; then
+  if test -f "${GPG_ENVFILE}" && kill -0 "$(grep GPG_AGENT_INFO "$GPG_ENVFILE" | cut -d: -f 2)" 2>/dev/null; then
+    eval "$(cat "${GPG_ENVFILE}")"
+  else
+    eval "$(gpg-agent --daemon --enable-ssh-support --write-env-file "${GPG_ENVFILE}")"
+  fi
+else
+  eval "$(gpg-conf --launch gpg-agent)"
+fi
 
 # change capslock key to ctrl and vice versa
 setxkbmap -option ctrl:swapcaps
