@@ -187,6 +187,10 @@ if [ "$TERM" != "linux" ] && [ -x "$(which thefuck)" ]; then
   eval "$(thefuck --alias frak)"
 fi
 
+if [ -x "$(which direnv)" ]; then
+  eval "$(direnv hook bash)"
+fi
+
 eval "$(starship init bash)"
 
 # added by travis gem
