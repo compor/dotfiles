@@ -1,0 +1,24 @@
+# vim:ft=muttrc
+
+set my_accountname="uoestaffmail"
+
+macro index U "<shell-escape>mbsync $my_accountname<enter>" "run mbsync to sync all mail"
+
+set from="c.vasiladiotis@sms.ed.ac.uk"
+set folder="~/Mail/$my_accountname"
+set signature="~/signature.$my_accountname"
+set sendmail="msmtp -a $my_accountname"
+
+set spoolfile="+Inbox"
+set postponed="+Drafts"
+#set record="+Sent"
+set record="+Inbox"
+set trash="+Trash"
+
+# keeping an auto-archive
+#set mbox = "+Archives/`date +%Y`"
+#save-hook . "+Archives/%[%Y]"
+
+mailboxes $spoolfile $record $trash $postponed =archive
+mailboxes `ls -1 ~/Mail/uoestaffmail | grep archive | awk 'BEGIN{ORS=" "} {print "+\""$1"\""}'`
+
