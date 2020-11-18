@@ -1,0 +1,68 @@
+
+# UoE staffmail
+IMAPAccount uoestaffmail
+Host imap.staffmail.ed.ac.uk
+User s1576261
+#Pass yourpassincleartexthere
+PassCmd "pass uoe/email-student/s1576261"
+# Use SSL
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+# The following line should work. If get certificate errors,
+# uncomment the two following lines and read the "Troubleshooting" section.
+#CertificateFile ~/.cert/imap.gmail.com.pem
+#CertificateFile ~/.cert/Equifax_Secure_CA.pem
+
+IMAPStore uoestaffmail-remote
+Account uoestaffmail
+
+MaildirStore uoestaffmail-local
+Subfolders Verbatim
+# The trailing "/" is important
+Path ~/Mail/uoestaffmail/
+Inbox ~/Mail/uoestaffmail/Inbox
+Flatten .
+
+Channel uoestaffmail-inbox
+Master :uoestaffmail-remote:"INBOX"
+Slave :uoestaffmail-local:Inbox
+Create Both
+Remove Both
+#Expunge Both
+SyncState *
+Sync All
+
+Channel uoestaffmail-drafts
+Master :uoestaffmail-remote:"Drafts"
+Slave :uoestaffmail-local:Drafts
+Create Both
+Remove Both
+#Expunge Both
+SyncState *
+Sync All
+
+Channel uoestaffmail-archive
+Master :uoestaffmail-remote:"archive"
+Slave :uoestaffmail-local:archive
+Create Both
+Remove Both
+#Expunge Both
+SyncState *
+Patterns *
+Sync All
+
+Channel uoestaffmail-trash
+Master :uoestaffmail-remote:"Trash"
+Slave :uoestaffmail-local:Trash
+Create Both
+Remove Both
+#Expunge Both
+SyncState *
+Sync All
+
+Group uoestaffmail
+Channel uoestaffmail-inbox
+Channel uoestaffmail-drafts
+#Channel uoestaffmail-archive
+Channel uoestaffmail-trash
+
