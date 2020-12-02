@@ -4,7 +4,8 @@ set my_accountname="uoestaffmail"
 
 macro index U "<shell-escape>mbsync $my_accountname<enter>" "run mbsync to sync all mail"
 
-set from="c.vasiladiotis@sms.ed.ac.uk"
+#set from="c.vasiladiotis@sms.ed.ac.uk"
+set from="s1576261@ed.ac.uk"
 set folder="~/Mail/$my_accountname"
 set signature="~/signature.$my_accountname"
 set sendmail="msmtp -a $my_accountname"

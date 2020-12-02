@@ -1,12 +1,15 @@
 
 # UoE staffmail
 IMAPAccount uoestaffmail
-Host imap.staffmail.ed.ac.uk
-User s1576261
+Host outlook.office365.com
+User s1576261@ed.ac.uk
 #Pass yourpassincleartexthere
 PassCmd "pass uoe/email-student/s1576261"
 # Use SSL
+#UseIMAPS yes
+Port 993
 SSLType IMAPS
+SSLVersions TLSv1.2
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 # The following line should work. If get certificate errors,
 # uncomment the two following lines and read the "Troubleshooting" section.
@@ -24,7 +27,7 @@ Inbox ~/Mail/uoestaffmail/Inbox
 Flatten .
 
 Channel uoestaffmail-inbox
-Master :uoestaffmail-remote:"INBOX"
+Master :uoestaffmail-remote:"Inbox"
 Slave :uoestaffmail-local:Inbox
 Create Both
 Remove Both
@@ -42,7 +45,7 @@ SyncState *
 Sync All
 
 Channel uoestaffmail-archive
-Master :uoestaffmail-remote:"archive"
+Master :uoestaffmail-remote:"Archive"
 Slave :uoestaffmail-local:archive
 Create Both
 Remove Both
@@ -52,7 +55,7 @@ Patterns *
 Sync All
 
 Channel uoestaffmail-trash
-Master :uoestaffmail-remote:"Trash"
+Master :uoestaffmail-remote:"Deleted Items"
 Slave :uoestaffmail-local:Trash
 Create Both
 Remove Both
@@ -63,6 +66,6 @@ Sync All
 Group uoestaffmail
 Channel uoestaffmail-inbox
 Channel uoestaffmail-drafts
-#Channel uoestaffmail-archive
 Channel uoestaffmail-trash
+#Channel uoestaffmail-archive
 
