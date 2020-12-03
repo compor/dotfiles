@@ -1,7 +1,7 @@
 [user]
   name = Chris Vasiladiotis
   email = cvassiladiotis@gmail.com
-	signingkey = 9201AE3F
+  signingkey = 9201AE3F
 [core]
   editor = vim
   excludesfile = ~/.gitignore
@@ -21,34 +21,35 @@
   cm = commit -m
   br = branch
   bv = branch -avv
-  ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s\\ %Cgreen(%cr)\\ %Cblue[%cn]" --decorate
-  lsnc = log --pretty=format:"%h\\ %d\\ %s\\ [%cn]" --decorate
-  ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s\\ %Cgreen(%cr)\\ %Cblue[%cn]" --decorate --numstat
-  llnc = log --pretty=format:"%h\\ %s\\ [%cn]"
-  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-  lga = log --branches --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  ls = log --pretty=format:'%C(yellow)%h%Cred%d\\ %Creset%s\\ %Cgreen(%cr)\\ %Cblue[%cn]' --decorate
+  lsnc = log --pretty=format:'%h\\ %d\\ %s\\ [%cn]' --decorate
+  ll = log --pretty=format:'%C(yellow)%h%Cred%d\\ %Creset%s\\ %Cgreen(%cr)\\ %Cblue[%cn]' --decorate --numstat
+  llnc = log --pretty=format:'%h\\ %s\\ [%cn]'
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit
+  lga = log --branches --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit
+  hist = log --pretty=format:'%C(yellow)%h %Cred%ad %Creset- %s%d %Cblue[%an]' --graph --date=short
   add = add -v
   rev = merge --no-ff --no-commit
   mrequest = push -u origin HEAD
-  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   type = cat-file -t
   dump = cat-file -p
   dw = diff --color-words
+  dwc = diff --color-words --cached
 
 [mergetool "splice"]
   cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
   trustExitCode = true
 
 [status]
-	showUntrackedFiles = all
+  showUntrackedFiles = all
 [credential]
-	helper = store
+  helper = store
 [commit]
-	gpgsign = true
+  gpgsign = true
 [pull]
-	rebase = true
+  rebase = true
 [filter "lfs"]
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
