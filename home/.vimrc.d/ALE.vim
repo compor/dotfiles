@@ -7,9 +7,12 @@ if &runtimepath =~ 'ale'
 endif
 
 let g:ale_fixers = {
-\ 'tex' : ['remove_trailing_lines',  'trim_whitespace'],
-\ 'sh' : ['shfmt']
-\}
+      \ 'tex' : ['remove_trailing_lines',  'trim_whitespace'],
+      \ 'sh' : ['shfmt']
+      \}
 
-let b:ale_linters = { 'tex' : ['chktex'] }
+let b:ale_linters = {
+      \ 'tex' : ['chktex'],
+      \ 'cmake' : ['cmake-lint', 'cmakelint']
+      \}
 
