@@ -41,6 +41,7 @@ alias mk='make'
 alias rr='ranger'
 alias mux='tmuxinator'
 alias zt='zathura'
+#alias vim='vim --servername vim'
 
 if [[ $OPSYS_DISTRO == "ubuntu" ]]; then
   alias pkgu='sudo apt update'
