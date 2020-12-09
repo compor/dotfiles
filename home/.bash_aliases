@@ -40,6 +40,7 @@ alias rm='rm -i'
 alias mk='make'
 alias rr='ranger'
 alias mux='tmuxinator'
+alias zt='zathura'
 
 if [[ $OPSYS_DISTRO == "ubuntu" ]]; then
   alias pkgu='sudo apt update'
