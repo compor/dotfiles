@@ -13,6 +13,6 @@ let g:ale_fixers = {
 
 let b:ale_linters = {
       \ 'tex' : ['chktex'],
-      \ 'cmake' : ['cmake-lint', 'cmakelint']
+      \ 'cmake' : ['cmake-lint']
       \}
 
