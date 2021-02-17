@@ -20,3 +20,4 @@ map [fullscreen] E adjust_window best-fit
 map [normal] e adjust_window width
 map [fullscreen] e adjust_window width
 
+map H feedkeys ":exec sh -c \"zathura-history.sh\""
