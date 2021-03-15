@@ -21,6 +21,7 @@
   cm = commit -m
   br = branch
   bv = branch -avv
+  root = rev-parse --show-toplevel
   ls = log --pretty=format:'%C(yellow)%h%Cred%d\\ %Creset%s\\ %Cgreen(%cr)\\ %Cblue[%cn]' --decorate
   lsnc = log --pretty=format:'%h\\ %d\\ %s\\ [%cn]' --decorate
   ll = log --pretty=format:'%C(yellow)%h%Cred%d\\ %Creset%s\\ %Cgreen(%cr)\\ %Cblue[%cn]' --decorate --numstat
