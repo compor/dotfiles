@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-progname=${0}
+progname=$(basename ${0})
 declare -i repeat=3
 
 [ -z "${1}" ] && echo "${progname}: Please provide time in minutes." && exit 1
