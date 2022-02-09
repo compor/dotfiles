@@ -27,7 +27,7 @@ URxvt*cursorBlink: true
 
 ! change depth to 32 for true transparency
 URxvt*depth: 24
-URxvt*fading: 30
+URxvt*fading: 15
 URxvt*transparent: false
 URxvt*buffered: true
 URxvt*visualBell: false
@@ -52,6 +52,8 @@ URxvt.secondaryScroll: true
 
 ! extensions config
 
+! resize-font
+URxvt.resize-font.step: 1
 URxvt.keysym.C-M-plus: perl:resize-font:bigger
 URxvt.keysym.C-M-minus: perl:resize-font:smaller
 URxvt.keysym.C-M-equal: perl:resize-font:reset
