@@ -9,7 +9,8 @@ let g:coc_global_extensions = [
       \ 'coc-pyright',
       \ 'coc-yaml',
       \ 'coc-ccls',
-      \ 'coc-cmake'
+      \ 'coc-cmake',
+      \ 'coc-metals'
       \ ]
 
 " Always show the signcolumn, otherwise it would shift the text each time
