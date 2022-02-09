@@ -6,7 +6,7 @@ add_newline = false
 disabled = true
 
 [character]
-symbol = ">"
+success_symbol = ">"
 
 [battery]
 disabled = true
@@ -23,7 +23,7 @@ truncate_to_repo = true
 min_time = 5000
 show_milliseconds = false
 
-[docker]
+[docker_context]
 symbol = " "
 
 [elixir]
@@ -40,9 +40,6 @@ symbol = " "
 
 [golang]
 symbol = " "
-
-[haskell]
-symbol = " "
 
 [hg_branch]
 symbol = " "
