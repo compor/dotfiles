@@ -33,14 +33,8 @@ set show-mode-in-prompt on
 # 5: blinking bar (xterm)
 # 6: steady bar (xterm)
 
-$if term=linux
-  set vi-ins-mode-string "\1\e[?0c\2"
-  set vi-cmd-mode-string "\1\e[?8c\2"
-$else
-  set vi-cmd-mode-string "\1\033[2 q\2"
-  set vi-ins-mode-string "\1\033[0 q\2"
-$endif
-
+set vi-cmd-mode-string "\1\033[2 q\2"
+set vi-ins-mode-string "\1\033[5 q\2"
 
 # completion options
 
