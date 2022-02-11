@@ -62,6 +62,13 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
   debian_chroot=$(cat /etc/debian_chroot)
 fi
 
+function is_linux_term() {
+  case "$TERM" in
+  xterm* | rxvt*) return 1 ;;
+  *) return 0 ;;
+  esac
+}
+
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
 xterm-color) color_prompt='' ;;
@@ -91,30 +98,10 @@ else
 fi
 unset color_prompt force_color_prompt
 
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm* | rxvt*)
+# if this is an xterm set the title to user@host:dir
+if is_linux_term; then
   PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-  ;;
-*) ;;
-
-esac
-
-# use powerline prompt
-function _update_ps1() {
-  PS1="$(
-    powerline-go -error $? \
-      -path-aliases "/bulk/workbench/repos=REPOS,/bulk/workbench/=WBNCH,/bulk/carenot/downloads/=DOWNLOADS" \
-      -newline \
-      -numeric-exit-codes \
-      -modules \
-      "venv,user,host,ssh,cwd,perms,git,hg,jobs,exit,root,docker,aws"
-  )"
-}
-
-#if [ "$TERM" != "linux" ] && [ -x "$(which powerline-go)" ]; then
-#PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-#fi
+fi
 
 # set vi editing mode
 set -o vi
@@ -131,28 +118,23 @@ if [ -x /usr/bin/dircolors ]; then
   fi
 fi
 
-# tmuxinator completions
-if [ -f ~/.bash/tmuxinator/tmuxinator.bash ]; then
-  source ~/.bash/tmuxinator/tmuxinator.bash
-fi
-
 # alias definitions
 if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
 
-GPG_ENVFILE="${HOME}/.gnupg/gpg-agent.env"
+#GPG_ENVFILE="${HOME}/.gnupg/gpg-agent.env"
 
-if [ -f "${GPG_ENVFILE}" ]; then
-  . "${GPG_ENVFILE}"
-  export GPG_AGENT_INFO
-  export SSH_AUTH_SOCK
-else
-  GPG_AGENT_INFO=$(gpgconf --list-dirs agent-socket)
-  SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-  export GPG_AGENT_INFO
-  export SSH_AUTH_SOCK
-fi
+#if [ -f "${GPG_ENVFILE}" ]; then
+#. "${GPG_ENVFILE}"
+#export GPG_AGENT_INFO
+#export SSH_AUTH_SOCK
+#else
+#GPG_AGENT_INFO=$(gpgconf --list-dirs agent-socket)
+#SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+#export GPG_AGENT_INFO
+#export SSH_AUTH_SOCK
+#fi
 
 GPG_TTY=$(tty)
 export GPG_TTY
@@ -170,8 +152,8 @@ else
   }
 fi
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# enable programmable completion features (you don't need to enable this
+# if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
@@ -181,19 +163,20 @@ if ! shopt -oq posix; then
   fi
 fi
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-if [ "$TERM" != "linux" ] && [ -x "$(which thefuck)" ]; then
-  eval "$(thefuck --alias frak)"
-fi
-
 if [ -x "$(which direnv)" ]; then
   eval "$(direnv hook bash)"
 fi
 
-eval "$(starship init bash)"
+if is_linux_term; then
+  if [ -x "$(which thefuck)" ]; then
+    eval "$(thefuck --alias frak)"
+  fi
+  if [ -x "$(which starship)" ]; then
+    eval "$(starship init bash)"
+  fi
+fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # added by travis gem
 [ -f /home/vasich/.travis/travis.sh ] && source /home/vasich/.travis/travis.sh
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

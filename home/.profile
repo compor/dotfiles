@@ -50,6 +50,13 @@ export ESCDELAY=0
 # setup paths
 #
 
+# add user path
+_USER_PATH="${HOME}/bin/"
+if [ -d "${_USER_PATH}" ]; then
+  PATH="${_USER_PATH}":$PATH
+fi
+
+# add local path
 _LOCAL_PATH="/usr/local/bin/"
 if [ -d "${_LOCAL_PATH}" ]; then
   PATH="${_LOCAL_PATH}":$PATH
@@ -62,7 +69,7 @@ if [ -d "${_RUBYGEM_PATH}" ]; then
 fi
 export GEM_HOME="${HOME}/.gem"
 
-# add go lang path
+# add golang path
 _GOLANG_PATH="/usr/local/go/bin/"
 if [ -d "${_GOLANG_PATH}" ]; then
   PATH="${_GOLANG_PATH}":$PATH
@@ -73,16 +80,10 @@ if [ -d "${_GOPATH}" ]; then
   PATH="${_GOPATH}/bin":$PATH
 fi
 
-# add rust lang path
+# add rust path
 _RUSTLANG_PATH="${HOME}/.cargo/bin/"
 if [ -d "${_RUSTLANG_PATH}" ]; then
   PATH="${_RUSTLANG_PATH}":$PATH
-fi
-
-# set PATH so it includes user's private bin if it exists
-_USER_PATH="${HOME}/bin/"
-if [ -d "${_USER_PATH}" ]; then
-  PATH="${_USER_PATH}":$PATH
 fi
 
 # add cmake path
@@ -91,12 +92,20 @@ if [ -d "${_CMAKE_PATH}" ]; then
   PATH="${_CMAKE_PATH}":$PATH
 fi
 
+# add yarn path
+_YARN_PATH1="$HOME/.yarn/bin:"
+_YARN_PATH2="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+if [ -d "${_YARN_PATH1}" ]; then
+  PATH="${_YARN_PATH1}":$PATH
+fi
+if [ -d "${_YARN_PATH2}" ]; then
+  PATH="${_YARN_PATH2}":$PATH
+fi
+
 export PATH
 
-# setup java paths
-
+# add java paths
 JAVA_HOME=
-
 JAVA_HOME_DEFAULT="/usr/lib/jvm/default-java"
 if [ -d "${JAVA_HOME_DEFAULT}" ]; then
   JAVA_HOME="${JAVA_HOME_DEFAULT}"
