@@ -50,3 +50,4 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': { -> coc#util#install()}}
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'mg979/vim-visual-multi'
 Plug 'luochen1990/rainbow'
+Plug 'pedrohdz/vim-yaml-folds'

@@ -11,3 +11,4 @@ bin
 .config/khard
 .config/vdirsyncer
 .gnupg
+.config/yamllint
