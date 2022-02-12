@@ -51,33 +51,28 @@ export ESCDELAY=0
 #
 
 # add user path
-_USER_PATH="${HOME}/bin/"
-if [ -d "${_USER_PATH}" ]; then
-  PATH="${_USER_PATH}":$PATH
+if [ -d "${HOME}/bin/" ]; then
+  PATH="${HOME}/bin/":$PATH
 fi
 
-_USER_PRIV_PATH="${HOME}/.bin/"
-if [ -d "${_USER_PRIV_PATH}" ]; then
-  PATH="${_USER_PRIV_PATH}":$PATH
+if [ -d "${HOME}/.bin/" ]; then
+  PATH="${HOME}/.bin/":$PATH
 fi
 
 # add local path
-_LOCAL_PATH="/usr/local/bin/"
-if [ -d "${_LOCAL_PATH}" ]; then
-  PATH="${_LOCAL_PATH}":$PATH
+if [ -d "/usr/local/bin/" ]; then
+  PATH="/usr/local/bin/":$PATH
 fi
 
 # add ruby path
-_RUBYGEM_PATH="${HOME}/.gem/bin/"
-if [ -d "${_RUBYGEM_PATH}" ]; then
-  PATH="${_RUBYGEM_PATH}":$PATH
+if [ -d "${HOME}/.gem/bin/" ]; then
+  PATH="${HOME}/.gem/bin/":$PATH
 fi
 export GEM_HOME="${HOME}/.gem"
 
 # add golang path
-_GOLANG_PATH="/usr/local/go/bin/"
-if [ -d "${_GOLANG_PATH}" ]; then
-  PATH="${_GOLANG_PATH}":$PATH
+if [ -d "/usr/local/go/bin/" ]; then
+  PATH="/usr/local/go/bin/":$PATH
 fi
 
 _GOPATH=$(go env GOPATH)
@@ -86,25 +81,21 @@ if [ -d "${_GOPATH}" ]; then
 fi
 
 # add rust path
-_RUSTLANG_PATH="${HOME}/.cargo/bin/"
-if [ -d "${_RUSTLANG_PATH}" ]; then
-  PATH="${_RUSTLANG_PATH}":$PATH
+if [ -d "${HOME}/.cargo/bin/" ]; then
+  PATH="${HOME}/.cargo/bin/":$PATH
 fi
 
 # add cmake path
-_CMAKE_PATH="/usr/local/cmake/bin/"
-if [ -d "${_CMAKE_PATH}" ]; then
-  PATH="${_CMAKE_PATH}":$PATH
+if [ -d "/usr/local/cmake/bin/" ]; then
+  PATH="/usr/local/cmake/bin/":$PATH
 fi
 
-# add yarn path
-_YARN_PATH1="$HOME/.yarn/bin:"
-_YARN_PATH2="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-if [ -d "${_YARN_PATH1}" ]; then
-  PATH="${_YARN_PATH1}":$PATH
+# add yarn paths
+if [ -d "$HOME/.yarn/bin" ]; then
+  PATH="$HOME/.yarn/bin":$PATH
 fi
-if [ -d "${_YARN_PATH2}" ]; then
-  PATH="${_YARN_PATH2}":$PATH
+if [ -d "${HOME}/.config/yarn/global/node_modules/.bin" ]; then
+  PATH="${HOME}/.config/yarn/global/node_modules/.bin":$PATH
 fi
 
 export PATH
@@ -121,11 +112,7 @@ export JAVA_HOME
 export CLASSPATH
 
 # setup pkg-config path
-_PKG_CONFIG_PATHS=(
-  /usr/share/pkgconfig
-  /usr/lib/x86_64-linux-gnu/pkgconfig
-  /usr/local/lib/pkgconfig
-)
+set -A _PKG_CONFIG_PATHS "/usr/share/pkgconfig" "/usr/lib/x86_64-linux-gnu/pkgconfig" "/usr/local/lib/pkgconfig"
 for p in "${_PKG_CONFIG_PATHS[@]}"; do
   if [ -d "${p}" ]; then
     PKG_CONFIG_PATH="${p}":$PKG_CONFIG_PATH
