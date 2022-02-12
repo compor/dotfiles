@@ -1,5 +1,3 @@
-
-for bc_file in ~/.bash_completion.d/* ; do 
+for bc_file in ~/.bash_completion.d/*.completion.bash; do
   . ${bc_file}
 done
-
