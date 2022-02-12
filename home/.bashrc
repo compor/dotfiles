@@ -64,8 +64,8 @@ fi
 
 function is_linux_term() {
   case "$TERM" in
-  xterm* | rxvt*) return 1 ;;
-  *) return 0 ;;
+  xterm* | rxvt*) return 0 ;;
+  *) return 1 ;;
   esac
 }
 
@@ -99,7 +99,8 @@ fi
 unset color_prompt force_color_prompt
 
 # if this is an xterm set the title to user@host:dir
-if is_linux_term; then
+is_linux_term
+if [ "$?" -eq 0 ]; then
   PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
 fi
 
@@ -123,6 +124,7 @@ if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
 
+# TODO cleanup gpg stuff
 #GPG_ENVFILE="${HOME}/.gnupg/gpg-agent.env"
 
 #if [ -f "${GPG_ENVFILE}" ]; then
@@ -139,6 +141,7 @@ fi
 GPG_TTY=$(tty)
 export GPG_TTY
 
+# TODO make sure this works
 if [ -n "$TMUX" ]; then
   function refresh() {
     echo "refreshing vars"
@@ -167,7 +170,8 @@ if [ -x "$(which direnv)" ]; then
   eval "$(direnv hook bash)"
 fi
 
-if is_linux_term; then
+is_linux_term
+if [ "$?" -eq 0 ]; then
   if [ -x "$(which thefuck)" ]; then
     eval "$(thefuck --alias frak)"
   fi
