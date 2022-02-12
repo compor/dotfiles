@@ -1,5 +1,9 @@
 ! vi: ft=xdefaults
 
+! TODO: see https://github.com/muennich/urxvt-perls/tree/master/deprecated
+! url-select is deprecated towards matcher
+! clipboard towards native support
+
 !URxvt*termName: rxvt-unicode-256color
 URxvt.termName: xterm-256color
 
@@ -12,18 +16,10 @@ Xft.hintstyle:  hintfull
 
 ! perl extensions
 Rxvt.perl-lib: ~/.urxvt/ext/
-URxvt.perl-ext-common: default,matcher,clipboard,resize-font,url-select,keyboard-select
-!URxvt.perl-ext-common: default,matcher,resize-font,url-select,keyboard-select
+URxvt.perl-ext-common: default,matcher,clipboard,resize-font,url-select,reactivity
 
 ! font config
-!URxvt*font: xft:SauceCodePro Nerd Font Mono:style=Regular:size=7, xft:Noto Emoji:size=7
-!URxvt*font: xft:SauceCodePro Nerd Font Mono:style=Regular:size=7:minspace=False, xft:Noto Emoji:size=4:minspace=False
 URxvt*font: xft:FiraCode Nerd Font Mono:style=Regular:size=8:antialias=true:autohint:true
-!URxvt*boldFont: xft:SauceCodePro Nerd Font Mono:style=Regular:size=7:antialias=true:hinting=true
-!URxvt.font: xft:RobotoMono Nerd Font:medium:pixelsize=10
-!URxvt.boldFont: xft:RobotoMono Nerd Font:bold:pixelsize=10
-!URxvt.italicFont: xft:RobotoMono Nerd Font:italic:pixelsize=10
-!URxvt.boldItalicFont: xft:RobotoMono Nerd Font:bold:italic:pixelsize=10
 URxvt.letterSpace: 0
 
 !
@@ -69,11 +65,16 @@ URxvt.keysym.C-M-question: perl:resize-font:show
 
 ! url handling
 URxvt.url-launcher: xdg-open
+
 ! clickable urls
 URxvt.matcher.button: 1
 ! open and list recent urls
 URxvt.keysym.C-Delete: perl:matcher:last
 URxvt.keysym.M-Delete: perl:matcher:list
+
+! reactivity
+URxvt.keysym.M-v: perl:reactivity:vim
+
 ! yankable urls
 URxvt.keysym.M-u: perl:url-select:select_next
 URxvt.url-select.launcher: xdg-open
@@ -86,8 +87,3 @@ URxvt.url-select.underline: true
 !URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
 URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 URxvt.keysym.Shift-Control-C: perl:clipboard:copy
-
-URxvt.keysym.M-Escape: perl:keyboard-select:activate
-!URxvt.keysym.M-s: perl:keyboard-select:search
-
-
