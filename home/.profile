@@ -112,7 +112,7 @@ export JAVA_HOME
 export CLASSPATH
 
 # setup pkg-config path
-set -A _PKG_CONFIG_PATHS "/usr/share/pkgconfig" "/usr/lib/x86_64-linux-gnu/pkgconfig" "/usr/local/lib/pkgconfig"
+set -a _PKG_CONFIG_PATHS "/usr/share/pkgconfig" "/usr/lib/x86_64-linux-gnu/pkgconfig" "/usr/local/lib/pkgconfig"
 for p in "${_PKG_CONFIG_PATHS[@]}"; do
   if [ -d "${p}" ]; then
     PKG_CONFIG_PATH="${p}":$PKG_CONFIG_PATH
