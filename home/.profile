@@ -56,6 +56,11 @@ if [ -d "${_USER_PATH}" ]; then
   PATH="${_USER_PATH}":$PATH
 fi
 
+_USER_PRIV_PATH="${HOME}/.bin/"
+if [ -d "${_USER_PRIV_PATH}" ]; then
+  PATH="${_USER_PRIV_PATH}":$PATH
+fi
+
 # add local path
 _LOCAL_PATH="/usr/local/bin/"
 if [ -d "${_LOCAL_PATH}" ]; then
