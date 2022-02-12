@@ -28,5 +28,7 @@
         "snippetSupport": true
       }
     }
-  }
+  },
+  "cmake.lsp.enable": true,
+  "yaml.format.enable": true
 }
