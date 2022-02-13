@@ -4,15 +4,23 @@
   signingkey = 9201AE3F
 [core]
   editor = vim
-  excludesfile = ~/.gitignore
+	excludesfile = /home/vasich/.gitignore
+  pager = delta
 [merge]
   tool = splice
+  conflictstyle = diff3
 [color]
   status = auto
   branch = auto
   interactive = auto
   diff = auto
   ui = true
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true  # use n and N to move between diff sections
+[diff]
+  colorMoved = default
 [alias]
   st = status
   s = status -sb
@@ -36,11 +44,9 @@
   dump = cat-file -p
   dw = diff --color-words
   dwc = diff --color-words --cached
-
 [mergetool "splice"]
   cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
   trustExitCode = true
-
 [status]
   showUntrackedFiles = all
 [credential]
