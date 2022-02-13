@@ -137,5 +137,5 @@ unset DBUS_SESSION_BUS_ADDRESS
 export ANDROID_EMULATOR_FORCE_32BIT=true
 
 # FZF setup
-export FZF_DEFAULT_COMMAND='rg --files --hidden'
-export FZF_ALT_C_COMMAND='rg --files --hidden --follow -g "!{snap,node_modules,.git}"'
+export FZF_DEFAULT_COMMAND='rg --files'
+export FZF_ALT_C_COMMAND='rg --files --follow -g "!{snap,node_modules,.git}"'
