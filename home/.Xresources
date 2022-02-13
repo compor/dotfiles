@@ -1,3 +1,4 @@
 
-#include ".Xresources.d/urxvt"
-#include ".Xresources.d/gruvbox-dark"
+#include ".Xresources.d/urxvt.Xresources"
+#include ".Xresources.d/gruvbox-dark.Xresources"
+!#include ".Xresources.d/gruvbox-light.Xresources"
