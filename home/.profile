@@ -38,8 +38,13 @@ fi
 
 # change capslock key to ctrl and vice versa
 setxkbmap -option ctrl:swapcaps
-# apply this to disable gnome from resetting the keyboard setting in X
+# disable gnome from resetting the keyboard setting in X:
 # gsettings set org.gnome.settings-daemon.plugins.keyboard active false
+# or
+# gsettings set org.gnome.desktop.input-sources xkb-options "['ctrl:swapcaps', 'grp:shift_toggle']"
+#
+# for gnome input sources use:
+# gsettings get org.gnome.desktop.input-sources sources
 
 setxkbmap -model pc105 -layout us,gr,de -option 'grp:shift_toggle'
 
