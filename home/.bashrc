@@ -64,7 +64,7 @@ fi
 
 function is_linux_term() {
   case "$TERM" in
-  xterm* | rxvt*) return 0 ;;
+  xterm* | rxvt* | screen*) return 0 ;;
   *) return 1 ;;
   esac
 }
@@ -72,7 +72,9 @@ function is_linux_term() {
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
 xterm-color) color_prompt='' ;;
+screen-color) color_prompt='' ;;
 xterm-256color) color_prompt=yes ;;
+screen-256color) color_prompt=yes ;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
