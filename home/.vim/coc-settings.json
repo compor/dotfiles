@@ -30,5 +30,6 @@
     }
   },
   "cmake.lsp.enable": true,
-  "yaml.format.enable": true
+  "yaml.format.enable": true,
+  "coc.preferences.formatOnSaveFiletypes": ["scala"]
 }
