@@ -34,3 +34,11 @@ alias mv='mv -i'
 alias cp='cp -i'
 alias ln='ln -i'
 alias rm='rm -i'
+
+if [[ -x $(which rg) ]]; then
+  alias g='rg'
+elif [[ -x $(which ag) ]]; then
+  alias g='ag'
+else
+  alias g='grep'
+fi
