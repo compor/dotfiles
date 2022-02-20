@@ -1,10 +1,4 @@
-" vimrc file
-
-" use vim instead of vi settings
-" must be set first as it changes other options as side effect
-set nocompatible
-
-" general config
+set nocompatible " set first as it changes other options as side effect
 
 set runtimepath=~/.vim
 set runtimepath+=/usr/share/vim/vim82
@@ -12,20 +6,7 @@ set runtimepath+=/usr/share/vim/vim82
 scriptencoding utf-8
 set encoding=utf-8
 
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
-" setup plugins
-call plug#begin('~/.vim/plugged')
-
-if filereadable(expand("~/.vimrc.plugins"))
-  source ~/.vimrc.plugins
-endif
-
-call plug#end()
+source $HOME/.vimrc.d/plugins.vimrc
 
 set noshowmode " do not show operation mode
 set laststatus=2 " status line always on
