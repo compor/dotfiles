@@ -82,8 +82,8 @@ URxvt.url-select.underline: true
 
 ! clipboard
 !URxvt.clipboard.autocopy: true
-!URxvt.copyCommand: xclip -i -selection clipboard
-!URxvt.pasteCommand: xclip -o -selection clipboard
-!URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
-URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.clipboard.copycmd:  xclip -i -selection clipboard
+URxvt.clipboard.pastecmd: xclip -o -selection clipboard
 URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+!URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
