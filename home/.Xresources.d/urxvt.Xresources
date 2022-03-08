@@ -73,7 +73,8 @@ URxvt.keysym.C-Delete: perl:matcher:last
 URxvt.keysym.M-Delete: perl:matcher:list
 
 ! reactivity
-URxvt.keysym.M-v: perl:reactivity:vim
+URxvt.keysym.M-m: perl:reactivity:mon
+URxvt.keysym.M-s: perl:reactivity:vim
 
 ! yankable urls
 URxvt.keysym.M-u: perl:url-select:select_next
