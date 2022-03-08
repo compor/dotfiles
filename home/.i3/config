@@ -3,6 +3,9 @@
 set $mod Mod1
 set $sup Mod4
 
+exec_always --no-startup-id xrdb -merge -I"${HOME}" ~/.Xresources
+exec xinput set-prop "Elan Touchpad" "libinput Tapping Enabled" 1
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 #font pango:monospace 8
@@ -128,12 +131,14 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
+#bindsym XF86AudioMicMute exec --no-startup-id amixer -D pulse sset Capture toggle
+bindsym XF86AudioMicMute exec --no-startup-id mic-toggle
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10 && \
-  xbacklight | awk '{print int($1)}' > ~/.config/brightness && $refresh_i3status
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10 && \
-  xbacklight | awk '{print int($1)}' > ~/.config/brightness && $refresh_i3status
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5 && \
+  xbacklight -get > ~/.config/brightness && $refresh_i3status
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5 && \
+  xbacklight -get > ~/.config/brightness && $refresh_i3status
 
 # Touchpad controls
 #bindsym XF86TouchpadToggle exec --no-startup-id /some/path/toggletouchpad.sh # toggle touchpad
@@ -256,46 +261,36 @@ bar {
     }
 }
 
-# redshift modes
-bindsym $mod+Shift+s mode "$mode_redshift"
-
-set $mode_redshift Set colour temperature: (a)uto, (r)eset, (2)500K, (3)000K, (4)000K, (5)000K
-set $kill_redshift pkill -9 redshift;
-
-mode "$mode_redshift" {
-    bindsym a exec --no-startup-id "$kill_redshift redshift", mode "default"
-    bindsym r exec --no-startup-id "$kill_redshift redshift -x", mode "default"
-    bindsym 2 exec --no-startup-id "$kill_redshift redshift -O 2500", mode "default"
-    bindsym 3 exec --no-startup-id "$kill_redshift redshift -O 3000", mode "default"
-    bindsym 4 exec --no-startup-id "$kill_redshift redshift -O 4000", mode "default"
-    bindsym 5 exec --no-startup-id "$kill_redshift redshift -O 5000", mode "default"
-
-    # back to normal
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-    bindsym Control+bracketleft mode "default"
-}
-
 bindsym $mod+comma exec xkblayout-state set +1 && \
   xkblayout-state print "%s" > ~/.config/lang && $refresh_i3status
 exec xkblayout-state print "%s" > ~/.config/lang
 
 set $primary_monitor "eDP1"
-set $secondary_monitor "HDMI1"
+set $secondary_monitor "HDMI-1-0"
 
-exec ~/.screenlayout/dual-home-melite.sh
+exec ~/.screenlayout/dual-home-sterope.sh
 
 # move between screens
 bindsym $mod+shift+m move workspace to output $secondary_monitor
 bindsym $mod+m move workspace to output $primary_monitor
+bindsym $mod+Ctrl+greater move workspace to output right
+bindsym $mod+Ctrl+less move workspace to output left
+
+# cycle through active workspaces
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
 
 exec_always --no-startup-id xsetroot -solid "#282828"
+
+# gnome settings daemon
+exec --no-startup-id /usr/libexec/gsd-xsettings
+
+# gnome policy kit for sudo check in GUI applications
+exec --no-startup-id /usr/libexec/polkit-agent-helper-1
 
 exec --no-startup-id dunst
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id udiskie --no-automount --tray
-exec --no-startup-id redshift
 exec start-pulseaudio-x11
 exec --no-startup-id pasystray
-
