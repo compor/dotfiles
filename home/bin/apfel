@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 progname=$(basename ${0})
-declare -i repeat=3
+declare -i repeat=1
 
 [ -z "${1}" ] && echo "${progname}: Please provide time in minutes." && exit 1
 [ -n "${2}" ] && repeat=${2}
@@ -27,10 +27,9 @@ START_TIME="$(date -u +%s)"
 sleep ${INTERVAL}
 
 if [ -e "${SOUND_FILE}" ]; then
-  for ((i=0; i < ${repeat}; i++))
-  do
+  for ((i = 0; i < ${repeat}; i++)); do
     paplay --volume=70000 "${SOUND_FILE}"
   done
 fi
 
-notify-send -u critical -t 10000 "${progname}: Time is up!"
+notify-send --expire-time=2000 -u critical -t 10000 "${progname}: Time is up!"
