@@ -7,8 +7,9 @@ let g:coc_global_extensions = [
       \ 'coc-vimlsp',
       \ 'coc-go',
       \ 'coc-pyright',
+      \ 'coc-jedi',
       \ 'coc-yaml',
-      \ 'coc-ccls',
+      \ 'coc-clangd',
       \ 'coc-cmake',
       \ 'coc-metals',
       \ 'coc-sh'
