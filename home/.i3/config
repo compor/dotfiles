@@ -36,25 +36,25 @@ bindsym $mod+q exec rofi -show window
 # use this to refresh status bar
 set $refresh_i3status killall -SIGUSR1 i3status
 
-# change focus
+# change focus, using vi keys
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# alternatively, you can use the cursor keys:
+# or using arrow keys
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# move focused window
+# move focused window, using vi keys
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-# alternatively, you can use the cursor keys:
+# or using arrow keys
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
@@ -175,7 +175,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-#for_window [class="Pavucontrol"] floating enable
+for_window [class="Pavucontrol"] floating enable
 
 # scratchpads
 # dropdown
@@ -265,16 +265,19 @@ bindsym $mod+comma exec xkblayout-state set +1 && \
   xkblayout-state print "%s" > ~/.config/lang && $refresh_i3status
 exec xkblayout-state print "%s" > ~/.config/lang
 
-set $primary_monitor "eDP1"
-set $secondary_monitor "HDMI-1-0"
-
 exec ~/.screenlayout/dual-home-sterope.sh
 
-# move between screens
-bindsym $mod+shift+m move workspace to output $secondary_monitor
-bindsym $mod+m move workspace to output $primary_monitor
-bindsym $mod+Ctrl+greater move workspace to output right
-bindsym $mod+Ctrl+less move workspace to output left
+# move between screens, using vi keys
+bindsym $mod+Ctrl+h move workspace to output right
+bindsym $mod+Ctrl+l move workspace to output left
+bindsym $mod+Ctrl+k move workspace to output up
+bindsym $mod+Ctrl+j move workspace to output down
+
+# or using arrow keys
+bindsym $mod+Ctrl+Right move workspace to output right
+bindsym $mod+Ctrl+Left move workspace to output left
+bindsym $mod+Ctrl+Up move workspace to output up
+bindsym $mod+Ctrl+Down move workspace to output down
 
 # cycle through active workspaces
 bindsym $mod+Tab workspace next
