@@ -12,3 +12,4 @@ bin
 .config/vdirsyncer
 .gnupg
 .config/yamllint
+.config/gammastep
