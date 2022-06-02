@@ -57,5 +57,6 @@ Plug 'luochen1990/rainbow'
 Plug 'pedrohdz/vim-yaml-folds'
 Plug 'vim-utils/vim-husk'
 Plug 'puremourning/vimspector'
+Plug 'ekalinin/Dockerfile.vim'
 
 call plug#end()
