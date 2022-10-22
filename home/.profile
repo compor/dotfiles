@@ -103,6 +103,11 @@ if [ -d "${HOME}/.config/yarn/global/node_modules/.bin" ]; then
   PATH="${HOME}/.config/yarn/global/node_modules/.bin":$PATH
 fi
 
+# add maven path
+if [ -d "/usr/local/apache-maven/bin" ]; then
+  PATH="/usr/local/apache-maven/bin/":$PATH
+fi
+
 export PATH
 
 # add java paths
