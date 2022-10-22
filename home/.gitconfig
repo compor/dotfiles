@@ -30,16 +30,9 @@
   br = branch
   bv = branch -avv
   root = rev-parse --show-toplevel
-  ls = log --pretty=format:'%C(yellow)%h%Cred%d\\ %Creset%s\\ %Cgreen(%cr)\\ %Cblue[%cn]' --decorate
-  lsnc = log --pretty=format:'%h\\ %d\\ %s\\ [%cn]' --decorate
-  ll = log --pretty=format:'%C(yellow)%h%Cred%d\\ %Creset%s\\ %Cgreen(%cr)\\ %Cblue[%cn]' --decorate --numstat
-  llnc = log --pretty=format:'%h\\ %s\\ [%cn]'
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit
-  lga = log --branches --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit
-  hist = log --pretty=format:'%C(yellow)%h %Cred%ad %Creset- %s%d %Cblue[%an]' --graph --date=short
   add = add -v
   rev = merge --no-ff --no-commit
-  mrequest = push -u origin HEAD
   type = cat-file -t
   dump = cat-file -p
   dw = diff --color-words
