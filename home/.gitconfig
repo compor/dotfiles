@@ -4,7 +4,7 @@
   signingkey = 9201AE3F
 [core]
   editor = vim
-	excludesfile = /home/vasich/.gitignore
+  excludesfile = /home/vasich/.gitignore
   pager = delta
 [merge]
   tool = splice
@@ -60,3 +60,5 @@
   process = git-lfs filter-process
   required = true
   clean = git-lfs clean -- %f
+[safe]
+  directory = /bulk/repos/cri
