@@ -1,7 +1,5 @@
-/* vim: ft=css */
 
 configuration {
-  theme: "gruvbox-dark-soft";
   font: "SauceCodePro Nerd Font Mono 8";
   sidebar-mode: true;
   location: 1;
@@ -17,7 +15,7 @@ configuration {
 
   /*run-shell-command: "{terminal} -e \"{cmd}; read -n 1 -s\"";*/
 
-  kb-mode-next: "Tab,Control+l";
+  kb-mode-next: "Tab";
   kb-mode-previous: "Control+h,ISO_Left_Tab";
   kb-row-tab: "";
   kb-row-up: "Control+k";
@@ -28,4 +26,4 @@ configuration {
   kb-remove-char-back: "BackSpace,Shift+BackSpace";
   kb-remove-to-eol: "";
 }
-
+@theme "gruvbox-dark-soft"
