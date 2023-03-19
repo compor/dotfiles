@@ -48,6 +48,7 @@ Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-peekaboo'
 Plug 'fcpg/vim-osc52'
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': { -> coc#util#install()}}
@@ -58,5 +59,6 @@ Plug 'pedrohdz/vim-yaml-folds'
 Plug 'vim-utils/vim-husk'
 Plug 'puremourning/vimspector'
 Plug 'ekalinin/Dockerfile.vim'
+Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 
 call plug#end()

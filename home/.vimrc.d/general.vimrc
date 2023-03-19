@@ -63,6 +63,8 @@ set cmdheight=2
 " for diagnostic messages
 set updatetime=300
 
+set timeoutlen=500
+
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
 
@@ -152,6 +154,10 @@ endfunction
 map <C-enter> :call Synctex()<cr>
 
 " settings and mappings for plugins
+
+" vim-which-key
+nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+nnoremap <silent> <localleader> :<c-u>WhichKey  '\'<CR>
 
 " stolen from http://robots.thoughtbot.com/faster-grepping-in-vim
 if executable('ag')
