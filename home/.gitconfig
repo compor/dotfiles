@@ -16,8 +16,9 @@
   diff = auto
   ui = true
 [interactive]
-  diffFilter = delta --color-only
+  diffFilter = delta --color-only --features=interactive
 [delta]
+  features = decorations
   navigate = true  # use n and N to move between diff sections
 [diff]
   colorMoved = default
@@ -31,6 +32,7 @@
   bv = branch -avv
   root = rev-parse --show-toplevel
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit
+  lga = log --branches --remotes --tags --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit
   add = add -v
   rev = merge --no-ff --no-commit
   type = cat-file -t
@@ -55,3 +57,13 @@
   clean = git-lfs clean -- %f
 [safe]
   directory = /bulk/repos/cri
+[delta "interactive"]
+    keep-plus-minus-markers = false
+[delta "decorations"]
+    commit-decoration-style = blue ol
+    commit-style = raw
+    file-style = omit
+    hunk-header-decoration-style = blue box
+    hunk-header-file-style = red
+    hunk-header-line-number-style = "#067a00"
+    hunk-header-style = file line-number syntax
