@@ -28,6 +28,7 @@ bindsym $mod+Shift+q kill
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run
 bindsym $mod+slash exec rofi -show run
+bindsym $mod+Shift+slash exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 bindsym $mod+q exec rofi -show window
 
 # for applications with a .desktop file
