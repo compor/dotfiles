@@ -50,7 +50,7 @@ set copyindent
 
 set nowrap " do not wrap lines
 
-set textwidth=80
+set textwidth=120
 set colorcolumn=+1
 
 set nobackup
