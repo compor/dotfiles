@@ -30,6 +30,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+slash exec rofi -show run
 bindsym $mod+Shift+slash exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 bindsym $mod+q exec rofi -show window
+bindsym $mod+z exec zulip
 
 # for applications with a .desktop file
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
@@ -299,3 +300,4 @@ exec --no-startup-id udiskie --no-automount --tray
 exec start-pulseaudio-x11
 exec --no-startup-id pasystray
 exec --no-startup-id gammastep-indicator
+exec --no-startup-id solaar
