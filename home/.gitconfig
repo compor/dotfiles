@@ -7,7 +7,7 @@
   excludesfile = /home/vasich/.gitignore
   pager = delta
 [merge]
-  tool = splice
+  tool = kdiff3
   conflictstyle = diff3
 [color]
   status = auto
@@ -20,6 +20,7 @@
 [delta]
   features = decorations
   navigate = true  # use n and N to move between diff sections
+  #side-by-side = true
 [diff]
   colorMoved = default
 [alias]
@@ -39,9 +40,6 @@
   dump = cat-file -p
   dw = diff --color-words
   dwc = diff --color-words --cached
-[mergetool "splice"]
-  cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
-  trustExitCode = true
 [status]
   showUntrackedFiles = all
 [credential]
