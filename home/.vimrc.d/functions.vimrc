@@ -2,12 +2,8 @@
 
 " toggle whitespace visibility based on solarized modes
 function! ToggleVisibility()
-  if g:solarized_visibility != 'high'
-    let g:solarized_visibility = 'high'
-  else
-    let g:solarized_visibility = 'low'
-  endif
-  color solarized
+  color gruvbox
+  call gruvbox#bg_toggle()
 endfunction
 
 " toggle various visibility modes

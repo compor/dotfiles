@@ -8,3 +8,4 @@ set encoding=utf-8
 
 source $HOME/.vimrc.d/plugins.vimrc
 source $HOME/.vimrc.d/general.vimrc
+source $HOME/.vimrc.d/functions.vimrc
