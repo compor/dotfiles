@@ -29,7 +29,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'rhysd/vim-llvm'
-Plug 'vim-autoformat/vim-autoformat'
+"Plug 'vim-autoformat/vim-autoformat'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 Plug 'rhysd/vim-clang-format'
@@ -61,4 +61,9 @@ Plug 'puremourning/vimspector'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+Plug 'google/vim-glaive'
+
 call plug#end()
+
