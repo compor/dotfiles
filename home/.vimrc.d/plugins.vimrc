@@ -13,53 +13,64 @@ function! Cond(cond, ...)
 endfunction
 
 Plug 'flazz/vim-colorschemes'
-Plug 'scrooloose/nerdcommenter'
 Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'kana/vim-operator-user'
 Plug 'tomtom/tlib_vim'
-Plug 'honza/vim-snippets'
-Plug 'preservim/tagbar'
+
+Plug 'rhysd/vim-llvm'
+Plug 'pboettch/vim-cmake-syntax'
+Plug 'henry-hsieh/riscv-asm-vim'
+Plug 'ekalinin/Dockerfile.vim'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
-Plug 'rking/ag.vim'
+
+Plug 'editorconfig/editorconfig-vim'
+
+Plug 'tmhedberg/SimpylFold'
+Plug 'pedrohdz/vim-yaml-folds'
+Plug 'Konfekt/FastFold'
+
+Plug 'preservim/nerdcommenter'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'dawikur/algorithm-mnemonics.vim'
+
+Plug 'preservim/tagbar'
+Plug 'junegunn/vim-peekaboo'
+Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+
 Plug 'tpope/vim-fugitive'
+Plug 'mhinz/vim-signify'
+
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'wesQ3/vim-windowswap'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
 Plug 'tpope/vim-tbone'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
-Plug 'rhysd/vim-llvm'
-"Plug 'vim-autoformat/vim-autoformat'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
-Plug 'rhysd/vim-clang-format'
 Plug 'rhysd/vim-grammarous'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'pboettch/vim-cmake-syntax'
-Plug 'tmhedberg/SimpylFold'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'dawikur/algorithm-mnemonics.vim'
-Plug 'wesQ3/vim-windowswap'
-Plug 'dense-analysis/ale'
-Plug 'mhinz/vim-signify'
-Plug 'vim-scripts/argtextobj.vim'
-Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
-Plug 'editorconfig/editorconfig-vim'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/vim-peekaboo'
 Plug 'fcpg/vim-osc52'
-Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
-Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': { -> coc#util#install()}}
-Plug 'jackguo380/vim-lsp-cxx-highlight'
+Plug 'zhimsel/vim-stay'
+Plug 'chrisbra/NrrwRgn'
+
 Plug 'mg979/vim-visual-multi'
-Plug 'luochen1990/rainbow'
-Plug 'pedrohdz/vim-yaml-folds'
 Plug 'vim-utils/vim-husk'
+
+Plug 'dense-analysis/ale'
+Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': { -> coc#util#install()}}
+Plug 'vim-test/vim-test'
 Plug 'puremourning/vimspector'
-Plug 'ekalinin/Dockerfile.vim'
-Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+Plug 'jmcantrell/vim-virtualenv'
+Plug 'lervag/vimtex'
 
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'

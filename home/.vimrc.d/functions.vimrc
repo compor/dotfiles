@@ -1,14 +1,5 @@
+"
 " vim functions
-
-" toggle whitespace visibility based on solarized modes
-function! ToggleVisibility()
-  color gruvbox
-  call gruvbox#bg_toggle()
-endfunction
-
-" toggle various visibility modes
-nmap <leader>W :call ToggleVisibility()<CR>
-
 
 " strip trailing whitespace function
 function! StripTrailingWhitespace()
@@ -39,11 +30,11 @@ function! ExecInTmux()
 endfunction
 
 " map tmux execution of current line
-nmap <leader>t :call ExecInTmux()<CR>
+"nmap <leader>t :call ExecInTmux()<CR>
 
 function! ToggleQuickFix()
   if empty(filter(getwininfo(), 'v:val.quickfix'))
-    copen
+    bot copen
   else
     cclose
   endif
