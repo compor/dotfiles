@@ -13,3 +13,4 @@ bin
 .gnupg
 .config/yamllint
 .config/gammastep
+.config/ruff

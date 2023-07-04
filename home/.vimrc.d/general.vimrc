@@ -410,9 +410,9 @@ let g:tagbar_type_scala = {
 \ }
 
 
-let g:UltiSnipsExpandTrigger='<c-j>'
-let g:UltiSnipsJumpForwardTrigger='<c-j>'
-let g:UltiSnipsJumpBackwardTrigger='<c-k>'
+"let g:UltiSnipsExpandTrigger='<c-j>'
+"let g:UltiSnipsJumpForwardTrigger='<c-j>'
+"let g:UltiSnipsJumpBackwardTrigger='<c-k>'
 
 " vim-dispatch
 nnoremap <F5> :Dispatch<CR>
