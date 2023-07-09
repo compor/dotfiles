@@ -31,7 +31,7 @@ Plug 'pedrohdz/vim-yaml-folds'
 Plug 'Konfekt/FastFold'
 
 Plug 'preservim/nerdcommenter'
-Plug 'SirVer/ultisnips'
+"Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'dawikur/algorithm-mnemonics.vim'
 
