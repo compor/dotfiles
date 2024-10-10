@@ -154,3 +154,4 @@ export FZF_DEFAULT_COMMAND='rg --files --follow -g "!{snap/,node_modules/,.git/,
 export FZF_ALT_C_COMMAND='rg --files --follow -g "!{snap/,node_modules/,.git/,venv/}"'
 export FZF_DEFAULT_OPTS="--preview 'batcat --color=always {}'"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+. "$HOME/.cargo/env"

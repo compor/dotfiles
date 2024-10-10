@@ -34,6 +34,7 @@ Thumbs.db
 
 # ide files
 .ycm_extra_conf.py*
+.pylintrc
 
 # other
 node_modules

@@ -22,7 +22,7 @@ Plug 'pboettch/vim-cmake-syntax'
 Plug 'henry-hsieh/riscv-asm-vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
+Plug 'preservim/vim-markdown'
 
 Plug 'editorconfig/editorconfig-vim'
 
@@ -61,6 +61,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'fcpg/vim-osc52'
 Plug 'zhimsel/vim-stay'
 Plug 'chrisbra/NrrwRgn'
+Plug 'blueyed/vim-qf_resize'
 
 Plug 'mg979/vim-visual-multi'
 Plug 'vim-utils/vim-husk'
@@ -75,6 +76,8 @@ Plug 'lervag/vimtex'
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
+
+Plug 'github/copilot.vim'
 
 call plug#end()
 

@@ -486,6 +486,8 @@ if has("autocmd")
   au! BufNewFile,BufRead *.md set filetype=markdown
   au! FileType markdown set textwidth=120
 
+  au! FileType mlir set textwidth=240
+
   " TeX and friends
   au! BufNewFile,BufRead *.tex set filetype=tex
   au! FileType tex

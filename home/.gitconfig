@@ -24,6 +24,7 @@
 [diff]
   colorMoved = default
 [alias]
+  fp = fetch --prune
   st = status
   s = status -sb
   co = checkout
