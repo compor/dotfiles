@@ -36,6 +36,7 @@
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit
   lga = log --branches --remotes --tags --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit
   add = add -v
+  ap = add -vp
   rev = merge --no-ff --no-commit
   type = cat-file -t
   dump = cat-file -p

@@ -78,6 +78,7 @@ Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
 
 Plug 'github/copilot.vim'
+Plug 'raivivek/vim-snakemake'
 
 call plug#end()
 

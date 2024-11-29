@@ -187,13 +187,20 @@ let g:ale_echo_msg_format = '%linter%: %s'
 let g:ale_fixers = {
       \ 'tex' : ['remove_trailing_lines',  'trim_whitespace'],
       \ 'python' : ['black'],
+      \ 'markdown' : ['prettier'],
       \ 'sh' : ['shfmt']
       \}
 
 let b:ale_linters = {
       \ 'tex' : ['chktex'],
-      \ 'cmake' : ['cmake-lint']
+      \ 'cmake' : ['cmake-lint'],
+      \ 'markdown' : ['vale', 'pandoc', 'marksman', 'markdownlint']
       \}
+
+let g:ale_linters_ignore = {
+  \   'markdown': ['languagetool'],
+  \   'asciidoc': ['languagetool']
+  \}
 
 " coc.nvim
 let g:coc_global_extensions = [

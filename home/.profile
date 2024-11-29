@@ -64,6 +64,10 @@ if [ -d "${HOME}/.bin/" ]; then
   PATH="${HOME}/.bin/":$PATH
 fi
 
+if [ -d "${HOME}/.local/bin/" ]; then
+  PATH="${HOME}/.local/bin/":$PATH
+fi
+
 # add local path
 if [ -d "/usr/local/bin/" ]; then
   PATH="/usr/local/bin/":$PATH
